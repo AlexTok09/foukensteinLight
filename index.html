@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Foukenstein — c'est terminé</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Foukenstein est terminé — la performance biopolitique aura duré ce qu'elle a duré." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Foukenstein — c'est terminé" />
+  <meta property="og:description" content="Comme tout dispositif, il finit par excéder son économie propre." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foukenstein.lol" />
+
+  <style>
+    *, html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      background: #dedad3;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: rgba(60, 57, 52, 0.92);
+    }
+
+    #app {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Bandeau en haut ─────────────────────────────────────────────── */
+    #banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 14px 24px;
+      background: rgba(50, 46, 40, 0.92);
+      color: rgba(235, 230, 220, 0.94);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-align: center;
+      z-index: 200;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    #banner strong {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Texte au-dessus du col roulé ───────────────────────────────── */
+    #epitaph {
+      position: absolute;
+      top: 96px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(620px, calc(100vw - 40px));
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: rgba(60, 57, 52, 0.92);
+      z-index: 100;
+      pointer-events: none;
+    }
+    #epitaph .lede {
+      font-size: 26px;
+      line-height: 1.35;
+      font-style: italic;
+      margin-bottom: 18px;
+      letter-spacing: 0.005em;
+    }
+    #epitaph .body {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(70, 65, 58, 0.82);
+      margin-bottom: 14px;
+    }
+    #epitaph .body em {
+      font-style: italic;
+      color: rgba(50, 46, 40, 0.88);
+    }
+
+    /* ── Footer: dates + lien code ──────────────────────────────────── */
+    #footer {
+      position: absolute;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(620px, calc(100vw - 40px));
+      text-align: center;
+      z-index: 100;
+    }
+    #dates {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      color: rgba(100, 95, 88, 0.55);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    #dates .sep {
+      display: inline-block;
+      margin: 0 8px;
+      color: rgba(100, 95, 88, 0.3);
+    }
+    #codeLink {
+      display: inline-block;
+      color: rgba(80, 75, 68, 0.85);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(100, 95, 88, 0.25);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    #codeLink:hover {
+      color: rgba(50, 46, 40, 1);
+      border-bottom-color: rgba(100, 95, 88, 0.6);
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      #banner {
+        font-size: 13px;
+        padding: 12px 18px;
+        letter-spacing: 0.04em;
+      }
+      #epitaph {
+        top: 84px;
+        width: calc(100vw - 32px);
+      }
+      #epitaph .lede { font-size: 21px; margin-bottom: 14px; }
+      #epitaph .body { font-size: 15px; }
+      #footer { bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); }
+      #dates { font-size: 12px; }
+      #dates .sep { margin: 0 5px; }
+      canvas { pointer-events: none; touch-action: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="banner">
+      <strong>Foukenstein est terminé.</strong> — la performance biopolitique aura duré ce qu'elle a duré.
+    </div>
+
+    <div id="epitaph">
+      <div class="lede">
+        Comme tout dispositif, il finit par excéder sa propre économie.
+      </div>
+      <div class="body">
+        Trop de tokens. Trop de watts. Pas assez de collectif pour porter le coût.
+        Le budget vacances a gagné — <em>comme il gagne toujours</em>.
+      </div>
+      <div class="body">
+        Foukenstein n'était qu'un exemple de plus : un sujet seul,
+        sans collectif pour l'affronter, dissous par sa propre gouvernementalité.
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="dates">
+        <span id="dateStart">6 mai 2026</span>
+        <span class="sep">—</span>
+        <span id="dateEnd">…</span>
+        <span class="sep">·</span>
+        <span id="lifespan">…</span>
+      </div>
+      <a id="codeLink" href="https://github.com/AlexTok09/foukensteinLight" target="_blank" rel="noopener">
+        Le code vit encore →
+      </a>
+    </div>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader }    from "three/addons/loaders/GLTFLoader.js";
+    import { DRACOLoader }   from "three/addons/loaders/DRACOLoader.js";
+
+    const isMobile = () => window.innerWidth <= 600;
+
+    // Scene
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdedad3);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.getElementById('app').insertBefore(renderer.domElement, document.getElementById('app').firstChild);
+
+    scene.add(new THREE.AmbientLight(0xfff8f0, 2.0));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    keyLight.position.set(2.5, 4, 2.5);
+    scene.add(keyLight);
+    const fillLight = new THREE.DirectionalLight(0xf0e8d8, 1.2);
+    fillLight.position.set(-3, 2, 1.5);
+    scene.add(fillLight);
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    rimLight.position.set(0, 2, -3);
+    scene.add(rimLight);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping  = true;
+    controls.dampingFactor  = 0.07;
+    controls.enablePan      = false;
+    controls.minPolarAngle  = Math.PI * 0.08;
+    controls.maxPolarAngle  = Math.PI * 0.52;
+
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
+
+    let collarMesh = null;
+
+    gltfLoader.load(
+      "knitted_turtleneck_animated.glb?v=1",
+      (gltf) => {
+        const model = gltf.scene;
+        const box   = new THREE.Box3().setFromObject(model);
+        const center = new THREE.Vector3();
+        const size   = new THREE.Vector3();
+        box.getCenter(center);
+        box.getSize(size);
+        model.position.sub(center);
+        scene.add(model);
+
+        model.traverse((child) => {
+          if (child.isMesh && child.morphTargetInfluences?.length > 0) {
+            collarMesh = child;
+          }
+        });
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fovRad = THREE.MathUtils.degToRad(camera.fov);
+        let dist;
+        if (isMobile()) {
+          const aspect  = window.innerWidth / window.innerHeight;
+          const fovHRad = 2 * Math.atan(Math.tan(fovRad / 2) * aspect);
+          const distV   = (size.y / 2) / Math.tan(fovRad  / 2);
+          const distH   = (size.x / 2) / Math.tan(fovHRad / 2);
+          dist = Math.max(distV, distH, size.z / 2) * 1.30;
+        } else {
+          dist = (maxDim / 2 / Math.tan(fovRad / 2)) * 1.6;
+        }
+        camera.position.set(0, maxDim * 0.05, dist);
+        controls.target.set(0, 0, 0);
+        controls.minDistance = maxDim * 0.1;
+        controls.maxDistance = maxDim * 8;
+        if (isMobile()) {
+          controls.enableZoom   = false;
+          controls.enableRotate = false;
+          controls.enablePan    = false;
+          renderer.domElement.style.pointerEvents = 'none';
+        }
+        controls.update();
+      },
+      undefined,
+      (err) => console.error(err)
+    );
+
+    // Animation loop — respiration lente sur les morphs
+    function animate() {
+      requestAnimationFrame(animate);
+      if (collarMesh?.morphTargetInfluences) {
+        const t = performance.now() * 0.001;
+        const breath = 0.04 + 0.035 * Math.sin(t * 0.55);
+        collarMesh.morphTargetInfluences[0] = breath;
+        collarMesh.morphTargetInfluences[1] = breath;
+        collarMesh.morphTargetInfluences[2] = breath;
+        if (collarMesh.morphTargetInfluences.length > 3) {
+          collarMesh.morphTargetInfluences[3] = breath * 0.8;
+        }
+      }
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Prevent scroll/bounce on mobile
+    document.addEventListener('touchmove', (e) => {
+      if (!e.target.closest('a')) e.preventDefault();
+    }, { passive: false });
+
+    // Resize
+    let _lastW = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth === _lastW && isMobile()) return;
+      _lastW = window.innerWidth;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Dates: launch → end (both frozen at publish time)
+    (function() {
+      const LAUNCH = new Date("2026-05-06T08:35:06Z");
+      const END    = new Date("2026-07-13T00:00:00Z");
+      const diffMs = END - LAUNCH;
+      const days   = Math.floor(diffMs / 86_400_000);
+      const hours  = Math.floor((diffMs % 86_400_000) / 3_600_000);
+      const dateEnd = END.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+      document.getElementById("dateEnd").textContent = dateEnd;
+      const hoursTxt = hours > 0 ? ` et ${hours} heures` : "";
+      document.getElementById("lifespan").textContent = `en vie pendant ${days} jours${hoursTxt}`;
+    })();
+
+    console.log(
+      "%c" +
+      "  █████╗  ██████╗ █████╗ ██████╗ \n" +
+      " ██╔══██╗██╔════╝██╔══██╗██╔══██╗\n" +
+      " ███████║██║     ███████║██████╔╝\n" +
+      " ██╔══██║██║     ██╔══██║██╔══██╗\n" +
+      " ██║  ██║╚██████╗██║  ██║██████╔╝\n" +
+      " ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝ \n" +
+      "  Foukenstein est terminé.\n",
+      "color:#c0392b;font-family:monospace;font-size:12px;font-weight:bold;"
+    );
+  </script>
+</body>
+</html>

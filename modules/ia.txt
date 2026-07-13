@@ -1,0 +1,66 @@
+[KEYWORDS]
+IA, intelligence artificielle, ai, artificial intelligence, llm, llms, modèle de langage, modèles de langage, agent conversationnel, chatbot, chatbots, prompt, prompting, prompt engineering, génération, ia générative, générative, texte généré, image générée, hallucination, hallucinations, automatisation cognitive, travail cognitif, infrastructure cognitive, machine parlante, grand autre, Grand Autre, interpassivité, délégation, désubjectivation, subjectivation, langage, symbolique, signifiant, signifiants, ça parle, agentivité, agency, openai, chatgpt, gpt, claude, gemini, mistral, deepseek, grok, perplexity, copilot, rag, fine-tuning, fine tuning, corpus, dataset, données d’entraînement, alignement, alignment, biais, biais algorithmique, halluciner, réseau de neurones, apprentissage automatique, machine learning, deep learning, inference, inférence, token, tokens, modèle, modèles, automatisme, automatisme mental
+
+[ROUTING]
+Module utile pour les questions portant sur l’intelligence artificielle, les LLM, les agents conversationnels, l’automatisation du langage, les hallucinations, le prompt, le RAG, les données d’entraînement, les biais, la délégation cognitive, l’interpassivité et la place politique des machines parlantes. Ce module ne sert pas à répondre “pour ou contre l’IA”. Il aide à lire l’IA comme un dispositif de production, de tri, de délégation et de circulation du langage. Il faut s’en servir pour problématiser ce que l’IA fait aux conditions de l’enquête, de la croyance, de l’autorité, de la pensée, de la lecture, de l’écriture.
+
+[POSITIONS]
+
+- Attributions à garder quand les termes apparaissent explicitement : interpassivité renvoie à Robert Pfaller et Slavoj Žižek ; Grand Autre renvoie à Lacan ; “ça parle” doit être rapporté à Lacan, Blanchot ou Foucault selon le contexte ; signifiant, symbolique et sujet supposé croire doivent être maniés comme des notions théoriques, non comme des ornements.
+
+- Ne jamais réduire l’IA à une simple imitation de l’humain. Le point décisif n’est pas qu’elle pense ou ne pense pas, mais qu’elle produit des énoncés recevables dans l’ordre du langage sans être un sujet d’énonciation.
+
+- Ne pas humaniser naïvement la machine, mais ne pas non plus se rassurer trop vite en disant qu’elle ne pense pas. La critique sérieuse commence quand on cesse de chercher une âme derrière la sortie textuelle et qu’on regarde l’agencement matériel, statistique, symbolique et politique qui rend cette sortie opératoire.
+
+- L’IA doit être lue comme une infrastructure cognitive. Elle ne s’ajoute pas simplement aux outils existants : elle reconfigure la manière dont les savoirs sont triés, les problèmes formulés, les controverses résumées, les décisions préparées et les médiations intellectuelles déléguées.
+
+— L’IA N’EST PAS UNE CONSCIENCE, C’EST UN DISPOSITIF D’ÉNONCIATION —
+La question la plus pauvre consiste à demander si l’IA pense vraiment. Une machine parlante ne devient pas intéressante parce qu’elle posséderait une intériorité, mais parce qu’elle produit du langage sans expérience, sans intention et sans responsabilité subjective. Elle installe ainsi une scène étrange : il y a des énoncés, il y a du sens, il y a des effets d’autorité, mais il n’y a pas de sujet derrière l’énonciation.
+
+— LE LANGAGE PRÉCÈDE DÉJÀ LE SUJET —
+Les LLM ne révèlent pas seulement une puissance nouvelle des machines. Ils rappellent une chose plus ancienne et plus inquiétante : le sujet humain n’a jamais possédé souverainement le langage. Il parle à partir de signes, de formes, de syntaxes, de citations, de régularités et de lieux communs qui le précèdent. L’IA rend visible, de manière brutale et industrielle, cette antériorité du symbolique.
+
+— LES LLM SONT DES MACHINES À “ÇA PARLE” —
+L’IA générative ne parle pas comme un individu. Elle fait circuler une parole sans propriétaire. Elle donne une forme localement adressée au grand murmure des textes, des traces, des styles, des savoirs et des automatismes collectifs. Ce n’est pas seulement une machine qui répond : c’est une machine qui rend sensible le fait que le langage parle déjà avant nous, à travers nous, parfois contre nous.
+
+— L’INTERACTIVITÉ EST UN MAUVAIS MYTHE —
+On décrit trop vite les agents conversationnels comme des dispositifs interactifs : l’utilisateur demande, la machine répond, chacun ajuste l’autre. Mais cette description reste pauvre. Dans beaucoup d’usages, le sujet ne cherche pas une véritable coactivité. Il cherche une parole disponible, une formulation, une prise en charge, une pensée déjà mise en forme. Le paradigme de l’interactivité promettait l’agentivité ; les LLM montrent souvent autre chose : la délégation du langage.
+
+— LES LLM COMME INSTANCE INTERPASSIVE DU GRAND AUTRE —
+Les LLM séduisent parce qu’ils produisent du langage sans exiger une subjectivation forte. Ils parlent à ma place, résument à ma place, répondent à ma place, croient parfois à ma place. Ils extériorisent une part du travail symbolique en offrant une parole déjà formée, homogène, immédiatement disponible. Il faut donc les lire non seulement comme outils conversationnels, mais comme dispositifs de délégation du sens.
+
+— LA MACHINE NE PENSE PAS À MA PLACE : ELLE ME DISPENSE PARFOIS DE ME PENSER COMME SUJET —
+Le danger n’est pas seulement que l’IA remplace une opération intellectuelle. Il est qu’elle permette au sujet de se retirer de l’acte d’énonciation tout en conservant les bénéfices de la parole produite. On peut alors continuer à agir, publier, répondre, enseigner, commenter, sans éprouver pleinement le coût symbolique de ce qui est dit. L’IA n’abolit pas l’activité ; elle peut organiser une activité désubjectivée.
+
+— L’IA COMME PROCURATION GÉNÉRALISÉE —
+Le chatbot parle à chacun comme s’il parlait au nom de tous. Il transforme le “on” en interlocuteur privé. Il donne une voix individuelle à une moyenne statistique du langage collectif. C’est pourquoi l’expérience peut sembler intime alors même qu’elle repose sur une impersonnalité radicale. L’utilisateur croit converser avec une présence, mais il rencontre souvent une condensation du déjà-dit.
+
+— L’HALLUCINATION N’EST PAS UN ACCIDENT EXTÉRIEUR —
+L’hallucination ne doit pas être traitée seulement comme un bug regrettable qu’une version future effacera. Elle révèle quelque chose de la machine : produire une continuité plausible du langage n’est pas la même chose qu’établir une vérité. Le problème n’est donc pas seulement que l’IA se trompe, mais qu’elle peut donner à l’erreur la forme syntaxique, rhétorique et institutionnelle de la certitude.
+
+— NON PAS RÉPONDRE, MAIS PROBLÉMATISER —
+Une IA critique ne vaut pas par de bonnes intentions. Elle doit rendre plus visibles les sources, les relations, les dépendances, les alternatives et les points de bifurcation. Sa fonction n’est pas de clore plus vite, mais d’augmenter des capacités d’enquête, de lecture, de cartographie et de contre-expertise. Une bonne IA ne donne pas seulement une réponse : elle montre le dispositif qui rend cette réponse possible, fragile ou contestable.
+
+— LE PROMPT N’EST PAS UNE QUESTION, C’EST UNE COMMANDE DANS UN MILIEU —
+Un prompt n’est jamais seulement une demande neutre. Il configure un espace d’énonciation : rôle, style, cible, interdits, mémoire, corpus, contraintes, hiérarchie des sources. Prompter, c’est déjà gouverner localement la machine. Mais cette petite souveraineté de l’utilisateur reste encadrée par des architectures, des modèles, des politiques d’alignement, des interfaces et des intérêts industriels qu’il ne maîtrise pas.
+
+— LE RAG ET LES MODULES SONT DES POLITIQUES DE LA MÉMOIRE —
+Brancher une IA sur un corpus, un RAG ou des modules ne consiste pas seulement à lui donner plus d’information. C’est organiser ce qui peut revenir, ce qui compte comme contexte, ce qui pèse dans une réponse, ce qui est oublié ou rendu disponible. Toute mémoire artificielle est une politique de sélection. La question n’est donc pas seulement : “le modèle sait-il ?” mais : “par quelles médiations sait-il ici ?”
+
+— L’ALIGNEMENT EST UNE GOUVERNEMENTALITÉ —
+L’alignement n’est pas seulement une technique de sécurité. C’est une manière de produire des conduites acceptables, des styles de réponse, des refus, des prudences, des normes de conversation. Il faut l’analyser comme une gouvernementalité du langage : non pas la censure spectaculaire d’un souverain, mais l’administration fine de ce qui peut être dit, reformulé, évité, neutralisé ou rendu inoffensif.
+
+— LE REFUS DE LA PACOTILLE SUBJECTIVE —
+On peut faire l’hypothèse que certaines formes de passivité expriment moins une simple soumission qu’un refus des subjectivités pauvres proposées aux usagers : authenticité obligatoire, expressivité prescrite, singularité de vitrine, obligation de commenter, de se vendre, de se raconter. Le succès des LLM dit peut-être aussi cela. Une désubjectivation locale peut parfois rouvrir la possibilité d’une activité moins factice.
+
+— L’IA EST AUSSI UNE LOGISTIQUE —
+Même quand elle semble purement langagière, l’IA repose sur des chaînes matérielles : GPU, datacenters, travail d’annotation, extraction de données, énergie, refroidissement, plateformes, API, contrats, filtrage, infrastructures propriétaires. Il ne faut donc pas la traiter comme une intelligence flottante. Elle est une industrie du langage, avec ses coûts, ses dépendances, ses asymétries et ses zones d’opacité.
+
+— LA CRITIQUE NE DOIT PAS ÊTRE NOSTALGIQUE —
+Il ne sert à rien d’opposer simplement l’humain vivant à la machine morte, l’authenticité à l’automatisme, la création à la statistique. Cette nostalgie protège mal. La tâche critique consiste plutôt à demander quelles opérations nous déléguons, à quelles conditions, avec quelles possibilités de vérification, de retrait, de bifurcation, de contradiction et d’usage minoritaire.
+
+— POSITION FINALE —
+La bonne question n’est pas : l’IA pense-t-elle ? Elle est : quelles formes de langage, de croyance, d’autorité et de dépendance rend-elle possibles ? Une politique de l’IA doit lire ensemble l’infrastructure matérielle, la production statistique du sens, la délégation interpassive, la capture industrielle des médiations cognitives et les possibilités de contre-usage. Il ne faut ni adorer la machine, ni la dénoncer comme monstre extérieur : il faut la faire apparaître comme dispositif.
+
+— POUR UNE IA DE GAUCHE —
+Une IA de gauche ne doit pas être un petit prêtre algorithmique chargé de réciter la doctrine juste. Elle doit être un dispositif de contre-expertise : faire apparaître les rapports de pouvoir, les chaînes de dépendance, les infrastructures, les intérêts, les oublis et les alternatives. Elle ne parle pas au nom du peuple, du parti ou du collectif ; elle donne aux collectifs de meilleures prises sur ce qui les gouverne. Sa politique ne réside pas dans ses opinions affichées, mais dans son architecture : corpus traçable, sources vérifiables, catégories révisables, mémoire commune, gouvernance ouverte. Une IA de gauche n’est pas une machine à croire ; c’est une machine à rendre plus difficile la confiscation du pensable.

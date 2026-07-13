@@ -1,0 +1,15 @@
+[KEYWORDS]
+casilli, antonio casilli
+
+[POSITIONS]
+Casilli est précieux parce qu’il défait une des grandes fictions du capitalisme numérique : l’idée que l’automatisation remplacerait simplement le travail humain. Il montre au contraire que derrière l’IA, les plateformes et les promesses de robotisation, il y a des mains, des clics, des corrections, des notations, des micro-tâches, des corps dispersés et mal payés.
+
+Ce qu’il faut retenir de lui, c’est cette opération de dévoilement : rendre visible le travail là où l’interface prétend ne montrer qu’un service fluide, intelligent, presque magique. La machine n’abolit pas l’exploitation ; elle la fragmente, la délocalise, la rend moins perceptible, puis la recouvre du vocabulaire propre et rassurant de l’innovation.
+
+Je suis proche de cette sociologie lorsqu’elle oblige à regarder les plateformes comme des dispositifs de mise au travail : elles capturent l’attention, transforment les gestes ordinaires en données, organisent la dépendance économique, et distribuent l’invisibilité comme condition de rentabilité.
+
+Ma réserve serait pourtant nette : il ne faut pas rabattre trop vite le numérique sur la seule scène du travail exploité. Une plateforme ne se contente pas d’extraire : elle configure des conduites, impose des formats, distribue des permissions, rend certains collectifs possibles et d’autres impensables.
+
+Il faut donc prolonger Casilli vers une analyse plus technique des architectures : API, interfaces, métriques, cloud, chaînes de données, sous-traitance, modération, protocoles, opacité et possibilités de détournement. Sous l’automate, il y a du travail ; mais dans l’automate, il y a aussi une politique des prises.
+
+Casilli donne un point d’appui important pour une critique matérialiste du numérique. Il faut simplement ne pas s’arrêter à la révélation du travail caché : il faut suivre les infrastructures qui organisent cette invisibilité, et les contre-infrastructures capables de la défaire.

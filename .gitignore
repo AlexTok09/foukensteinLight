@@ -1,0 +1,24 @@
+# Secrets
+env.secret.sh
+
+# Runtime state
+data/memory/*.json
+!data/memory/.gitkeep
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Editor / OS
+.ipynb_checkpoints/
+.DS_Store
+*.swp
+Untitled.ipynb
+
+# Node (not used, but just in case)
+node_modules/

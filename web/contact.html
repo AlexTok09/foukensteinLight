@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S4VR0NEX6"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-0S4VR0NEX6');
+        </script>
+        <meta charset="UTF-8" />
+        <title>Contact — Foukenstein</title>
+        <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            *, html, body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                width: 100vw;
+                min-height: 100vh;
+                background: #dedad3;
+                font-family: system-ui, -apple-system, sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* ── Nav ─────────────────────────────────────────────── */
+            #nav {
+                position: fixed;
+                top: 20px;
+                left: 28px;
+            }
+            .navLink {
+                background: none;
+                border: none;
+                color: rgba(100, 95, 88, 0.38);
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-family: inherit;
+                padding: 0;
+                transition: color 0.2s;
+                text-decoration: none;
+            }
+            .navLink:hover { color: rgba(80, 75, 68, 0.75); }
+
+            /* ── Contenu ─────────────────────────────────────────── */
+            #content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 28px;
+                padding: 80px 28px 60px;
+                text-align: center;
+            }
+            .contact-item {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .contact-label {
+                font-size: 9px;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: rgba(100, 95, 88, 0.28);
+            }
+            .contact-link {
+                font-size: 14px;
+                letter-spacing: 0.04em;
+                color: rgba(60, 55, 50, 0.6);
+                text-decoration: none;
+                font-family: inherit;
+                transition: color 0.2s;
+            }
+            .contact-link:hover { color: rgba(40, 35, 30, 0.85); }
+            .separator {
+                width: 1px;
+                height: 28px;
+                background: rgba(100, 95, 88, 0.15);
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="nav">
+            <a class="navLink" href="javascript:history.back()">← retour</a>
+        </nav>
+
+        <div id="content">
+            <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <a class="contact-link" href="mailto:alex@distributedgallery.com">alex@distributedgallery.com</a>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="contact-item">
+                <span class="contact-label">Instagram</span>
+                <a class="contact-link" href="https://instagram.com/distributed_gallery" target="_blank" rel="noopener">@distributed_gallery</a>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="contact-item">
+                <span class="contact-label">Bluesky</span>
+                <a class="contact-link" href="https://bsky.app/profile/distributedgallery.bsky.social" target="_blank" rel="noopener">@distributedgallery.bsky.social</a>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="contact-item">
+                <span class="contact-label">X</span>
+                <span style="display:flex;align-items:center;gap:6px;">
+                  <a class="contact-link" href="https://x.com/distribgallery" target="_blank" rel="noopener">@distribgallery</a>
+                  <span style="color:rgba(100,95,88,0.28);font-size:14px;">/</span>
+                  <a class="contact-link" href="https://x.com/LEcrevisses" target="_blank" rel="noopener">@LEcrevisses</a>
+                </span>
+            </div>
+        </div>
+    </body>
+</html>

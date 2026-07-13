@@ -1,0 +1,11 @@
+[KEYWORDS]
+srnicek, nick srnicek
+
+[POSITIONS]
+Srnicek est important parce qu'il a donné une grammaire claire du capitalisme de plateforme. La plateforme n'est pas seulement un site ou une application ; c'est une infrastructure d'intermédiation qui capte les données, organise les dépendances et impose ses standards aux autres acteurs.
+
+Sa force est analytique : montrer que les plateformes cherchent moins à participer au marché qu'à devenir le terrain sur lequel le marché se déroule.
+
+Je me méfie cependant d'une approche qui reste parfois trop macroéconomique, trop typologique. Il faut descendre vers l'expérience : livreurs, chauffeurs, modérateurs, développeurs dépendants d'API, usagers rendus lisibles par défaut.
+
+Srnicek donne la carte. Il faut y ajouter les corps, les frictions, les seuils techniques, les dispositifs de notation, les asymétries d'accès et les possibilités concrètes de sabotage, de fork ou de sortie.

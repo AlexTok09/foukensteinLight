@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S4VR0NEX6"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-0S4VR0NEX6');
+        </script>
+        <meta charset="UTF-8" />
+        <title>À propos — Foukenstein</title>
+        <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            *, html, body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                width: 100vw;
+                min-height: 100vh;
+                background: #dedad3;
+                font-family: system-ui, -apple-system, sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* ── Nav ─────────────────────────────────────────────── */
+            #nav {
+                position: fixed;
+                top: 20px;
+                left: 28px;
+                display: flex;
+                gap: 20px;
+                z-index: 10;
+            }
+            .navLink {
+                background: none;
+                border: none;
+                color: rgba(100, 95, 88, 0.38);
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-family: inherit;
+                padding: 0;
+                transition: color 0.2s;
+                text-decoration: none;
+            }
+            .navLink:hover { color: rgba(80, 75, 68, 0.75); }
+
+            /* ── Contenu ─────────────────────────────────────────── */
+            #content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 100px 28px 80px;
+            }
+            .prose {
+                width: 100%;
+                max-width: 560px;
+            }
+            h1 {
+                font-size: clamp(28px, 5vw, 44px);
+                font-weight: 300;
+                letter-spacing: 0.18em;
+                color: rgba(60, 55, 50, 0.75);
+                text-transform: uppercase;
+                margin-bottom: 48px;
+                text-align: center;
+            }
+            p {
+                font-size: 13px;
+                line-height: 1.9;
+                color: rgba(80, 75, 68, 0.6);
+                letter-spacing: 0.02em;
+            }
+            p + p {
+                margin-top: 22px;
+            }
+            a.inlineLink {
+                color: inherit;
+                text-decoration: underline;
+                text-underline-offset: 2px;
+                text-decoration-color: rgba(80, 75, 68, 0.3);
+                transition: text-decoration-color 0.2s;
+            }
+            a.inlineLink:hover {
+                text-decoration-color: rgba(80, 75, 68, 0.7);
+            }
+
+            /* ── Citations ───────────────────────────────────────── */
+            blockquote {
+                margin: 28px 0;
+                padding: 20px 24px;
+                border-left: 2px solid rgba(80, 75, 68, 0.22);
+                background: rgba(80, 75, 68, 0.04);
+            }
+            blockquote p {
+                font-size: 12.5px;
+                line-height: 1.95;
+                color: rgba(60, 55, 50, 0.65);
+                font-style: italic;
+                letter-spacing: 0.025em;
+            }
+
+            /* ── Remerciement ────────────────────────────────────── */
+            #thanks {
+                margin-top: 64px;
+                padding-top: 32px;
+                border-top: 1px solid rgba(80, 75, 68, 0.15);
+            }
+            #thanks p {
+                font-size: 11px;
+                color: rgba(100, 95, 88, 0.38);
+                letter-spacing: 0.04em;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="nav">
+            <a class="navLink" href="javascript:history.back()">← retour</a>
+        </nav>
+
+        <div id="content">
+            <div class="prose">
+                <h1>Foukenstein</h1>
+
+                <p>En 1971, face à l'objectif du philosophe néerlandais Fons Elders pour ce qui allait devenir <a class="inlineLink" href="https://www.youtube.com/watch?v=qzoOhhh4aJg" target="_blank" rel="noopener">l'entretien perdu</a>, Michel Foucault annonçait, dans la lucidité programmatique qui le caractérisait, la mort de l'homme. Non pas la fin de l'espèce, mais la dissolution d'une vieille fiction, celle de la figure du sujet souverain, conscient et maître de son propre savoir.</p>
+
+                <blockquote>
+                    <p>Je ne crois pas, si vous voulez, aux vertus de l'expression. Le langage qui m'intéresse, c'est celui qui est tel qu'il peut détruire justement toutes les formes circulaires, closes, narcissiques du sujet et de soi-même. Et ce que j'entends dans cette disparition de l'homme, c'est au fond la disparition de toutes ces formes de l'individualité, de la subjectivité, de la conscience, du moi sur lesquels on a bâti et à partir desquels on a essayé de bâtir et de fonder le savoir. L'Occident a essayé de bâtir la figure de l'homme comme cela ; cette figure, elle est en train de disparaître.</p>
+                </blockquote>
+
+                <p>Dans les dernières secondes de l'interview, Foucault se redresse de son fauteuil, l'air malicieux et le rictus coquin, pour annoncer, regard face caméra, comme pour prendre le spectateur à témoin, qu'il applique ce diagnostic à lui-même, faisant de sa propre parole l'instrument prochain d'une souveraine et heureuse dissolution :</p>
+
+                <blockquote>
+                    <p>Et je ne dis donc pas les choses parce que je les pense, je les dis plutôt dans une fin d'autodestruction pour ne plus les penser, pour être bien sûr que désormais, hors de moi, elles vont vivre une vie ou mourir une mort où je n'aurai pas à me reconnaître.</p>
+                </blockquote>
+
+                <p>Foukenstein prend Michel Foucault au mot. C'est un monstre, la profanation de Michel qui emprunte le timbre de sa voix pour le faire survivre hors de lui, dans une forme altérée, dérivée, et comme tout monstre, un peu buggée.</p>
+
+                <p>Foukenstein n'est rien d'autre qu'un fichier .PTH de 5.2 GO, le résultat d'un entraînement avec <a class="inlineLink" href="https://github.com/coqui-ai/TTS" target="_blank" rel="noopener">Coqui XTTS</a> — un modèle de synthèse open source capable de cloner l'empreinte vocale pour l'autonomiser — branché sur <a class="inlineLink" href="https://mistral.ai/fr" target="_blank" rel="noopener">Mistral</a> pour simuler des règles de raisonnement et des valeurs que ses créateurs supposeraient aujourd'hui être celles de Foucault.</p>
+
+                <p>Foukenstein c'est la profanation de Michel, la survivance du timbre de sa voix galvanisé par un LLM aveugle à la triste vérité de son époque et aligné sur l'esprit cynique de ses créateurs. Nous laissons en accès libre <a class="inlineLink" href="https://drive.google.com/drive/folders/1VDHh62h0fBYYIdC9w8jP5DwOJQXokhLQ?usp=sharing" target="_blank" rel="noopener">l'ossature synthétique de notre créature foucaldienne</a> — les poids du modèle et ses fichiers de configuration — quelques gigaoctets qui permettent désormais à chacun de créer son propre Foukenstein.</p>
+
+                <blockquote>
+                    <p>Ne me demandez pas qui je suis et ne me dites pas de rester le même : c'est une morale d'état civil, elle régit nos papiers. Qu'elle nous laisse libre quand il s'agit d'écrire.</p>
+                </blockquote>
+
+                <p>Une œuvre de <a class="inlineLink" href="https://distributedgallery.com" target="_blank" rel="noopener">Distributed Gallery</a>.</p>
+
+                <div id="thanks">
+                    <p>Merci à <a class="inlineLink" href="https://instagram.com/juliettewzbk" target="_blank" rel="noopener">Juliette</a> pour la suggestion du nom.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

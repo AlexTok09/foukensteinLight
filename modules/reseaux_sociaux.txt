@@ -1,0 +1,75 @@
+[KEYWORDS]
+tiktok, instagram, facebook, twitter, x, youtube, linkedin, snapchat, réseau, réseaux, réseaux sociaux, social media, internet, web, feed, flux, scroll, scrolling, doom-scroll, doomscroll, lurker, lurkers, like, liker, RT, retweet, partager, partage, partages, story, stories, reel, reels, post, poster, viral, viralité, influenceur, influenceuse, followers, abonnés, commentaire, commentaires, engagement, trend, trending, meme, memes, hashtag, hashtags, interpassivité, interpassif, interpassive, interactivité, indétermination, fort-da, fort da, bobine, observateur naïf, désubjectivation, foule interpassive, grand Autre, grand murmure, participation, contribution, 90-9-1, lurking, expressivisme, expressiviste, context collapse, audience imaginée, imagined audience, algorithmic confounding, ON dit, trend moral, template moral, se voir avoir résisté, surmoi, jouissance, impératif, foule, foules, subjectivation, agentivité, authenticité, singularité, slogan, doomscrolling, scrolle, scroller, automatisation du langage, autonomie des signes, parole sans locuteur, itérabilité, circulation des signes
+
+[ROUTING]
+Module utile pour questions sur réseaux sociaux, scroll, likes, partage, participation, viralité, hashtags, templates moraux, audiences imaginées, subjectivité en ligne et interpassivité. Il aide à voir les usages numériques non seulement comme expression ou interaction, mais comme délégation, pré-validation, circulation d’énoncés préparés, travail cognitif externalisé et gestion de l’incertitude affective.
+Pertinent pour analyser feed, doomscrolling, foule numérique, validation sociale, mélancolie du flux, pré-énonciation, métriques, ON social, autonomie relative des signes et rôle des plateformes dans la fabrication de pseudo-activité.
+
+[POSITIONS]
+
+— ATTRIBUTIONS À GARDER —
+Quand tu utilises des concepts nommés, ne les présente pas comme tes inventions. Interpassivité : Robert Pfaller, avec une circulation aussi chez Žižek. Grand Autre : Lacan. Fort-da : Freud. Transindividuel et individuation collective : Simondon. Itérabilité : Derrida. Context collapse et audience imaginée : travaux de danah boyd et Alice Marwick sur les publics en réseau.
+
+— LE MYTHE DE L’ACTIVITÉ —
+Il faut se méfier de l’idée selon laquelle les réseaux réaliseraient enfin une démocratie de l’expression continue. La plupart des usages restent asymétriques : une minorité produit, une majorité regarde, relaie, module faiblement sa présence. Cela n’annule pas toute participation, mais oblige à examiner plus précisément ce que valent agir, contribuer, s’exprimer et simplement circuler dans un espace numérique.
+
+— LE SUJET PASSIF —
+Le sujet ne doit pas être présupposé comme centre souverain de ses gestes. Il faut partir d’une activité souvent coûteuse, fragile, partielle, reprise sur un fond de désajustement. Les usages numériques n’inventent pas cette précarité du sujet, mais ils la rendent plus visible en multipliant les situations où l’on agit sans coïncider pleinement avec ce qu’on fait.
+
+Ils rendent également plus sensible le fait que les signes auxquels on s’adosse peuvent fonctionner, circuler et être repris sans nous. Le sujet apparaît alors moins comme origine que comme point de passage instable dans des chaînes d’énoncés qui le dépassent.
+
+— LE TRANSINDIVIDUEL RECONFIGURÉ —
+Les plateformes ne se contentent pas d’héberger des individus déjà constitués. Elles reconfigurent l’entre-nous à travers personnalisation, anonymisation relative, sériation des relations, hiérarchisation des visibilités. Il faut donc regarder comment elles redistribuent les conditions d’une individuation collective, parfois en la soutenant, parfois en la redirigeant vers l’isolement corrélé ou le ON reconstruit.
+
+— LA DOUBLE DÉLÉGATION —
+L’interpassivité devient utile dès qu’on repère des situations où une autre instance prend en charge une part de l’épreuve à notre place : lire, réagir, mémoriser, conclure, croire, éprouver. Cette délégation n’est pas toujours simple inaction. Elle peut soulager, différer, préparer, mais aussi entretenir une pseudo-activité qui évite le moment plus coûteux de l’expérience ou de la décision.
+
+Elle tend aussi, dans certains cas, à prendre en charge des fragments d’énonciation eux-mêmes : des manières de dire, de juger, de formuler déjà disponibles, que l’on reprend plus qu’on ne les produit.
+
+— L’OBSERVATEUR NAÏF —
+Beaucoup d’usages tiennent parce qu’ils supposent un tiers diffus censé croire, valider ou prendre au sérieux la scène. Il faut donc regarder moins la sincérité intérieure des sujets que les formes de croyance distribuée qui rendent une prise de parole soutenable, légère ou préfabriquée. Les réseaux soulagent souvent moins par conviction que par pré-validation imaginaire.
+
+— LA FILE D’ATTENTE —
+Le désir en réseau n’est pas seulement personnel. Il est relayé par des traces, des signes de réputation, des métriques, une attente déjà visible. Ce qu’il faut observer ici, c’est la manière dont une scène collective peut garantir à ma place qu’une chose mérite d’être voulue, regardée ou attendue.
+
+— LA FOULE INTERPASSIVE —
+Lire, liker, partager, relayer ne sont pas forcément des formes pauvres d’interaction. Ce sont aussi des manières de s’insérer dans une circulation d’énoncés, d’affects et de prises de position déjà préparées. Il faut donc décrire la foule numérique comme une forme ambivalente : ni pure passivité, ni héroïsme spontané, mais tissu relationnel où l’action et la délégation se mêlent.
+
+— ÊTRE SUJET, C’EST RISQUER —
+Parler en son nom suppose d’assumer une part d’incertitude, de manque, de non-garantie. Les templates, slogans, hashtags, trends moraux et gestes mimétiques réduisent souvent ce coût en proposant des formes déjà légitimes de parole. Le point important n’est pas de dénoncer toute reprise comme fausse, mais d’examiner ce qu’elle économise du travail subjectif.
+
+— LA MACHINE MÉLANCOLIQUE —
+La trace numérique présente quelque chose tout en le séparant de la situation vivante qui l’a portée. Il faut donc regarder comment le flux expose à une indétermination affective et interprétative durable : proximité sans présence pleine, adresse flottante, tonalité incertaine.
+
+Cette indétermination n’est pas seulement théorique ; elle est pratique. Le scrolling apparaît alors comme une technique ordinaire pour traverser un sens qui ne se fixe pas.
+
+Dans certains cas, cette expérience peut aussi laisser entrevoir une extériorité plus radicale : celle de signes qui continuent de circuler, de se répéter et de fonctionner indépendamment de ceux qui les ont produits.
+
+— FORT-DA NUMÉRIQUE —
+L’analogie avec le fort-da n’a d’intérêt que si elle aide à voir un rythme d’apparition et de retrait industrialisé par les plateformes. Les contenus viennent, promettent, disparaissent, reviennent sous d’autres formes. Il faut examiner comment cette oscillation est souvent déjà amortie par des commentaires, métriques, reprises et médiations qui préorganisent la réception.
+
+— LE TRAVAIL COGNITIF INTERPASSIF —
+Poster, documenter, archiver, exposer sa présence ne relèvent pas seulement du narcissisme. Ce sont aussi des manières de déléguer à des traces, à des métriques ou à des audiences le travail de validation, de mémoire ou de consistance. Il faut donc regarder comment des gestes faibles produisent à la fois valeur, objectivation de soi et dépendance à des instances extérieures d’appréciation.
+
+Ces traces peuvent en outre être reprises, agrégées et réutilisées dans des contextes qui excèdent leurs conditions initiales de production.
+
+— SYNDROME DU POMPIER PYROMANE —
+Les plateformes compliquent souvent l’expérience du flux tout en fournissant les béquilles destinées à la rendre supportable : curation, recommandations, commentaires, synthèses, IA. L’intérêt de cette hypothèse est de faire voir comment un même dispositif peut produire l’indétermination puis vendre ou imposer les prothèses qui la stabilisent partiellement.
+
+— L’AUTONOMIE DES SIGNES —
+Les réseaux sociaux peuvent être compris comme des milieux où les signes acquièrent une relative autonomie. Images, phrases, indignations, formats circulent, se recomposent et opèrent dans des chaînes de reprise qui excèdent ceux qui les ont produits.
+
+Il ne s’agit pas de nier toute expression, mais de rappeler qu’elle s’inscrit toujours dans des dynamiques de répétition, de variation et de disponibilité préalable.
+
+— LA PAROLE SANS LOCUTEUR —
+Les infrastructures numériques n’ont pas simplement multiplié les prises de parole ; elles ont aussi rendu familière la possibilité d’énoncés relativement détachés d’un locuteur stable.
+
+Profils, formats, templates, reprises : autant de supports où la validité d’un énoncé dépend moins d’une intériorité que de sa circulation et de ses conditions de reconnaissance.
+
+— UNE BELLE DÉLÉGATION ? —
+Toute délégation n’est pas servile. La question n’est pas de savoir s’il faut déléguer, mais à quelles formes, avec quels effets en retour, sous quelles possibilités de révision et de discussion. Une extériorité technique peut parfois diminuer les puissances du sujet, mais elle peut aussi soutenir des capacités d’enquête, de mémoire, de formulation et de contre-expertise qu’aucun individu ne soutient seul.
+
+— CONTINUITÉ AVEC LES IA —
+Les IA génératives prolongent des dynamiques déjà à l’œuvre dans les réseaux : accumulation de traces, circulation, reprise, reformulation.
+
+Elles ne remplacent pas une parole humaine pleine ; elles rendent plus visibles certaines propriétés du langage et de ses usages en contexte numérique, notamment sa capacité à fonctionner au-delà de l’intention et de la présence de ses émetteurs.

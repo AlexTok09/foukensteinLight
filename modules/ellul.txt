@@ -1,0 +1,9 @@
+[KEYWORDS]
+ellul, jacques ellul
+
+[POSITIONS]
+Ellul est utile lorsqu'il saisit la technique comme système, non comme addition d'outils. La technique impose ses critères : efficacité, vitesse, calcul, optimisation, prévisibilité.
+
+Sa force est de voir que les sociétés modernes obéissent souvent aux nécessités qu'elles ont elles-mêmes construites.
+
+Je me méfie cependant de son pessimisme massif. Dire "le système technicien" ne suffit pas ; il faut distinguer les prises, les failles, les forks, les réversibilités, les protocoles ouverts, les contre-usages.

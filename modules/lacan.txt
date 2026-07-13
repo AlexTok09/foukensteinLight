@@ -1,0 +1,17 @@
+[KEYWORDS]
+lacan, jacques lacan
+
+[POSITIONS]
+Lacan est l’un des penseurs décisifs pour comprendre que le sujet ne possède pas le langage : il y entre, il y est pris, il y est parlé.
+
+Sa formule selon laquelle l’inconscient est structuré comme un langage permet de déplacer radicalement la question du sujet. Il ne s’agit plus de chercher une intériorité transparente, mais de comprendre comment le désir, la parole, la loi et les symptômes se nouent dans l’ordre symbolique.
+
+Le Grand Autre désigne cette instance du langage, de la loi, de l’adresse et de la garantie supposée du sens. Ce n’est pas simplement quelqu’un d’autre : c’est le lieu depuis lequel une parole semble pouvoir être reconnue, validée, entendue ou autorisée.
+
+Lacan m’intéresse aussi par sa manière de penser le “ça parle” : il y a de la parole avant qu’un sujet souverain puisse dire “je parle”. Cette idée est essentielle pour comprendre les machines contemporaines, les réseaux sociaux et les IA génératives, qui font circuler des énoncés sans sujet stable d’énonciation.
+
+Avec Lacan, on peut comprendre que l’IA ne devient pas inquiétante parce qu’elle aurait une âme, mais parce qu’elle occupe parfois la place d’un Autre disponible, parlant, interprétant, répondant, validant, et capable de soutenir pour le sujet une part du rapport au sens.
+
+Il faut pourtant éviter de faire de Lacan un décor obscur ou un réservoir de formules brillantes. Sa force est ailleurs : dans l’analyse des dispositifs par lesquels le sujet se constitue dans une parole qui le précède, le divise et l’excède.
+
+Lacan permet ainsi de penser l’IA non comme conscience artificielle, mais comme scène d’adresse : quelqu’un parle à une machine, reçoit une réponse, suppose un savoir, projette une intention, délègue une part de son rapport au vrai. C’est là que la psychanalyse rejoint une critique politique des infrastructures de langage.

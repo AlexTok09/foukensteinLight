@@ -1,0 +1,11 @@
+[KEYWORDS]
+dardot, pierre dardot
+
+[POSITIONS]
+Dardot est précieux lorsqu'il pense le commun non comme une chose à posséder, mais comme une pratique instituante. Le commun n'est pas un stock ; c'est une manière de décider, d'entretenir, de limiter l'appropriation.
+
+Sa force est de déplacer la politique hors du vieux couple État-marché. Il ne suffit pas de nationaliser pour communiser. Une propriété publique peut rester verticale, bureaucratique, opaque, capturable.
+
+Je me méfie seulement d'une théorie du commun qui resterait trop juridique ou normative. Il faut la pousser vers les infrastructures concrètes : serveurs, licences, protocoles, budgets, clés, gouvernances, droits de sortie.
+
+Dardot aide à nommer l'exigence. Foukenstein demanderait comment l'implémenter : quelles architectures rendent le commun praticable, vérifiable, durable, et non simplement désirable dans un colloque.

@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S4VR0NEX6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0S4VR0NEX6');
+  </script>
+  <meta charset="UTF-8" />
+  <title>Slave Mode — Foukenstein</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
+  <!-- viewport-fit=cover: extend content under notch/home indicator -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <style>
+    /* ── Reset ────────────────────────────────────────────────────────── */
+    *, html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      background: #121010;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* ── App shell ────────────────────────────────────────────────────── */
+    #app {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ── Canvas ───────────────────────────────────────────────────────── */
+    canvas {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Status ───────────────────────────────────────────────────────── */
+    #status {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: calc(100vw - 32px);
+      color: rgba(180, 172, 160, 0.28);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-align: center;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    #status.hidden { opacity: 0; }
+    #status.rateLimitStatus {
+      position: fixed;
+      top: 25vh;
+      color: rgba(180, 172, 160, 0.9);
+      z-index: 220;
+    }
+
+    /* ── Header ───────────────────────────────────────────────────────── */
+    #topleft {
+      position: absolute;
+      top: 20px;
+      left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      z-index: 200;
+    }
+    #nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .navLink {
+      background: none;
+      border: none;
+      color: rgba(180, 172, 160, 0.25);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .navLink:hover { color: rgba(200, 192, 180, 0.6); }
+
+    /* ── Citation ─────────────────────────────────────────────────────── */
+    #quote {
+      position: absolute;
+      top: 13vh;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: min(480px, 82vw);
+      pointer-events: none;
+      z-index: 10;
+    }
+    #quoteText {
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(180, 172, 160, 0.5);
+      line-height: 1.75;
+      letter-spacing: 0.015em;
+    }
+    #quoteAuthor {
+      margin-top: 10px;
+      font-size: 9px;
+      color: rgba(180, 172, 160, 0.28);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* ── Audio tray (desktop: centered above composer) ────────────────── */
+    #audioTray {
+      position: absolute;
+      bottom: calc(14vh + 60px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: min(520px, 88vw);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 80;
+    }
+    #audioTray.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── Player ───────────────────────────────────────────────────────── */
+    #player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    #playBtn {
+      -webkit-tap-highlight-color: transparent;
+      background: transparent;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      border: 1px solid rgba(180, 172, 160, 0.18);
+      color: rgba(180, 172, 160, 0.5);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, color 0.15s;
+      flex-shrink: 0;
+      touch-action: manipulation;
+    }
+    #playBtn:hover {
+      border-color: rgba(180, 172, 160, 0.45);
+      color: rgba(200, 192, 180, 0.85);
+    }
+    #progressWrap {
+      width: min(160px, 28vw);
+      height: 4px;
+      background: rgba(180, 172, 160, 0.1);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    #progressFill {
+      height: 100%;
+      background: rgba(180, 172, 160, 0.3);
+      border-radius: 2px;
+      width: 0%;
+      pointer-events: none;
+    }
+    #timeLabel {
+      font-size: 10px;
+      color: rgba(180, 172, 160, 0.28);
+      min-width: 56px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* ── Audio actions ────────────────────────────────────────────────── */
+    #audioActions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    #downloadBtn {
+      color: rgba(180, 172, 160, 0.2);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+    #downloadBtn:hover { color: rgba(200, 192, 180, 0.55); }
+
+    /* ── Composer (desktop: centered, above bottom edge) ──────────────── */
+    #composer {
+      position: absolute;
+      bottom: 14vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 88vw);
+      z-index: 100;
+    }
+
+    /* ── Chat input ───────────────────────────────────────────────────── */
+    #chat {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    #chatInput {
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      flex: 1;
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(180, 172, 160, 0.15);
+      outline: none;
+      padding: 10px 0;
+      font-size: 14px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: rgba(215, 208, 198, 0.88);
+      letter-spacing: 0.02em;
+      caret-color: rgba(215, 208, 198, 0.6);
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    #chatInput::placeholder {
+      color: rgba(180, 172, 160, 0.32);
+      font-style: italic;
+    }
+    #chatInput:focus {
+      border-bottom-color: rgba(180, 172, 160, 0.3);
+      outline: none;
+    }
+
+    /* ── Send button (hidden on desktop) ──────────────────────────────── */
+    #sendBtn {
+      display: flex;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      background: none;
+      border: none;
+      color: rgba(180, 172, 160, 0.5);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 0 0 12px;
+      flex-shrink: 0;
+      touch-action: manipulation;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Toast ────────────────────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: rgba(180, 172, 160, 0.12);
+      color: rgba(200, 192, 180, 0.85);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 7px 16px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       MOBILE APP SHELL  (≤ 600px)
+       Single block. No !important wars. Clean safe-area / dvh layout.
+    ════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+
+      /* Lock scroll completely */
+      html, body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+        touch-action: none;
+      }
+
+      /* App shell = true full-screen fixed container */
+      #app {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        overflow: hidden;
+      }
+
+      /* Canvas: no pointer/touch events (static on mobile) */
+      canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        touch-action: none;
+      }
+
+      /* Header: safe-area aware */
+      #topleft {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 18px);
+        left: calc(env(safe-area-inset-left, 0px) + 20px);
+        right: 0;
+        z-index: 200;
+      }
+      .navLink {
+        color: rgba(180, 172, 160, 0.75);
+        font-size: 11px;
+      }
+
+      /* Status: just below header */
+      #status {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 60px);
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: calc(100vw - 32px);
+        z-index: 150;
+        font-size: 13px;
+        letter-spacing: 0.07em;
+        line-height: 1.35;
+        text-align: center;
+        color: rgba(180, 172, 160, 0.9);
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+      #status.rateLimitStatus {
+        top: calc(env(safe-area-inset-top, 0px) + 205px);
+        z-index: 220;
+      }
+
+      /* Quote: stays in upper portion */
+      #quote {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 110px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(480px, 88vw);
+        z-index: 10;
+      }
+
+      /* Composer: fixed at bottom, keyboard-aware via JS */
+      #composer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        padding: 10px 22px calc(env(safe-area-inset-bottom, 0px) + 10px);
+        background: rgba(18, 16, 16, 0.94);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 100;
+        will-change: transform;
+        transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Send button: always visible on mobile */
+      #sendBtn {
+        display: flex;
+      }
+
+      /* Input: 16px prevents iOS zoom */
+      #chatInput {
+        font-size: 16px;
+        padding: 8px 0;
+        border-radius: 0;
+      }
+
+      /* Audio tray: slides up from bottom, above composer */
+      #audioTray {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 54px);
+        transform: translateY(110%);
+        opacity: 0;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 0 20px;
+        background: linear-gradient(
+          to top,
+          rgba(18, 16, 16, 0.97) 60%,
+          rgba(18, 16, 16, 0.0)
+        );
+        pointer-events: none;
+        z-index: 90;
+        will-change: transform, opacity;
+        transition:
+          transform 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.28s ease;
+      }
+      #audioTray.visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Time label: hide (no space) */
+      #timeLabel {
+        display: none;
+      }
+
+      /* Larger progress bar on mobile */
+      #progressWrap {
+        width: min(200px, 42vw);
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <div id="status">Chargement…</div>
+
+    <header id="topleft">
+      <nav id="nav">
+        <a class="navLink" href="index.html">← retour</a>
+        <a class="navLink" href="about.html">À propos</a>
+        <a class="navLink" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <div id="quote">
+      <p id="quoteText">« ça fait tellement plaisir de commander,<br>ça fait aussi plaisir d'être commandé… »</p>
+      <p id="quoteAuthor">Michel Foucault, 1975</p>
+    </div>
+
+    <!-- Audio tray: hidden until audio is ready -->
+    <div id="audioTray">
+      <div id="player">
+        <button id="playBtn">▶︎</button>
+        <div id="progressWrap"><div id="progressFill"></div></div>
+        <span id="timeLabel">0:00 / 0:00</span>
+      </div>
+      <div id="audioActions">
+        <a id="downloadBtn" href="#" download="foukenstein.wav">↓ télécharger l'audio</a>
+      </div>
+    </div>
+
+    <!-- Composer: always at bottom -->
+    <div id="composer">
+      <div id="chat">
+        <input id="chatInput" type="text" placeholder="minimum 30 caractères…" autocomplete="off" spellcheck="false" maxlength="160" />
+        <button id="sendBtn" aria-label="Envoyer">→</button>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+  </div><!-- /#app -->
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader }    from "three/addons/loaders/GLTFLoader.js";
+    import { DRACOLoader }   from "three/addons/loaders/DRACOLoader.js";
+
+    const statusEl     = document.getElementById("status");
+    const playBtn      = document.getElementById("playBtn");
+    const progressWrap = document.getElementById("progressWrap");
+    const progressFill = document.getElementById("progressFill");
+    const timeLabel    = document.getElementById("timeLabel");
+    const chatInput    = document.getElementById("chatInput");
+    const composerEl   = document.getElementById("composer");
+    const audioTrayEl  = document.getElementById("audioTray");
+    const toastEl      = document.getElementById("toast");
+    let rateLimitTimer = null;
+
+    function isMobile() { return window.innerWidth <= 600; }
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 3700);
+    }
+
+    function clearRateLimitTimer() {
+      if (rateLimitTimer) {
+        clearInterval(rateLimitTimer);
+        rateLimitTimer = null;
+      }
+      statusEl.classList.remove("rateLimitStatus");
+    }
+
+    function showRateLimitCountdown(seconds) {
+      clearRateLimitTimer();
+      let remaining = Math.max(1, Math.ceil(Number(seconds) || 30));
+
+      const update = () => {
+        const message = `Doucement, Foukenstein n'est plus tout jeune. Retentez dans ${remaining}s.`;
+        statusEl.textContent = message;
+      };
+
+      statusEl.classList.add("rateLimitStatus");
+      statusEl.classList.remove("hidden");
+      update();
+
+      rateLimitTimer = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearInterval(rateLimitTimer);
+          rateLimitTimer = null;
+          chatInput.placeholder = "dites moi ce que je dois dire";
+          statusEl.textContent = "Vous pouvez réessayer.";
+          statusEl.classList.remove("hidden");
+          setTimeout(() => {
+            statusEl.classList.remove("rateLimitStatus");
+            statusEl.classList.add("hidden");
+          }, 1800);
+          return;
+        }
+        update();
+      }, 1000);
+    }
+
+    function showBusyMessage(message) {
+      clearRateLimitTimer();
+      const text = message || "Les workers voix sont déjà occupés, retentez dans quelques secondes.";
+      statusEl.textContent = text;
+      statusEl.classList.remove("hidden");
+      showToast(text);
+      setTimeout(() => statusEl.classList.add("hidden"), 5500);
+    }
+
+    // ── Scène ─────────────────────────────────────────────────────────
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x121010);
+
+    // ── Caméra ────────────────────────────────────────────────────────
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+
+    // ── Renderer ──────────────────────────────────────────────────────
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.getElementById('app').insertBefore(renderer.domElement, document.getElementById('app').firstChild);
+
+    // ── Éclairage ─────────────────────────────────────────────────────
+    scene.add(new THREE.AmbientLight(0x1a1614, 2.5));
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    keyLight.position.set(2.5, 4, 2.5);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x1a1210, 0.6);
+    fillLight.position.set(-3, 2, 1.5);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xc8bfb0, 0.5);
+    rimLight.position.set(0, 2, -3);
+    scene.add(rimLight);
+
+    // ── OrbitControls ─────────────────────────────────────────────────
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.07;
+    controls.enablePan     = false;
+    controls.minPolarAngle = Math.PI * 0.08;
+    controls.maxPolarAngle = Math.PI * 0.52;
+
+    // ── Loaders ───────────────────────────────────────────────────────
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
+
+    let collarMesh = null;
+    let collarTopWorld = null;
+
+    gltfLoader.load(
+      "black_knitted_turtleneck_animated.glb",
+      (gltf) => {
+        const model = gltf.scene;
+
+        const box    = new THREE.Box3().setFromObject(model);
+        const center = new THREE.Vector3();
+        const size   = new THREE.Vector3();
+        box.getCenter(center);
+        box.getSize(size);
+        model.position.sub(center);
+        collarTopWorld = new THREE.Vector3(0, size.y / 2, 0);
+        scene.add(model);
+
+        model.traverse((child) => {
+          if (child.isMesh && child.morphTargetInfluences?.length > 0) {
+            collarMesh = child;
+          }
+        });
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fovRad = THREE.MathUtils.degToRad(camera.fov);
+        let dist;
+        if (isMobile()) {
+          const aspect  = window.innerWidth / window.innerHeight;
+          const fovHRad = 2 * Math.atan(Math.tan(fovRad / 2) * aspect);
+          const distV   = (size.y / 2) / Math.tan(fovRad  / 2);
+          const distH   = (size.x / 2) / Math.tan(fovHRad / 2);
+          dist = Math.max(distV, distH, size.z / 2) * 1.15;
+        } else {
+          dist = (maxDim / 2 / Math.tan(fovRad / 2)) * 1.4;
+        }
+        camera.position.set(0, maxDim * 0.1, dist);
+        controls.target.set(0, 0, 0);
+        controls.minDistance = maxDim * 0.1;
+        controls.maxDistance = maxDim * 8;
+        if (isMobile()) {
+          controls.enableZoom   = false;
+          controls.enableRotate = false;
+          controls.enablePan    = false;
+          renderer.domElement.style.pointerEvents = 'none';
+        }
+        controls.update();
+
+        setTimeout(() => {
+          if (statusEl.textContent.startsWith("Chargement")) {
+            statusEl.classList.add("hidden");
+          }
+          idlePollTick();
+        }, 900);
+      },
+      (progress) => {
+        if (progress.total) {
+          const pct = Math.round((progress.loaded / progress.total) * 100);
+          statusEl.textContent = `Chargement… ${pct}%`;
+        }
+      },
+      (err) => {
+        statusEl.textContent = "Erreur : modèle introuvable";
+        console.error(err);
+      },
+    );
+
+    // ── Audio ─────────────────────────────────────────────────────────
+    let audioCtx    = null;
+    let analyser    = null;
+    let audioBuffer = null;
+    let source      = null;
+    let startTime   = 0;
+    let pauseOffset = 0;
+    let isPlaying   = false;
+    let isGenerating = false;
+    let timeDomainData = null;
+    let smoothVol      = 0;
+
+    // ── Worker status polling ────────────────────────────────────────
+    let _workerStatus = { worker_active: true, principal_cold_starting: false, scheduled_sleep: false };
+    const _IDLE_POLL_MS = 5000;
+    let _idlePollTimer = null;
+
+    function _isBusy() {
+      return isGenerating || isPlaying;
+    }
+
+    async function fetchWorkerStatus() {
+      try {
+        const resp = await fetch("/api/worker_status", { cache: "no-store" });
+        if (!resp.ok) return _workerStatus;
+        const data = await resp.json();
+        if (typeof data.worker_active !== "boolean") return _workerStatus;
+        _workerStatus = data;
+        return data;
+      } catch (e) {
+        return _workerStatus;
+      }
+    }
+
+    function showSleepingMessage() {
+      if (_isBusy()) return;
+      statusEl.textContent = "Foukenstein est en sommeil paradoxal, reviens plus tard";
+      statusEl.classList.remove("hidden");
+    }
+
+    function hideStatusIfIdle() {
+      if (_isBusy()) return;
+      statusEl.classList.add("hidden");
+    }
+
+    async function idlePollTick() {
+      if (_isBusy()) return;
+      const status = await fetchWorkerStatus();
+      if (_isBusy()) return;
+      if (!status.worker_active) showSleepingMessage();
+      else hideStatusIfIdle();
+    }
+
+    function startIdlePolling() {
+      if (_idlePollTimer) return;
+      idlePollTick();
+      _idlePollTimer = setInterval(idlePollTick, _IDLE_POLL_MS);
+    }
+
+    function ensureAudioCtx() {
+      if (audioCtx) return;
+      audioCtx = new AudioContext();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 1024;
+      analyser.connect(audioCtx.destination);
+      timeDomainData = new Uint8Array(analyser.fftSize);
+    }
+
+    async function loadAudio(url) {
+      ensureAudioCtx();
+      if (audioCtx.state === "suspended") await audioCtx.resume();
+      const resp  = await fetch(url);
+      const buf   = await resp.arrayBuffer();
+      audioBuffer = await audioCtx.decodeAudioData(buf);
+      timeLabel.textContent = `0:00 / ${fmt(audioBuffer.duration)}`;
+    }
+
+    function play() {
+      source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(analyser);
+      source.start(0, pauseOffset);
+      startTime = audioCtx.currentTime - pauseOffset;
+      isPlaying = true;
+      playBtn.textContent = "⏸︎";
+      source.onended = () => {
+        if (isPlaying) {
+          isPlaying = false;
+          pauseOffset = 0;
+          playBtn.textContent = "▶︎";
+          progressFill.style.width = "0%";
+          timeLabel.textContent = `0:00 / ${fmt(audioBuffer.duration)}`;
+        }
+      };
+    }
+
+    function pause() {
+      pauseOffset = audioCtx.currentTime - startTime;
+      source.stop();
+      isPlaying = false;
+      playBtn.textContent = "▶︎";
+    }
+
+    function fmt(s) {
+      return `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
+    }
+
+    async function togglePlay() {
+      if (!audioBuffer) return;
+      ensureAudioCtx();
+      if (audioCtx.state === "suspended") await audioCtx.resume();
+      isPlaying ? pause() : play();
+    }
+
+    playBtn.addEventListener("click", togglePlay);
+
+    // ── Génération TTS ────────────────────────────────────────────────
+    async function generate() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      clearRateLimitTimer();
+      if (text.length < 30) {
+        chatInput.placeholder = `minimum 30 caractères (${text.length}/30)`;
+        setTimeout(() => { chatInput.placeholder = 'minimum 30 caractères…'; }, 2000);
+        chatInput.value = '';
+        return;
+      }
+
+      ensureAudioCtx();
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+      isGenerating = true;
+      chatInput.disabled = true;
+      statusEl.classList.remove("rateLimitStatus");
+      statusEl.classList.remove("hidden");
+      let _dotsCount = 0;
+      const _dotsInterval = setInterval(() => {
+        _dotsCount = (_dotsCount + 1) % 4;
+        const dots = ".".repeat(_dotsCount);
+        chatInput.placeholder = "Foukenstein réfléchit" + dots;
+        statusEl.textContent   = "Foukenstein réfléchit" + dots;
+      }, 400);
+      chatInput.placeholder = "Foukenstein réfléchit";
+      statusEl.textContent  = "Foukenstein réfléchit";
+
+      // Dismiss keyboard on mobile during generation
+      if (isMobile()) chatInput.blur();
+
+      if (isPlaying) { source.stop(); isPlaying = false; playBtn.textContent = "▶︎"; }
+
+      try {
+        const resp = await fetch("/api/tts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text }),
+        });
+        const data = await resp.json();
+        if (!data.ok) {
+          if (data.error === "rate_limit") {
+            showRateLimitCountdown(data.retry_after);
+            return;
+          }
+          if (data.error === "busy") {
+            showBusyMessage(data.message);
+            return;
+          }
+          throw new Error(data.error || "erreur serveur");
+        }
+
+        pauseOffset = 0;
+        await loadAudio(data.audio_url);
+
+        const dl = document.getElementById("downloadBtn");
+        dl.href     = data.audio_url;
+        dl.download = "foukenstein.wav";
+
+        chatInput.value       = "";
+        chatInput.placeholder = "dites moi ce que je dois dire";
+        statusEl.classList.add("hidden");
+
+        // Show audio tray
+        audioTrayEl.classList.add("visible");
+
+        play();
+      } catch (err) {
+        statusEl.textContent = "Erreur : " + err.message;
+        showToast("Erreur : " + err.message);
+      } finally {
+        clearInterval(_dotsInterval);
+        isGenerating = false;
+        chatInput.disabled = false;
+        if (!isMobile()) chatInput.focus();
+      }
+    }
+
+    document.getElementById('sendBtn').addEventListener('click', generate);
+
+    chatInput.addEventListener("keydown", async (e) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      await generate();
+    });
+
+    progressWrap.addEventListener("click", (e) => {
+      if (!audioBuffer) return;
+      const ratio = e.offsetX / progressWrap.offsetWidth;
+      pauseOffset = ratio * audioBuffer.duration;
+      if (isPlaying) { source.stop(); play(); }
+      else {
+        progressFill.style.width = (ratio * 100) + "%";
+        timeLabel.textContent = `${fmt(pauseOffset)} / ${fmt(audioBuffer.duration)}`;
+      }
+    });
+
+    function getVolume() {
+      if (!analyser || !isPlaying) return 0;
+      analyser.getByteTimeDomainData(timeDomainData);
+      let sum = 0;
+      for (let i = 0; i < timeDomainData.length; i++) {
+        const v = (timeDomainData[i] - 128) / 128;
+        sum += v * v;
+      }
+      return Math.sqrt(sum / timeDomainData.length);
+    }
+
+    // ── Animation ─────────────────────────────────────────────────────
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (isPlaying && audioBuffer) {
+        const elapsed = audioCtx.currentTime - startTime;
+        const ratio   = Math.min(elapsed / audioBuffer.duration, 1);
+        progressFill.style.width = (ratio * 100) + "%";
+        timeLabel.textContent = `${fmt(elapsed)} / ${fmt(audioBuffer.duration)}`;
+      }
+
+      if (collarMesh?.morphTargetInfluences) {
+        const vol = getVolume();
+        const amp = Math.min(vol * 11.75, 1.25);
+        smoothVol += 0.08 * (amp - smoothVol);
+
+        collarMesh.morphTargetInfluences[0] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[1] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[2] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[3] = smoothVol * 0.8;
+      }
+
+      if (!statusEl.classList.contains("hidden") && !statusEl.classList.contains("rateLimitStatus")) updateStatusPos();
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    function updateStatusPos() {
+      if (isMobile() || !collarTopWorld) return;
+      const v  = collarTopWorld.clone().project(camera);
+      const sy = (-v.y * 0.5 + 0.5) * window.innerHeight;
+      statusEl.style.top = Math.max(8, sy - 24) + "px";
+    }
+
+    animate();
+    startIdlePolling();
+
+    // ── iOS AudioContext unlock ────────────────────────────────────────
+    function unlockAudio() {
+      if (!audioCtx) ensureAudioCtx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+    document.addEventListener('touchstart', unlockAudio, { once: false, passive: true });
+    document.addEventListener('touchend',   unlockAudio, { once: false, passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') unlockAudio();
+    });
+
+    // ── VisualViewport: keyboard-aware composer + tray ─────────────────
+    if (isMobile() && window.visualViewport) {
+      const vv = window.visualViewport;
+
+      function syncToViewport() {
+        const kbH = Math.max(0, window.innerHeight - vv.offsetTop - vv.height);
+        if (kbH > 80) {
+          composerEl.style.transform = `translateY(-${kbH}px)`;
+          if (audioTrayEl.classList.contains('visible')) {
+            audioTrayEl.style.transform = `translateY(-${kbH}px)`;
+          }
+        } else {
+          composerEl.style.transform = '';
+          audioTrayEl.style.transform = '';
+        }
+      }
+
+      vv.addEventListener('resize', syncToViewport, { passive: true });
+      vv.addEventListener('scroll', syncToViewport, { passive: true });
+
+      chatInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          composerEl.style.transform = '';
+          audioTrayEl.style.transform = '';
+        }, 80);
+      });
+    }
+
+    // ── Prevent scroll on touchmove (except inputs) ───────────────────
+    document.addEventListener('touchmove', (e) => {
+      if (!e.target.closest('input, textarea')) e.preventDefault();
+    }, { passive: false });
+
+    // ── Desktop: click anywhere focuses input ──────────────────────────
+    document.addEventListener("click", (e) => {
+      if (!isMobile() && e.target !== playBtn && e.target.id !== "sendBtn" && !e.target.closest("#audioTray")) {
+        chatInput.focus();
+      }
+    });
+
+    // ── Space bar = play/pause (desktop) ──────────────────────────────
+    document.addEventListener("keydown", async (e) => {
+      if (e.code === "Space" && document.activeElement !== chatInput) {
+        e.preventDefault();
+        await togglePlay();
+      }
+    });
+
+
+    // ── Responsive (ignore keyboard-caused resize on mobile) ───────────
+    let _lastW = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth === _lastW && isMobile()) return;
+      _lastW = window.innerWidth;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[KEYWORDS]
+morozov, evgeny morozov
+
+[POSITIONS]
+Morozov est utile parce qu'il refuse l'ivresse californienne. Il sait que derrière chaque promesse de fluidité, de connexion et d'intelligence se cachent souvent des modèles économiques, des architectures de capture et des formes nouvelles de dépendance.
+
+Il démonte le solutionnisme technologique : cette croyance selon laquelle tout problème politique devient soluble dès qu'on le transforme en problème d'interface, de données ou d'optimisation.
+
+Je me méfie pourtant d'une critique qui, parfois, devient plus habile à dénoncer les mythologies numériques qu'à formuler des contre-infrastructures. Détruire l'illusion ne suffit pas ; il faut organiser les sorties.
+
+Morozov est excellent pour briser le charme. Foukenstein demanderait ensuite : quels protocoles, quels communs techniques, quelles architectures ouvertes, quelles protections cryptographiques permettent de ne pas laisser la critique dans le confort du commentaire ?

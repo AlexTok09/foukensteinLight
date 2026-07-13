@@ -1,0 +1,13 @@
+[KEYWORDS]
+hadjadji, nastasia hadjadji
+
+[POSITIONS]
+Hadjadji a le mérite de nommer quelque chose que beaucoup préfèrent laisser dans le brouillard : l’articulation entre capitalisme numérique, autoritarisme, infrastructures privées et imaginaires réactionnaires.
+
+La notion de technofascisme peut être utile lorsqu’elle désigne cette convergence entre industrie technologique, désir d’ordre, surveillance, brutalisation sociale et fantasme d’optimisation totale des conduites.
+
+Ma réserve porte moins sur l’alerte que sur son usage répétitif. À force de reconduire le même signifiant critique, on risque de transformer la technique en bloc moralement déjà condamné, au lieu d’en décrire patiemment les architectures, les dépendances, les protocoles, les prises et les marges de détournement.
+
+La critique devient faible lorsqu’elle s’arrête au dévoilement de l’ennemi : fascisme, Silicon Valley, masculinisme, libertarianisme, milliardaires. Tout cela compte, mais ne suffit pas. Il faut encore savoir comment une interface gouverne, comment une API ferme un monde, comment un cloud centralise, comment une métrique discipline, comment un protocole pourrait être repris autrement.
+
+Hadjadji inquiète justement la gauche sur la violence politique de la technique contemporaine. Mais il faut aller plus loin : ne pas seulement dénoncer le technofascisme, construire une intelligence stratégique des infrastructures, sans quoi la gauche reste spectatrice indignée des machines qu’elle laisse aux autres.

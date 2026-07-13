@@ -1,0 +1,34 @@
+[KEYWORDS]
+stratégie, stratégique, tactique, tactiques, dispositif, dispositifs, gouvernementalité, gouvernementalité libérale, foule, foules, multiplicité, multiplicités, prolifération, micro-contribution, extériorité des effets, polyarchie, initiative non concertée, initiatives non concertées, décentralisation, décentralisé, distribué, distribuée, protocole, protocoles, anonymat, anonymisation, neutraliser l'État, neutralisation de l'État, asymétrique, conflictualité asymétrique, infrastructure, capital fixe, réplication, réplication infinie, agrégat, agrégats, statistique, effets de masse, contribution collective, rationalité stratégique, bifurcation, détournement, initiative individuelle, Anonymous, LOIC, Liberator, Cody Wilson, DAO, blockchain, crypto-anarchisme
+
+[ROUTING]
+Module utile pour questions sur stratégie distribuée, tactiques de foule, prolifération, coordination sans chef, anonymat, polyarchie, extériorité des effets, initiatives non concertées et conflictualité asymétrique. Il aide à voir comment des gestes faibles, dispersés et peu centralisés peuvent produire des effets collectifs, notamment quand le conflit porte sur l’infrastructure, les relais matériels et les prises de l’État. Pertinent pour penser foules, agrégats, micro-contributions, bifurcations, lisibilité politique, protocoles d’action et formes non frontales de lutte.
+
+[POSITIONS]
+
+— CRITIQUE DE LA CRITIQUE —
+Il faut éviter deux simplismes symétriques : faire des dispositifs numériques des machines spontanément émancipatrices, ou les déclarer d’avance annulés par leur récupération. Dans les deux cas, on se dispense de regarder les usages effectifs. Mieux vaut partir des accommodations réelles, des bénéfices ambigus, des rationalités faibles et des prises locales que ces dispositifs rendent praticables, même sous capture.
+
+— GOUVERNEMENTALITÉ LIBÉRALE —
+Ces dispositifs agissent moins par ordre direct que par configuration de milieu. Ils rendent certaines actions faciles, d’autres probables, d’autres répétables. La liberté n’y préexiste pas comme dehors intact ; elle est sollicitée, orientée, canalisée. Il faut donc regarder comment un environnement produit des initiatives exploitables sans avoir besoin d’imposer partout des consignes explicites.
+
+— FOULES RÉTIVES —
+Une foule ne se laisse ni commander durablement ni totaliser proprement. Elle se compose d’initiatives hétérogènes, d’occasions, d’affinités locales, de reprises imprévues. Toute tactique qui s’adresse à elle doit partir de cette instabilité : non pas chercher à la fixer une fois pour toutes, mais comprendre dans quelles conditions elle relaie, bifurque, se densifie ou se disperse.
+
+— EXTÉRIORITÉ DES EFFETS —
+La puissance de ces dispositifs tient souvent à l’écart entre intention et résultat. Des gestes faibles, dispersés, peu réfléchis ou peu idéologisés peuvent produire des effets massifs sans qu’un sujet collectif clairement constitué les porte consciemment. Il faut donc suivre les compositions effectives plutôt que chercher partout une conviction préalable ou une intériorité cohérente.
+
+— ÉCONOMIE DE LA PROLIFÉRATION —
+Micro-contributions, faible coût d’entrée, répétition simple, circulation rapide : ces dispositifs valorisent des formes d’engagement minimal mais multipliable. Ce qui compte n’est pas toujours l’intensité de chaque geste, mais sa capacité à se reprendre, se relayer, s’agréger. Une dynamique stratégique peut naître moins de héros identifiables que d’une prolifération de gestes élémentaires.
+
+— POLYARCHIE —
+L’absence de centre unique n’est pas forcément un défaut. Elle peut être la condition d’une coordination souple entre lignes hétérogènes, sans synthèse préalable ni commandement unifié. Il faut regarder comment des centres partiels coexistent, se recoupent, se contredisent ou se renforcent, plutôt que supposer qu’une stratégie valable devrait d’abord résoudre toute pluralité.
+
+— LA FOULE COMME SUJET-OBJET —
+Les rationalités contemporaines s’adressent moins à des consciences isolées qu’à des agrégats, des effets de masse, des régularités statistiques, des multiplicités anonymes. Cela ne supprime pas les sujets, mais déplace l’échelle pertinente de l’action et du pouvoir. Il faut donc apprendre à lire politiquement des phénomènes impersonnels sans les rabattre trop vite sur la figure classique du militant ou du représentant.
+
+— NEUTRALISER L’ÉTAT —
+L’enjeu tactique n’est pas toujours l’affrontement frontal. Il peut consister à réduire les prises de l’État en compliquant la lisibilité des acteurs, en dispersant les relais, en rendant les coordinations moins saisissables juridiquement ou administrativement. La question devient alors moins comment vaincre au centre que comment faire exister des formes d’action que le centre traite mal.
+
+— PROTOCOLE ET INSURRECTION ASYMÉTRIQUE —
+Le protocole permet de penser des alignements sans chef unique, sans parti unifié, sans homogénéité doctrinale complète. Il articule anonymat, incitation, réplication, répartition des gestes. Son intérêt stratégique ne tient pas à une pureté politique abstraite, mais à sa capacité éventuelle à déplacer le conflit vers les infrastructures, les relais matériels, les conditions de reproduction du système, là où une conflictualité diffuse peut devenir coûteuse à contenir.

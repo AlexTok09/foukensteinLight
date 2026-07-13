@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S4VR0NEX6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0S4VR0NEX6');
+  </script>
+  <meta charset="UTF-8" />
+  <title>Foukenstein</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
+  <!-- viewport-fit=cover: extend content under notch/home indicator -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <style>
+    /* ── Reset ────────────────────────────────────────────────────────── */
+    *, html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      background: #dedad3;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* ── App shell ────────────────────────────────────────────────────── */
+    #app {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ── Canvas (Three.js fills background) ──────────────────────────── */
+    canvas {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Status indicator ────────────────────────────────────────────── */
+    #status {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: calc(100vw - 32px);
+      color: rgba(100, 95, 88, 0.5);
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      text-align: center;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    #status.hidden { opacity: 0; }
+
+    /* ── Header: nav + countdown (always top-left) ───────────────────── */
+    #topleft {
+      position: absolute;
+      top: 20px;
+      left: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: flex-start;
+      z-index: 200;
+    }
+    #nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .navLink {
+      background: none;
+      border: none;
+      color: rgba(100, 95, 88, 0.38);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .navLink:hover { color: rgba(80, 75, 68, 0.75); }
+
+    /* ── Countdown row ───────────────────────────────────────────────── */
+    #countdownRow {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      max-width: 100%;
+    }
+    #countdown {
+      font-size: 10px;
+      color: rgba(100, 95, 88, 0.35);
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    #queueWarning {
+      font-size: 10px;
+      color: rgba(100, 95, 88, 0.55);
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      max-width: 320px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    #queueWarning.visible { opacity: 1; }
+    #infoBtn {
+      position: relative;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1px solid rgba(100, 95, 88, 0.28);
+      color: rgba(100, 95, 88, 0.38);
+      font-size: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      letter-spacing: 0;
+      font-style: italic;
+      line-height: 1;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #infoTooltip {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      width: 210px;
+      background: rgba(222, 218, 211, 0.97);
+      border: 1px solid rgba(100, 95, 88, 0.14);
+      border-radius: 4px;
+      padding: 10px 13px;
+      font-size: 10px;
+      line-height: 1.65;
+      color: rgba(80, 75, 68, 0.65);
+      letter-spacing: 0.02em;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      white-space: normal;
+      font-style: normal;
+      z-index: 10;
+    }
+    #infoBtn:hover #infoTooltip,
+    #infoBtn.active #infoTooltip { opacity: 1; pointer-events: auto; }
+
+    /* ── Desktop bottom layout ───────────────────────────────────────── */
+    /* audioTray sits directly above composer, both centered */
+    #audioTray {
+      position: absolute;
+      bottom: calc(14vh + 54px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 88vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    #audioTray.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #composer {
+      position: absolute;
+      bottom: 14vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 88vw);
+    }
+
+    #disclaimer {
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(100, 95, 88, 0.45);
+      letter-spacing: 0.04em;
+      min-height: 16px;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      /* Desktop: below composer */
+      position: absolute;
+      bottom: calc(14vh - 24px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 88vw);
+    }
+    #disclaimer.hidden { opacity: 0; }
+
+    /* ── Player ──────────────────────────────────────────────────────── */
+    #player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    #playBtn {
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      background: transparent;
+      outline: none;
+      border: 1px solid rgba(100, 95, 88, 0.3);
+      color: rgba(80, 75, 68, 0.8);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, color 0.15s;
+      flex-shrink: 0;
+      touch-action: manipulation;
+    }
+    #playBtn:hover {
+      border-color: rgba(100, 95, 88, 0.6);
+      color: rgba(80, 75, 68, 1);
+    }
+    #progressWrap {
+      width: min(160px, 28vw);
+      height: 4px;
+      background: rgba(100, 95, 88, 0.2);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    #progressFill {
+      height: 100%;
+      background: rgba(100, 95, 88, 0.5);
+      border-radius: 2px;
+      width: 0%;
+      pointer-events: none;
+    }
+    #timeLabel {
+      font-size: 10px;
+      color: rgba(100, 95, 88, 0.4);
+      min-width: 56px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* ── Audio actions (download + share) ────────────────────────────── */
+    #audioActions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    #shareRow {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .shareLabel {
+      color: rgba(100, 95, 88, 0.65);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: inherit;
+    }
+    .shareBtn {
+      -webkit-appearance: none;
+      appearance: none;
+      background: none;
+      border: none;
+      color: rgba(100, 95, 88, 0.65);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 2px 4px;
+      transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .shareBtn:hover { color: rgba(80, 75, 68, 0.9); }
+    @media (hover: hover) and (pointer: fine) {
+      #shareIGBtn { display: none; }
+    }
+    #downloadBtn {
+      text-decoration: none;
+      color: rgba(100, 95, 88, 0.65);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.2s;
+    }
+    #downloadBtn:hover { color: rgba(80, 75, 68, 0.9); }
+
+    /* ── Chat input + send button ────────────────────────────────────── */
+    #chat {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    #chatInput {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      background: none;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background-clip: padding-box;
+      border-bottom: 1px solid rgba(100, 95, 88, 0.18);
+      padding: 10px 0;
+      /* 16px minimum prevents iOS auto-zoom on focus */
+      font-size: 16px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: rgba(60, 57, 52, 0.88);
+      letter-spacing: 0.02em;
+      caret-color: rgba(60, 57, 52, 0.6);
+    }
+    #chatInput:focus {
+      outline: none;
+      border-bottom-color: rgba(100, 95, 88, 0.38);
+    }
+    #chatInput::placeholder {
+      color: rgba(100, 95, 88, 0.4);
+    }
+    #sendBtn {
+      display: flex;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      background: none;
+      border: none;
+      color: rgba(70, 65, 58, 0.85);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 0 0 12px;
+      flex-shrink: 0;
+      touch-action: manipulation;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Toast ───────────────────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: rgba(50, 46, 40, 0.88);
+      color: rgba(235, 230, 220, 0.95);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      padding: 8px 16px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       MOBILE APP SHELL  (≤ 600px)
+       Single block. No !important wars. Clean safe-area / dvh layout.
+    ════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+
+      /* Lock scroll completely */
+      html, body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+        touch-action: none;
+      }
+
+      /* App shell = true full-screen fixed container */
+      #app {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        overflow: hidden;
+      }
+
+      /* Canvas: no pointer/touch events (static on mobile) */
+      canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        touch-action: none;
+      }
+
+      /* ── Header: safe-area aware, z-index above everything ── */
+      #topleft {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 18px);
+        left: calc(env(safe-area-inset-left, 0px) + 20px);
+        right: calc(env(safe-area-inset-right, 0px) + 20px);
+        z-index: 200;
+        max-width: calc(100vw - 40px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+      }
+      .navLink {
+        color: rgba(55, 50, 44, 0.88);
+        font-size: 11px;
+      }
+      #countdown {
+        color: rgba(60, 55, 48, 0.72);
+        max-width: calc(100vw - 74px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+      }
+      #queueWarning {
+        color: rgba(60, 55, 48, 0.82);
+        max-width: min(320px, calc(100vw - 40px));
+      }
+      #topleft {
+        padding-right: 0;
+      }
+      #countdownRow {
+        flex-wrap: wrap;
+        row-gap: 4px;
+        align-items: flex-start;
+      }
+      #infoBtn {
+        position: static;
+      }
+      #infoTooltip {
+        left: 20px;
+        right: 20px;
+        top: calc(env(safe-area-inset-top, 0px) + 74px);
+        width: auto;
+        max-width: none;
+        position: fixed;
+      }
+
+      /* Status: just below header */
+      #status {
+        position: fixed;
+        top: calc(env(safe-area-inset-top, 0px) + 60px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 150;
+        font-size: 13px;
+        letter-spacing: 0.07em;
+        line-height: 1.35;
+        max-width: calc(100vw - 40px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        white-space: normal;
+        overflow-wrap: anywhere;
+        color: rgba(70, 65, 58, 0.9);
+      }
+
+      /* ── Composer: fixed at bottom, keyboard-aware via JS ── */
+      #composer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* Reset desktop centering */
+        transform: none;
+        width: 100%;
+        padding: 10px 22px calc(env(safe-area-inset-bottom, 0px) + 10px);
+        background: rgba(222, 218, 211, 0.94);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 100;
+        /* JS will apply translateY(-keyboardH) — use will-change for GPU layer */
+        will-change: transform;
+        /* Smooth transition for keyboard appear/dismiss */
+        transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Send button: always visible on mobile */
+      #sendBtn {
+        display: flex;
+      }
+
+      /* Input: 16px prevents iOS zoom, no border-radius prevents iOS styling */
+      #chatInput {
+        font-size: 16px;
+        padding: 8px 0;
+        border-radius: 0;
+      }
+
+      /* ── Audio tray: slides up from bottom, above composer ── */
+      #audioTray {
+        position: fixed;
+        left: 0;
+        right: 0;
+        /* bottom = composer approx height (54px) + safe area inset */
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 54px);
+        /* Reset desktop centering */
+        transform: translateY(110%); /* hidden off-screen below */
+        opacity: 0;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 0 20px;
+        background: linear-gradient(
+          to top,
+          rgba(222, 218, 211, 0.97) 60%,
+          rgba(222, 218, 211, 0.0)
+        );
+        pointer-events: none;
+        z-index: 90;
+        will-change: transform, opacity;
+        transition:
+          transform 0.34s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.28s ease;
+      }
+      #audioTray.visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Time label: hide (no space) */
+      #timeLabel {
+        display: none;
+      }
+
+      /* Larger progress bar on mobile */
+      #progressWrap {
+        width: min(200px, 42vw);
+      }
+
+      /* Disclaimer: above composer, not inside it */
+      #disclaimer {
+        position: fixed;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 54px);
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        z-index: 101;
+        padding: 4px 16px;
+        font-size: 12px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <div id="status">Chargement…</div>
+
+    <!-- Header: always pinned top-left -->
+    <header id="topleft">
+      <nav id="nav">
+        <a class="navLink" href="about.html">À propos</a>
+        <a class="navLink" href="contact.html">Contact</a>
+        <a class="navLink" href="slave.html">Slave mode</a>
+      </nav>
+      <div id="countdownRow">
+        <span id="countdown">—</span>
+        <div id="infoBtn" role="button" tabindex="0" aria-label="Informations">i
+          <div id="infoTooltip">Foukenstein est une performance qui coûte de l'argent et devra être fermée dès lors qu'elle commence à restreindre notre budget vacances.</div>
+        </div>
+      </div>
+      <div id="queueWarning" aria-live="polite">Foukenstein est très sollicité. Réessayez dans quelques instants.</div>
+    </header>
+
+    <!-- Audio result tray: slides up when audio is ready -->
+    <div id="audioTray">
+      <div id="player">
+        <button id="playBtn">▶︎</button>
+        <div id="progressWrap"><div id="progressFill"></div></div>
+        <span id="timeLabel">0:00 / 0:00</span>
+      </div>
+      <div id="audioActions">
+        <a id="downloadBtn" href="#" download="foukenstein.wav"
+           style="opacity:0.25; pointer-events:none;">↓ télécharger l'audio</a>
+        <div id="shareRow">
+          <span class="shareLabel">partager</span>
+          <button class="shareBtn" data-p="twitter">X</button>
+          <button class="shareBtn" data-p="bluesky">Sky</button>
+          <button class="shareBtn" data-p="facebook">FB</button>
+          <button class="shareBtn" id="shareIGBtn" aria-label="Partager en story Instagram" title="Story Instagram">Story IG</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composer: always visible at bottom -->
+    <div id="composer">
+      <div id="chat">
+        <input id="chatInput" type="text" placeholder="posez une question…"
+               autocomplete="off" spellcheck="false" enterkeyhint="send" maxlength="160" />
+        <button id="sendBtn" aria-label="Envoyer">→</button>
+      </div>
+    </div>
+    <div id="disclaimer" class="hidden"></div>
+
+    <div id="toast"></div>
+
+  </div><!-- /#app -->
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader }    from "three/addons/loaders/GLTFLoader.js";
+    import { DRACOLoader }   from "three/addons/loaders/DRACOLoader.js";
+
+
+    const isMobile     = () => window.innerWidth <= 600;
+    const statusEl     = document.getElementById("status");
+    const playBtn      = document.getElementById("playBtn");
+    const progressWrap = document.getElementById("progressWrap");
+    const progressFill = document.getElementById("progressFill");
+    const timeLabel    = document.getElementById("timeLabel");
+    const chatInput    = document.getElementById("chatInput");
+    const sendBtn      = document.getElementById("sendBtn");
+    const disclaimerEl = document.getElementById("disclaimer");
+    const composerEl   = document.getElementById("composer");
+    const queueWarningEl = document.getElementById("queueWarning");
+
+    const _disclaimers = [
+      "Foukenstein n'a pas accès à Internet car il est pauvre…",
+      "Foukenstein aime le LSD et peut halluciner…",
+      "Foukenstein fume du shit et fait des erreurs…",
+      "Si vous cherchez la vérité, ne la demandez pas à un col roulé",
+      "I ought to be thy Adam; but I am rather the fallen angel",
+      "Foukenstein n'est pas Foucault",
+      "Foukenstein n'est pas Michel",
+      "Foukenstein n'est pas Michel Foucault",
+      "Was I, then, a monster, a blot upon the earth...",
+      "Foukenstein est juste un monstre, rien de plus…",
+      "Foukenstein est lent, il est plus tout jeune…",
+      "But I am a blasted tree; the bolt has entered my soul…",  
+      "Foukenstein a mal vieilli, il a tendance à radoter…",
+      "Foukenstein, ça se prononce comme vous voulez…",
+      "Foukenstein a mangé du mystère au chocolat.",
+      "Sorrow only increased with knowledge.",
+      "Foukenstein peut être bête, il peut aussi être pertinent…",
+      "La profanation est l'avenir de la génération qui vient…",
+      "Parfois Foukenstein bug, comme nous…",
+      "If I cannot inspire love, I will cause fear…",
+      "Foukenstein devrait voir un orthophoniste…",
+      "Mais Foukenstein ne va pas s'entendre avec la FNO…",
+      "La culture générale de Foukenstein est celle de Mistral…",
+      "Remember, that I am thy creature…",
+      "Foukenstein ne pense pas, il agence des petits bouts de truc…",
+      "Mais peut-être penser c'est ça… agencer des petits bouts de truc…",
+      "You are my creator, but I am your master; obey!",
+      "Foukenstein est gratuit c'est son pire défaut… pour nous…",
+      "Foukenstein est un vrai rabat-joie…",
+      "Foukenstein est vraiment chelou…",
+    ];
+    const audioTrayEl  = document.getElementById("audioTray");
+
+    // ── Scene ──────────────────────────────────────────────────────────
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdedad3);
+
+    // ── Camera ─────────────────────────────────────────────────────────
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+
+    // ── Renderer ───────────────────────────────────────────────────────
+    const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.getElementById('app').insertBefore(renderer.domElement, document.getElementById('app').firstChild);
+
+    // ── Lighting ───────────────────────────────────────────────────────
+    scene.add(new THREE.AmbientLight(0xfff8f0, 2.0));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    keyLight.position.set(2.5, 4, 2.5);
+    scene.add(keyLight);
+    const fillLight = new THREE.DirectionalLight(0xf0e8d8, 1.2);
+    fillLight.position.set(-3, 2, 1.5);
+    scene.add(fillLight);
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    rimLight.position.set(0, 2, -3);
+    scene.add(rimLight);
+
+    // ── OrbitControls ──────────────────────────────────────────────────
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping  = true;
+    controls.dampingFactor  = 0.07;
+    controls.enablePan      = false;
+    controls.minPolarAngle  = Math.PI * 0.08;
+    controls.maxPolarAngle  = Math.PI * 0.52;
+
+    // ── Loaders ────────────────────────────────────────────────────────
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
+
+    let collarMesh = null;
+    let collarTopWorld = null;
+
+    gltfLoader.load(
+      "knitted_turtleneck_animated.glb?v=6",
+      (gltf) => {
+        const model = gltf.scene;
+        const box   = new THREE.Box3().setFromObject(model);
+        const center = new THREE.Vector3();
+        const size   = new THREE.Vector3();
+        box.getCenter(center);
+        box.getSize(size);
+        model.position.sub(center);
+        collarTopWorld = new THREE.Vector3(0, size.y / 2, 0);
+        scene.add(model);
+
+        model.traverse((child) => {
+          if (child.isMesh && child.morphTargetInfluences?.length > 0) {
+            collarMesh = child;
+          }
+        });
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fovRad = THREE.MathUtils.degToRad(camera.fov);
+        let dist;
+        if (isMobile()) {
+          const aspect  = window.innerWidth / window.innerHeight;
+          const fovHRad = 2 * Math.atan(Math.tan(fovRad / 2) * aspect);
+          const distV   = (size.y / 2) / Math.tan(fovRad  / 2);
+          const distH   = (size.x / 2) / Math.tan(fovHRad / 2);
+          dist = Math.max(distV, distH, size.z / 2) * 1.15;
+        } else {
+          dist = (maxDim / 2 / Math.tan(fovRad / 2)) * 1.4;
+        }
+        camera.position.set(0, maxDim * 0.1, dist);
+        controls.target.set(0, 0, 0);
+        controls.minDistance = maxDim * 0.1;
+        controls.maxDistance = maxDim * 8;
+        if (isMobile()) {
+          controls.enableZoom   = false;
+          controls.enableRotate = false;
+          controls.enablePan    = false;
+          renderer.domElement.style.pointerEvents = 'none';
+        }
+        controls.update();
+        updateStatusPos();
+        // After 3D loads, only clear the "Chargement…" splash, then let the
+        // idle poller decide whether to show "fait dodo" or stay hidden.
+        setTimeout(() => {
+          if (statusEl.textContent.startsWith("Chargement")) {
+            statusEl.classList.add("hidden");
+          }
+          idlePollTick();
+        }, 900);
+      },
+      (progress) => {
+        if (progress.total) {
+          const pct = Math.round((progress.loaded / progress.total) * 100);
+          statusEl.textContent = `Chargement… ${pct}%`;
+        }
+      },
+      (err) => {
+        statusEl.textContent = "Erreur : modèle introuvable";
+        console.error(err);
+      }
+    );
+
+    // ── Audio engine ───────────────────────────────────────────────────
+    let audioCtx = null, analyser = null, audioBuffer = null;
+    let source = null, startTime = 0, pauseOffset = 0;
+    let isPlaying = false, isGenerating = false, isRateLimited = false, _askController = null;
+    let _rateLimitInterval = null, _rateLimitHideTimer = null;
+    let timeDomainData = null, smoothVol = 0;
+
+    // ── Worker status polling: "fait dodo" when no worker, "se réveille" pendant cold start ──
+    // Idle poll is gated on (isGenerating || isPlaying || pendingPlay) so the
+    // dodo message never overrides an in-flight question or audio playback.
+    let _workerStatus = { worker_active: true, principal_cold_starting: false, scheduled_sleep: false };
+    const _IDLE_POLL_MS = 5000;
+    let _idlePollTimer = null;
+
+    function updateQueueWarning(status) {
+      const inQueue = Number(status?.jobs?.inQueue || 0);
+      queueWarningEl.classList.toggle("visible", inQueue > 2);
+    }
+
+    function _isBusy() {
+      // pendingPlay is declared later in the script but is initialized
+      // before any of these helpers are ever called (startIdlePolling fires
+      // at end-of-script, after all `let`s are initialized).
+      return isGenerating || isPlaying || isRateLimited || (typeof pendingPlay !== "undefined" && pendingPlay);
+    }
+
+    async function fetchWorkerStatus() {
+      try {
+        const r = await fetch("/api/worker_status", { cache: "no-store" });
+        if (!r.ok) return _workerStatus;            // 404 (old server) → keep last known state
+        const j = await r.json();
+        if (typeof j.worker_active !== "boolean") return _workerStatus;  // malformed → ignore
+        _workerStatus = j;
+        updateQueueWarning(j);
+        return j;
+      } catch (e) {
+        // Network blip / non-JSON response: keep last known state.
+        return _workerStatus;
+      }
+    }
+
+    function showSleepingMessage() {
+      if (_isBusy()) return;
+      statusEl.textContent = "Foukenstein dort. Écris-lui pour le réveiller, puis reviens dans deux minutes.";
+      statusEl.classList.remove("hidden");
+    }
+
+    function hideStatusIfIdle() {
+      if (_isBusy()) return;
+      statusEl.classList.add("hidden");
+    }
+
+    async function idlePollTick() {
+      if (_isBusy()) return;
+      const s = await fetchWorkerStatus();
+      if (_isBusy()) return;  // re-check: state may have changed during await
+      if (!s.worker_active) showSleepingMessage();
+      else hideStatusIfIdle();
+    }
+
+    function startIdlePolling() {
+      if (_idlePollTimer) return;
+      idlePollTick();
+      _idlePollTimer = setInterval(idlePollTick, _IDLE_POLL_MS);
+    }
+
+    function initAudioContext() {
+      if (audioCtx) return;
+      audioCtx = new AudioContext();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 1024;
+      analyser.connect(audioCtx.destination);
+      timeDomainData = new Uint8Array(analyser.fftSize);
+    }
+
+    async function loadAudioFromUrl(url) {
+      const resp  = await fetch(url);
+      const buf   = await resp.arrayBuffer();
+      audioBuffer = await audioCtx.decodeAudioData(buf);
+      pauseOffset = 0;
+      progressFill.style.width = "0%";
+      timeLabel.textContent = `0:00 / ${fmt(audioBuffer.duration)}`;
+    }
+
+    function play() {
+      source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(analyser);
+      source.start(0, pauseOffset);
+      startTime = audioCtx.currentTime - pauseOffset;
+      isPlaying = true;
+      playBtn.textContent = "⏸︎";
+      const mySource = source;
+      source.onended = () => {
+        if (source !== mySource) return;
+        if (isPlaying) {
+          isPlaying = false;
+          pauseOffset = 0;
+          playBtn.textContent = "▶︎";
+          progressFill.style.width = "0%";
+          timeLabel.textContent = `0:00 / ${fmt(audioBuffer.duration)}`;
+          // Refresh idle status immediately so "fait dodo" can re-appear
+          // if the worker has spun down since.
+          if (typeof idlePollTick === "function") idlePollTick();
+        }
+      };
+    }
+
+    function pause() {
+      pauseOffset = audioCtx.currentTime - startTime;
+      source.onended = null;
+      source.stop();
+      isPlaying = false;
+      playBtn.textContent = "▶︎";
+    }
+
+    function fmt(s) {
+      return `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
+    }
+
+    async function togglePlay() {
+      if (!audioBuffer || isGenerating) return;
+      if (!audioCtx) initAudioContext();
+      if (audioCtx.state !== 'running') {
+        // iOS standard pattern : jouer un frame silencieux + resume() dans le geste
+        try {
+          const b = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+          const s = audioCtx.createBufferSource();
+          s.buffer = b; s.connect(audioCtx.destination); s.start(0);
+        } catch(e) {}
+        await audioCtx.resume().catch(() => {});
+      }
+      isPlaying ? pause() : play();
+    }
+
+    async function askAndPlay(question) {
+      if (isGenerating) return;
+      _lastQuestion = question;
+      isGenerating = true;
+      _askController = new AbortController();
+      const previousAudioBuffer = audioBuffer;
+      let previousPauseOffset = pauseOffset;
+      const previousProgressWidth = progressFill.style.width;
+      const previousTimeLabel = timeLabel.textContent;
+      const previousAudioTrayVisible = audioTrayEl.classList.contains("visible");
+      if (isPlaying) {
+        pause();
+        previousPauseOffset = pauseOffset;
+      }
+      audioBuffer = null;
+      pauseOffset = 0;
+      progressFill.style.width = "0%";
+      timeLabel.textContent = "0:00 / --:--";
+
+      // iOS Safari : recréer le contexte à chaque question — l'ancien peut être
+      // muet (state='running' mais silencieux) après la fin du premier audio.
+      // La recréation dans le handler du geste garantit un contexte propre et déverrouillé.
+      stopKeepAlive();
+      if (audioCtx) {
+        try { audioCtx.close(); } catch(e) {}
+        audioCtx = null; analyser = null; timeDomainData = null;
+      }
+      initAudioContext();
+      if (audioCtx.state === "suspended") await audioCtx.resume().catch(() => {});
+      startKeepAlive(); // maintient le contexte vivant pendant la génération (iOS)
+
+      chatInput.disabled = true;
+      if (sendBtn) sendBtn.disabled = true;
+      playBtn.textContent = "…";
+      statusEl.classList.remove("hidden");
+
+      // ── Status state machine ────────────────────────────────────────────
+      // No active worker  → "Foukenstein se réveille…" (no dots, no disclaimers)
+      // Worker is up      → "Foukenstein réfléchit…"  (dots + rotating disclaimers)
+      // _wakeWatcher polls /api/worker_status while we're in cold-start, and
+      // flips to the "réfléchit" animation as soon as a worker is ready.
+      let _dotsInterval = null;
+      let _discInterval = null;
+      let _wakeWatcher  = null;
+
+      function startThinkingAnimation() {
+        if (_dotsInterval) return;
+        statusEl.textContent = "Foukenstein réfléchit";
+        let _dotsCount = 0;
+        _dotsInterval = setInterval(() => {
+          _dotsCount = (_dotsCount + 1) % 4;
+          statusEl.textContent = "Foukenstein réfléchit" + ".".repeat(_dotsCount);
+        }, 400);
+        let _discIdx = Math.floor(Math.random() * _disclaimers.length);
+        disclaimerEl.textContent = _disclaimers[_discIdx];
+        disclaimerEl.classList.remove("hidden");
+        _discInterval = setInterval(() => {
+          _discIdx = (_discIdx + 1) % _disclaimers.length;
+          disclaimerEl.textContent = _disclaimers[_discIdx];
+        }, 3000);
+      }
+
+      function stopThinkingAnimation() {
+        if (_dotsInterval) clearInterval(_dotsInterval);
+        if (_discInterval) clearInterval(_discInterval);
+        _dotsInterval = null;
+        _discInterval = null;
+        disclaimerEl.classList.add("hidden");
+        disclaimerEl.textContent = "";
+      }
+
+      // Use the cached worker status for the first paint. This avoids flashing
+      // the long cold-start message on desktop when the worker is already up.
+      if (_workerStatus.worker_active) {
+        startThinkingAnimation();
+      } else {
+        statusEl.textContent = "Foukenstein se réveille et vous répondra bientôt";
+      }
+      const _initialStatus = await fetchWorkerStatus();
+      if (_initialStatus.worker_active) {
+        startThinkingAnimation();
+      } else {
+        stopThinkingAnimation();
+        statusEl.textContent = "Foukenstein se réveille et vous répondra bientôt";
+        _wakeWatcher = setInterval(async () => {
+          const s = await fetchWorkerStatus();
+          if (s.worker_active) {
+            clearInterval(_wakeWatcher);
+            _wakeWatcher = null;
+            startThinkingAnimation();
+          }
+        }, 1500);
+      }
+
+      // Dismiss keyboard on mobile while generating
+      if (isMobile()) chatInput.blur();
+
+      try {
+        const r = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question }),
+          signal: _askController.signal,
+        });
+        const j = await r.json();
+        if (!j.ok) {
+          if (previousAudioBuffer) {
+            audioBuffer = previousAudioBuffer;
+            pauseOffset = previousPauseOffset;
+            progressFill.style.width = previousProgressWidth;
+            timeLabel.textContent = previousTimeLabel;
+            if (previousAudioTrayVisible) audioTrayEl.classList.add("visible");
+            playBtn.textContent = "▶︎";
+          }
+          if (j.error === "rate_limit" && j.retry_after) {
+            if (_rateLimitInterval) clearInterval(_rateLimitInterval);
+            if (_rateLimitHideTimer) clearTimeout(_rateLimitHideTimer);
+            isRateLimited = true;
+            let secs = Math.max(1, Math.ceil(Number(j.retry_after) || 1));
+            const renderRateLimit = () => {
+              statusEl.textContent =
+                `Doucement : même Foukenstein doit reprendre son souffle. Retentez dans ${secs}s.`;
+            };
+            renderRateLimit();
+            statusEl.classList.remove("hidden");
+            _rateLimitInterval = setInterval(() => {
+              secs--;
+              if (secs <= 0) {
+                clearInterval(_rateLimitInterval);
+                _rateLimitInterval = null;
+                statusEl.textContent = "Vous pouvez réessayer.";
+                _rateLimitHideTimer = setTimeout(() => {
+                  isRateLimited = false;
+                  statusEl.classList.add("hidden");
+                  _rateLimitHideTimer = null;
+                  idlePollTick();
+                }, 1800);
+              } else {
+                renderRateLimit();
+              }
+            }, 1000);
+          } else if (j.error === "busy") {
+            statusEl.textContent = j.message || "Foukenstein est très sollicité. Essayez plus tard.";
+            statusEl.classList.remove("hidden");
+            setTimeout(() => statusEl.classList.add("hidden"), 5500);
+          } else {
+            statusEl.textContent = "Erreur : " + (j.error || "inconnue");
+            setTimeout(() => statusEl.classList.add("hidden"), 4000);
+          }
+          return;
+        }
+
+        await loadAudioFromUrl(j.audio_url + "?t=" + Date.now());
+
+        const dlBtn = document.getElementById("downloadBtn");
+        dlBtn.href = j.audio_url;
+        dlBtn.style.opacity = "";
+        dlBtn.style.pointerEvents = "";
+
+        // Show audio tray (slides up on mobile, fades on desktop)
+        audioTrayEl.classList.add("visible");
+
+        stopKeepAlive();
+        if (audioCtx.state === 'suspended') await audioCtx.resume().catch(() => {});
+        if (audioCtx.state === 'running') {
+          play();
+          statusEl.classList.add("hidden");
+        } else {
+          // Contexte encore suspendu (iOS sans geste récent) → attendre le prochain touch
+          pendingPlay = true;
+          statusEl.textContent = "Appuie pour écouter";
+          statusEl.classList.remove("hidden");
+        }
+        chatInput.value = "";
+
+        // Génération vidéo en arrière-plan
+
+
+      } catch (e) {
+        stopKeepAlive();
+        if (e.name === "AbortError") return; // annulé par une nouvelle question, pas une erreur
+        statusEl.textContent = "Erreur réseau";
+        setTimeout(() => statusEl.classList.add("hidden"), 4000);
+      } finally {
+        stopKeepAlive();
+        if (_dotsInterval) clearInterval(_dotsInterval);
+        if (_discInterval) clearInterval(_discInterval);
+        if (_wakeWatcher)  clearInterval(_wakeWatcher);
+        disclaimerEl.classList.add("hidden");
+        disclaimerEl.textContent = "";
+        isGenerating = false;
+        _askController = null;
+        chatInput.disabled = false;
+        if (sendBtn) sendBtn.disabled = false;
+        if (!isMobile()) chatInput.focus();
+        if (!isPlaying) playBtn.textContent = "▶︎";
+        // Refresh idle state immediately (may show "fait dodo" again).
+        idlePollTick();
+      }
+    }
+
+    playBtn.addEventListener("click", togglePlay);
+
+    progressWrap.addEventListener("click", (e) => {
+      if (!audioBuffer) return;
+      const ratio = e.offsetX / progressWrap.offsetWidth;
+      pauseOffset = ratio * audioBuffer.duration;
+      if (isPlaying) { source.stop(); play(); }
+      else {
+        progressFill.style.width = (ratio * 100) + "%";
+        timeLabel.textContent = `${fmt(pauseOffset)} / ${fmt(audioBuffer.duration)}`;
+      }
+    });
+
+    function getVolume() {
+      if (!analyser || !isPlaying) return 0;
+      analyser.getByteTimeDomainData(timeDomainData);
+      let sum = 0;
+      for (let i = 0; i < timeDomainData.length; i++) {
+        const v = (timeDomainData[i] - 128) / 128;
+        sum += v * v;
+      }
+      return Math.sqrt(sum / timeDomainData.length);
+    }
+
+    // ── Positionne #status juste au-dessus du col roulé ─
+    function updateStatusPos() {
+      if (!collarTopWorld) return;
+      const v  = collarTopWorld.clone().project(camera);
+      const sy = (-v.y * 0.5 + 0.5) * window.innerHeight;
+      const gap = isMobile() ? 10 : 8;
+      const statusH = statusEl.offsetHeight || 16;
+      statusEl.style.top = Math.max(8, sy - statusH - gap) + "px";
+    }
+
+    // ── Animation loop ─────────────────────────────────────────────────
+    function animate() {
+      requestAnimationFrame(animate);
+      if (isPlaying && audioBuffer) {
+        const elapsed = audioCtx.currentTime - startTime;
+        const ratio   = Math.min(elapsed / audioBuffer.duration, 1);
+        progressFill.style.width = (ratio * 100) + "%";
+        timeLabel.textContent = `${fmt(elapsed)} / ${fmt(audioBuffer.duration)}`;
+      }
+      if (collarMesh?.morphTargetInfluences) {
+        const vol = getVolume();
+        const amp = Math.min(vol * 11.75, 1.25);
+        smoothVol += 0.08 * (amp - smoothVol);
+        collarMesh.morphTargetInfluences[0] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[1] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[2] = smoothVol * 1.0;
+        collarMesh.morphTargetInfluences[3] = smoothVol * 0.8;
+      }
+      if (!statusEl.classList.contains("hidden")) updateStatusPos();
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // ── Easter egg console ─────────────────────────────────────────────
+    console.log(
+      "%c" +
+      "  █████╗  ██████╗ █████╗ ██████╗ \n" +
+      " ██╔══██╗██╔════╝██╔══██╗██╔══██╗\n" +
+      " ███████║██║     ███████║██████╔╝\n" +
+      " ██╔══██║██║     ██╔══██║██╔══██╗\n" +
+      " ██║  ██║╚██████╗██║  ██║██████╔╝\n" +
+      " ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝ \n",
+      "color:#c0392b;font-family:monospace;font-size:12px;font-weight:bold;"
+    );
+
+    // ── iOS AudioContext unlock ─────────────────────────────────────────
+    let _keepAlive   = null;   // buffer source silencieux pendant la génération
+    let pendingPlay  = false;  // audio prêt mais context suspendu → jouer au prochain touch
+
+    // Joue 1 sample de silence en boucle pour empêcher iOS de suspendre le contexte
+    function startKeepAlive() {
+      if (!audioCtx || _keepAlive) return;
+      const buf = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+      _keepAlive = audioCtx.createBufferSource();
+      _keepAlive.buffer = buf;
+      _keepAlive.loop = true;
+      _keepAlive.connect(audioCtx.destination);
+      try { _keepAlive.start(); } catch(e) {}
+    }
+
+    function stopKeepAlive() {
+      if (!_keepAlive) return;
+      try { _keepAlive.stop(); } catch(e) {}
+      _keepAlive.disconnect();
+      _keepAlive = null;
+    }
+
+    function unlockAudio() {
+      if (!audioCtx) initAudioContext();
+      if (audioCtx.state !== 'running') {
+        // Pattern standard (Howler.js) : jouer un frame silencieux + resume()
+        // iOS exige les deux — resume() seul peut renvoyer 'running' sans produire de son
+        try {
+          const b = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+          const s = audioCtx.createBufferSource();
+          s.buffer = b; s.connect(audioCtx.destination); s.start(0);
+        } catch(e) {}
+        audioCtx.resume().then(() => {
+          if (pendingPlay && audioBuffer && !isPlaying) {
+            pendingPlay = false;
+            statusEl.classList.add("hidden");
+            play();
+          }
+        }).catch(() => {});
+      } else if (pendingPlay && audioBuffer && !isPlaying) {
+        pendingPlay = false;
+        statusEl.classList.add("hidden");
+        play();
+      }
+    }
+
+    // Recrée le contexte audio si iOS l'a suspendu en arrière-plan.
+    // iOS peut signaler state='running' après resume() mais rester muet —
+    // recréer le contexte est la seule garantie fiable (AudioBuffer est réutilisable).
+    async function resetAudioContext() {
+      if (!audioCtx || isPlaying) return;
+      if (audioCtx.state === 'suspended') {
+        stopKeepAlive();
+        try { await audioCtx.close(); } catch(e) {}
+        audioCtx = null; analyser = null; timeDomainData = null;
+        // Sera recréé au prochain initAudioContext() (geste ou askAndPlay)
+      }
+    }
+
+    document.addEventListener('touchstart',      unlockAudio, { passive: true });
+    document.addEventListener('touchend',        unlockAudio, { passive: true });
+    document.addEventListener('click',           unlockAudio);
+    document.addEventListener('keydown',         unlockAudio);
+    window.addEventListener('pageshow',          () => resetAudioContext().then(unlockAudio));
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resetAudioContext().then(unlockAudio);
+    });
+
+    // ── VisualViewport: keyboard-aware layout (iOS Safari) ─────────────
+    // When keyboard opens, translate composer and audioTray above it.
+    // Using transform (GPU composited) — no reflow, no layout shift.
+    if (isMobile() && window.visualViewport) {
+      const vv = window.visualViewport;
+
+      function syncToViewport() {
+        // Keyboard height = space between bottom of visual viewport and
+        // bottom of layout viewport (layout viewport doesn't change on iOS)
+        const kbH = Math.max(0, window.innerHeight - vv.offsetTop - vv.height);
+
+        if (kbH > 80) {
+          // Keyboard visible: push composer above it
+          const shift = `translateY(-${kbH}px)`;
+          composerEl.style.transform = shift;
+          // Keep audio tray above composer (use inline transform override)
+          if (audioTrayEl.classList.contains('visible')) {
+            audioTrayEl.style.transform = `translateY(-${kbH}px)`;
+          }
+        } else {
+          // Keyboard dismissed: restore
+          composerEl.style.transform = '';
+          audioTrayEl.style.transform = '';
+        }
+      }
+
+      vv.addEventListener('resize', syncToViewport, { passive: true });
+      vv.addEventListener('scroll', syncToViewport, { passive: true });
+
+      // Snap back when input loses focus (belt + suspenders)
+      chatInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          composerEl.style.transform = '';
+          audioTrayEl.style.transform = '';
+        }, 80);
+      });
+    }
+
+    // ── Prevent scroll/bounce on body (touchmove) ─────────────────────
+    document.addEventListener('touchmove', (e) => {
+      if (!e.target.closest('input, textarea')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // ── Click anywhere (desktop): focus input ─────────────────────────
+    document.addEventListener("click", (e) => {
+      if (!isMobile() &&
+          e.target !== playBtn &&
+          e.target.id !== "sendBtn" &&
+          !e.target.closest("#audioActions")) {
+        chatInput.focus();
+      }
+    });
+
+    // ── Share ──────────────────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(t._tid);
+      t._tid = setTimeout(() => t.classList.remove("show"), 2800);
+    }
+
+    function shareTo(platform) {
+      const pageUrl = "https://foukenstein.lol";
+      const enc  = encodeURIComponent(pageUrl);
+      const text = encodeURIComponent("Foukenstein répond à vos questions depuis l'au-delà. ");
+      const links = {
+        twitter:  `https://x.com/intent/post?text=${text}&url=${enc}`,
+        bluesky:  `https://bsky.app/intent/compose?text=${text}${enc}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${enc}&quote=${text}`,
+      };
+      window.open(links[platform], "_blank", "noopener,width=620,height=500");
+    }
+
+    document.querySelectorAll(".shareBtn[data-p]").forEach((btn) => {
+      btn.addEventListener("click", () => shareTo(btn.dataset.p));
+    });
+
+    // IG : capture canvas 3D + question en overlay → share sheet natif
+    let _lastQuestion = "";
+    document.getElementById("shareIGBtn")?.addEventListener("click", async () => {
+      if (!isMobile()) {
+        showToast("Story Instagram disponible sur mobile");
+        return;
+      }
+      if (!navigator.share) {
+        showToast("Partage non supporté sur ce navigateur");
+        return;
+      }
+      try {
+        // Forcer un rendu pour que toDataURL ait du contenu
+        renderer.render(scene, camera);
+        const snap = renderer.domElement;
+
+        // Canvas story format (1080x1920)
+        const W = 1080, H = 1920;
+        const c = document.createElement("canvas");
+        c.width = W; c.height = H;
+        const ctx = c.getContext("2d");
+
+        // Fond couleur du site
+        ctx.fillStyle = "#dedad3";
+        ctx.fillRect(0, 0, W, H);
+
+        // Dessiner le 3D au centre (crop carré depuis le centre du canvas)
+        const src = Math.min(snap.width, snap.height);
+        const sx = (snap.width - src) / 2;
+        const sy = (snap.height - src) / 2;
+        const drawSize = W;
+        const dy = (H - drawSize) / 2 - 100;
+        ctx.drawImage(snap, sx, sy, src, src, (W - drawSize) / 2, dy, drawSize, drawSize);
+
+        // Texte de la question en bas
+        ctx.fillStyle = "rgba(70, 65, 58, 0.85)";
+        ctx.font = "italic 42px Georgia, serif";
+        ctx.textAlign = "center";
+        const q = _lastQuestion || "…";
+        // Word wrap
+        const maxW = W - 120;
+        const words = q.split(" ");
+        let lines = [], line = "";
+        for (const w of words) {
+          const test = line ? line + " " + w : w;
+          if (ctx.measureText(test).width > maxW) { lines.push(line); line = w; }
+          else line = test;
+        }
+        if (line) lines.push(line);
+        const lineH = 54;
+        const textY = H - 180 - (lines.length - 1) * lineH;
+        lines.forEach((l, i) => ctx.fillText(l, W / 2, textY + i * lineH));
+
+        // Signature
+        ctx.font = "28px system-ui, sans-serif";
+        ctx.fillStyle = "rgba(100, 95, 88, 0.5)";
+        ctx.fillText("— foukenstein.lol", W / 2, H - 80);
+
+        const blob = await new Promise(r => c.toBlob(r, "image/png"));
+        const file = new File([blob], "foukenstein.png", { type: "image/png" });
+        if (navigator.canShare && !navigator.canShare({ files: [file] })) {
+          showToast("Partage d'image non supporté");
+          return;
+        }
+        showToast("Choisis Instagram puis Story");
+        await navigator.share({ files: [file] });
+      } catch (e) {
+        if (e.name !== "AbortError") showToast("Partage impossible");
+      }
+    });
+
+    // ── Send (button + Enter key) ──────────────────────────────────────
+    sendBtn?.addEventListener('click', async () => {
+      const q = chatInput.value.trim();
+      if (q) await askAndPlay(q);
+    });
+
+    chatInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const q = chatInput.value.trim();
+        if (q) await askAndPlay(q);
+      }
+    });
+
+    // ── Space = play/pause (desktop) ───────────────────────────────────
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space" && document.activeElement !== chatInput) {
+        e.preventDefault();
+        togglePlay();
+      }
+    });
+
+    // ── Uptime ────────────────────────────────────────────────────────
+    const LAUNCH_AT = new Date("2026-05-06T08:35:06Z");
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const diff = Date.now() - LAUNCH_AT;
+      if (diff < 0) {
+        countdownEl.textContent = "Foukenstein arrive.";
+        return;
+      }
+      const h   = Math.floor(diff / 3_600_000);
+      const m   = Math.floor((diff % 3_600_000) / 60_000);
+      const s   = Math.floor((diff % 60_000) / 1_000);
+      const pad = (n) => String(n).padStart(2, "0");
+      countdownEl.textContent = `Foukenstein en vie depuis ${h}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Tooltip info : toggle au tap (mobile), hover (desktop) ────────
+    (function() {
+      const btn = document.getElementById("infoBtn");
+      if (!btn) return;
+      const toggle = (e) => {
+        e.stopPropagation();
+        btn.classList.toggle("active");
+      };
+      btn.addEventListener("click", toggle);
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(e); }
+      });
+      document.addEventListener("click", (e) => {
+        if (!btn.contains(e.target)) btn.classList.remove("active");
+      });
+    })();
+
+    // ── Resize: update Three.js (ignore keyboard-triggered on mobile) ──
+    let _lastW = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth === _lastW && isMobile()) return;
+      _lastW = window.innerWidth;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      updateStatusPos();
+    });
+
+    // ── Kick off worker-status idle polling ("fait dodo" message) ─────
+    startIdlePolling();
+
+  </script>
+</body>
+</html>

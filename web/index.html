@@ -70,14 +70,16 @@
     /* ── Pitch édition (couverture + accroche, en bas à gauche) ──────── */
     #editionPitch {
       position: fixed;
-      left: 24px;
+      right: 24px;
       bottom: 24px;
-      width: 132px;
+      width: min(132px, 30vw);
       display: flex;
       flex-direction: column;
       gap: 8px;
       z-index: 95;
       font-family: Georgia, 'Times New Roman', serif;
+      transform: rotate(2.5deg);
+      transform-origin: bottom right;
     }
     #editionPitch img {
       width: 100%;
@@ -101,9 +103,9 @@
 
     @media (max-width: 600px) {
       #editionPitch {
-        left: 14px;
+        right: 14px;
         bottom: calc(env(safe-area-inset-bottom, 0px) + 94px);
-        width: 84px;
+        width: min(84px, 26vw);
         gap: 5px;
       }
       #editionPitch .cap {
@@ -1249,24 +1251,29 @@
       }
     });
 
-    // ── Uptime ────────────────────────────────────────────────────────
-    const LAUNCH_AT = new Date("2026-05-06T08:35:06Z");
+    // ── Durée de vie (figée) ──────────────────────────────────────────
+    // Foukenstein est débranché : le compteur ne défile plus, on affiche
+    // sa durée de vie totale, du lancement à la mise hors ligne.
+    const LAUNCH_AT   = new Date("2026-05-06T08:35:06Z");
+    const SHUTDOWN_AT = new Date("2026-07-14T12:00:00Z"); // date de débranchement — ajuster si besoin
     const countdownEl = document.getElementById("countdown");
 
-    function updateCountdown() {
-      const diff = Date.now() - LAUNCH_AT;
-      if (diff < 0) {
-        countdownEl.textContent = "Foukenstein arrive.";
-        return;
-      }
-      const h   = Math.floor(diff / 3_600_000);
-      const m   = Math.floor((diff % 3_600_000) / 60_000);
-      const s   = Math.floor((diff % 60_000) / 1_000);
-      const pad = (n) => String(n).padStart(2, "0");
-      countdownEl.textContent = `Foukenstein en vie depuis ${h}h ${pad(m)}m ${pad(s)}s`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    (function showLifespan() {
+      const diff     = Math.max(0, SHUTDOWN_AT - LAUNCH_AT);
+      const totalMin = Math.floor(diff / 60_000);
+      const days     = Math.floor(totalMin / 1440);
+      const hours    = Math.floor((totalMin % 1440) / 60);
+      const mins     = totalMin % 60;
+      const plural   = (n, mot) => `${n} ${mot}${n > 1 ? "s" : ""}`;
+      const parts = [];
+      if (days)  parts.push(plural(days, "jour"));
+      if (hours) parts.push(plural(hours, "heure"));
+      if (mins)  parts.push(plural(mins, "minute"));
+      const human = parts.length > 1
+        ? parts.slice(0, -1).join(", ") + " et " + parts[parts.length - 1]
+        : (parts[0] || "quelques instants");
+      countdownEl.textContent = `Foukenstein aura été en vie pendant ${human}`;
+    })();
 
     // Tooltip info
     (function() {

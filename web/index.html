@@ -67,6 +67,51 @@
       }
     }
 
+    /* ── Pitch édition (couverture + accroche, en bas à gauche) ──────── */
+    #editionPitch {
+      position: fixed;
+      left: 24px;
+      bottom: 24px;
+      width: 132px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 95;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    #editionPitch img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+    }
+    #editionPitch .cap {
+      font-size: 10px;
+      line-height: 1.5;
+      color: rgba(70, 65, 58, 0.7);
+      letter-spacing: 0.01em;
+    }
+    #editionPitch .cap a {
+      color: rgba(55, 50, 45, 0.9);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    #editionPitch .cap a:hover { color: rgba(30, 26, 22, 1); }
+
+    @media (max-width: 600px) {
+      #editionPitch {
+        left: 14px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 94px);
+        width: 84px;
+        gap: 5px;
+      }
+      #editionPitch .cap {
+        font-size: 8.5px;
+        line-height: 1.4;
+      }
+    }
+
     /* ── Canvas (Three.js fills background) ──────────────────────────── */
     canvas {
       display: block;
@@ -590,6 +635,12 @@
       </div>
     </div>
     <div id="disclaimer" class="hidden"></div>
+
+    <!-- Pitch édition : couverture "Promptés et Dits" + accroche -->
+    <aside id="editionPitch">
+      <img src="promptes-et-dits.png?v=1" alt="Foukenstein — Promptés et Dits, I (mai-juin 2026)" />
+      <p class="cap">Si une édition des réponses de Foukenstein aux questions posées par les internautes vous intéresse, <a href="mailto:alex@distributedgallery.com?subject=%C3%89dition%20Foukenstein%20%E2%80%94%20Prompt%C3%A9s%20et%20Dits">envoyez nous un mail</a> et on y réfléchira</p>
+    </aside>
 
     <div id="toast"></div>
 

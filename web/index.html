@@ -13,6 +13,10 @@
   <title>Foukenstein</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Police "graffiti" pour le bandeau de fermeture -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset ────────────────────────────────────────────────────────── */
     *, html, body {
@@ -33,6 +37,34 @@
       position: fixed;
       inset: 0;
       overflow: hidden;
+    }
+
+    /* ── Bandeau de fermeture (graffiti) ─────────────────────────────── */
+    #shutdownBanner {
+      position: fixed;
+      top: 12vh; /* valeur de repli avant chargement du modèle — surchargée en JS */
+      left: 50%;
+      transform: translateX(-50%) rotate(-4.5deg);
+      transform-origin: center center;
+      width: min(760px, calc(100vw - 48px));
+      text-align: center;
+      color: #111;
+      font-family: 'Permanent Marker', 'Bradley Hand', 'Marker Felt', 'Comic Sans MS', cursive;
+      font-size: clamp(20px, 4.4vw, 34px);
+      line-height: 1.28;
+      letter-spacing: 0.01em;
+      /* léger relief façon bombe/marqueur */
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+      z-index: 300;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      #shutdownBanner {
+        top: calc(env(safe-area-inset-top, 0px) + 92px);
+        font-size: clamp(19px, 6.2vw, 26px);
+      }
     }
 
     /* ── Canvas (Three.js fills background) ──────────────────────────── */
@@ -514,6 +546,9 @@
 <body>
   <div id="app">
 
+    <!-- Bandeau de fermeture -->
+    <div id="shutdownBanner">Foukenstein est désormais débranché. Vous avez été plus de 6&nbsp;000 à converser avec lui, pour quelque 80 heures de parole.</div>
+
     <div id="status">Chargement…</div>
 
     <!-- Réponse : le texte s'écrit au-dessus du col roulé -->
@@ -584,6 +619,7 @@
     const composerEl    = document.getElementById("composer");
     const queueWarningEl = document.getElementById("queueWarning");
     const actionsTrayEl = document.getElementById("actionsTray");
+    const bannerEl      = document.getElementById("shutdownBanner");
 
     const _disclaimers = [
       "Foukenstein n'a pas accès à Internet car il est pauvre…",
@@ -911,6 +947,13 @@
       const sy = (-v.y * 0.5 + 0.5) * window.innerHeight;
       const gap = isMobile() ? 12 : 10;
 
+      // Bandeau de fermeture : ancré par sa base juste au-dessus du col roulé.
+      if (bannerEl) {
+        const bh = bannerEl.offsetHeight || 40;
+        const bannerTop = Math.max(8, sy - bh - gap - (isMobile() ? 10 : 18));
+        bannerEl.style.top = bannerTop + "px";
+      }
+
       // Response: ancré par sa base juste au-dessus du col roulé.
       // On garde son height mesurée, puis on place son "top" pour que le
       // bord bas soit à sy - gap.
@@ -953,10 +996,8 @@
         }
       }
 
-      if (!statusEl.classList.contains("hidden") ||
-          !responseEl.classList.contains("hidden")) {
-        updateOverlayPos();
-      }
+      // Le bandeau est toujours visible → on recale les overlays chaque frame.
+      updateOverlayPos();
       controls.update();
       renderer.render(scene, camera);
     }

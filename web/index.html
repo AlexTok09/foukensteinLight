@@ -89,9 +89,10 @@
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
     }
     #editionPitch .cap {
-      font-size: 10px;
-      line-height: 1.5;
-      color: rgba(70, 65, 58, 0.7);
+      font-family: 'Permanent Marker', 'Bradley Hand', 'Marker Felt', 'Comic Sans MS', cursive;
+      font-size: 12px;
+      line-height: 1.35;
+      color: rgba(25, 22, 20, 0.92);
       letter-spacing: 0.01em;
     }
     #editionPitch .cap a {
@@ -109,8 +110,8 @@
         gap: 5px;
       }
       #editionPitch .cap {
-        font-size: 8.5px;
-        line-height: 1.4;
+        font-size: 10px;
+        line-height: 1.3;
       }
     }
 
@@ -673,6 +674,7 @@
     const queueWarningEl = document.getElementById("queueWarning");
     const actionsTrayEl = document.getElementById("actionsTray");
     const bannerEl      = document.getElementById("shutdownBanner");
+    const pitchEl       = document.getElementById("editionPitch");
 
     const _disclaimers = [
       "Foukenstein n'a pas accès à Internet car il est pauvre…",
@@ -743,6 +745,7 @@
 
     let collarMesh = null;
     let collarTopWorld = null;
+    let collarRightWorld = null;
 
     gltfLoader.load(
       "knitted_turtleneck_animated.glb?v=6",
@@ -755,6 +758,8 @@
         box.getSize(size);
         model.position.sub(center);
         collarTopWorld = new THREE.Vector3(0, size.y / 2, 0);
+        // Coin bas-droit du modèle → sert à caler la vignette sous le bord droit du col roulé.
+        collarRightWorld = new THREE.Vector3(size.x / 2, -size.y / 2, 0);
         scene.add(model);
 
         model.traverse((child) => {
@@ -1005,6 +1010,31 @@
         const bh = bannerEl.offsetHeight || 40;
         const bannerTop = Math.max(8, sy - bh - gap - (isMobile() ? 10 : 18));
         bannerEl.style.top = bannerTop + "px";
+      }
+
+      // Vignette édition : sur desktop, calée sous le bord droit du col roulé.
+      // Sur mobile, on laisse le CSS gérer (position déjà correcte).
+      if (pitchEl) {
+        if (!isMobile() && collarRightWorld) {
+          const pr = collarRightWorld.clone().project(camera);
+          const rx = (pr.x * 0.5 + 0.5) * window.innerWidth;
+          const ry = (-pr.y * 0.5 + 0.5) * window.innerHeight;
+          const pw = pitchEl.offsetWidth  || 132;
+          const ph = pitchEl.offsetHeight || 180;
+          // Bord droit de la vignette aligné sous le bord droit du modèle.
+          let left = rx - pw;
+          left = Math.min(Math.max(left, 12), window.innerWidth - pw - 12);
+          // Juste sous le bord bas-droit (+ ~20% plus bas), sans sortir de l'écran.
+          let top = ry + Math.round(window.innerHeight * 0.20);
+          top = Math.min(top, window.innerHeight - ph - 12);
+          pitchEl.style.left   = left + "px";
+          pitchEl.style.top    = top + "px";
+          pitchEl.style.right  = "auto";
+          pitchEl.style.bottom = "auto";
+        } else {
+          // Mobile : réinitialise les styles inline pour rendre la main au CSS.
+          pitchEl.style.left = pitchEl.style.top = pitchEl.style.right = pitchEl.style.bottom = "";
+        }
       }
 
       // Response: ancré par sa base juste au-dessus du col roulé.

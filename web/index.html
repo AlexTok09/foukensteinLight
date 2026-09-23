@@ -67,54 +67,6 @@
       }
     }
 
-    /* ── Pitch édition (couverture + accroche, en bas à gauche) ──────── */
-    #editionPitch {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: min(132px, 30vw);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 95;
-      font-family: Georgia, 'Times New Roman', serif;
-      transform: rotate(2.5deg);
-      transform-origin: bottom right;
-    }
-    #editionPitch img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 2px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
-    }
-    #editionPitch .cap {
-      font-family: 'Permanent Marker', 'Bradley Hand', 'Marker Felt', 'Comic Sans MS', cursive;
-      font-size: 12px;
-      line-height: 1.35;
-      color: rgba(25, 22, 20, 0.92);
-      letter-spacing: 0.01em;
-    }
-    #editionPitch .cap a {
-      color: rgba(55, 50, 45, 0.9);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    #editionPitch .cap a:hover { color: rgba(30, 26, 22, 1); }
-
-    @media (max-width: 600px) {
-      #editionPitch {
-        right: 14px;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 94px);
-        width: min(84px, 26vw);
-        gap: 5px;
-      }
-      #editionPitch .cap {
-        font-size: 10px;
-        line-height: 1.3;
-      }
-    }
-
     /* ── Canvas (Three.js fills background) ──────────────────────────── */
     canvas {
       display: block;
@@ -355,56 +307,76 @@
     }
 
     /* ── Chat input + send button ────────────────────────────────────── */
-    #chat {
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-    #chatInput {
-      flex: 1;
-      min-width: 0;
-      border: none;
-      outline: none;
-      background: none;
-      -webkit-appearance: none;
-      appearance: none;
-      border-radius: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      background-clip: padding-box;
+    /* ── Carrousel de fiches (à la place de la barre de saisie) ─────── */
+    #chat { display: flex; align-items: center; width: 100%; gap: 10px; }
+
+    #deck {
+      flex: 1; min-width: 0;
+      display: flex; gap: 10px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding: 2px 0 8px;
       border-bottom: 1px solid rgba(100, 95, 88, 0.18);
-      padding: 10px 0;
-      font-size: 16px;
-      font-family: Georgia, 'Times New Roman', serif;
-      color: rgba(60, 57, 52, 0.88);
-      letter-spacing: 0.02em;
-      caret-color: rgba(60, 57, 52, 0.6);
     }
-    #chatInput:focus {
-      outline: none;
-      border-bottom-color: rgba(100, 95, 88, 0.38);
-    }
-    #chatInput::placeholder {
-      color: rgba(100, 95, 88, 0.4);
-    }
-    #sendBtn {
-      display: flex;
-      -webkit-appearance: none;
-      appearance: none;
+    #deck::-webkit-scrollbar { display: none; }
+    #deck:focus-visible { outline: none; border-bottom-color: rgba(100, 95, 88, 0.45); }
+
+    .card {
+      flex: 0 0 auto; scroll-snap-align: center;
+      -webkit-appearance: none; appearance: none;
+      background: none; border: none;
+      border-left: 1px solid rgba(100, 95, 88, 0.22);
+      text-align: left; padding: 2px 12px 4px;
+      cursor: pointer; font-family: inherit;
       -webkit-tap-highlight-color: transparent;
-      outline: none;
-      background: none;
-      border: none;
+      opacity: 0.55; transition: opacity 0.2s ease;
+    }
+    .card:hover, .card:focus-visible { opacity: 1; outline: none; }
+    .card[aria-current="true"] { opacity: 1; }
+
+    .card .lbl {
+      display: block;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(100, 95, 88, 0.38); margin-bottom: 3px; white-space: nowrap;
+    }
+    .card[aria-current="true"] .lbl { color: rgba(70, 65, 58, 0.62); }
+
+    .card .txt {
+      display: block;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px; line-height: 1.3;
+      color: rgba(60, 57, 52, 0.9);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 272px;
+    }
+    .card .len {
+      display: block;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 9.5px; font-variant-numeric: tabular-nums;
+      color: rgba(100, 95, 88, 0.36); margin-top: 3px; letter-spacing: 0.04em;
+    }
+    .card[aria-current="true"] .len { color: rgba(70, 65, 58, 0.58); }
+
+    #diceBtn {
+      display: flex;
+      -webkit-appearance: none; appearance: none;
+      -webkit-tap-highlight-color: transparent; outline: none;
+      background: none; border: none;
       color: rgba(70, 65, 58, 0.85);
-      font-size: 20px;
-      cursor: pointer;
-      padding: 0 0 0 12px;
-      flex-shrink: 0;
-      touch-action: manipulation;
-      min-width: 44px;
-      min-height: 44px;
-      align-items: center;
-      justify-content: center;
+      font-size: 21px; line-height: 1; cursor: pointer; padding: 0;
+      flex-shrink: 0; touch-action: manipulation;
+      min-width: 44px; min-height: 44px;
+      align-items: center; justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.3, 1.3, 0.5, 1), color 0.2s;
+    }
+    #diceBtn:hover, #diceBtn:focus-visible { color: rgba(30, 26, 22, 1); }
+    #diceBtn.rolling { transform: rotate(180deg); }
+    @media (prefers-reduced-motion: reduce) {
+      #diceBtn { transition: color 0.2s; }
+      #diceBtn.rolling { transform: none; }
     }
 
     /* ── Toast ───────────────────────────────────────────────────────── */
@@ -535,13 +507,10 @@
         transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      #sendBtn { display: flex; }
+      #diceBtn { display: flex; }
 
-      #chatInput {
-        font-size: 16px;
-        padding: 8px 0;
-        border-radius: 0;
-      }
+      .card { padding: 2px 10px 4px; }
+      .card .txt { font-size: 14.5px; max-width: 208px; }
 
       /* Actions tray */
       #actionsTray {
@@ -595,7 +564,7 @@
   <div id="app">
 
     <!-- Bandeau de fermeture -->
-    <div id="shutdownBanner">Foukenstein est désormais débranché. Vous avez été plus de 6&nbsp;000 à converser avec lui, pour quelque 80 heures de parole.</div>
+    <div id="shutdownBanner">Foukenstein est désormais débranché. Vous avez été plus de 6&nbsp;000 à converser avec lui, pour quelque 80 heures de parole — vous pouvez toujours rejouer d'anciennes questions qui lui ont été posées.</div>
 
     <div id="status">Chargement…</div>
 
@@ -632,18 +601,11 @@
     <!-- Composer: always visible at bottom -->
     <div id="composer">
       <div id="chat">
-        <input id="chatInput" type="text" placeholder="posez une question…"
-               autocomplete="off" spellcheck="false" enterkeyhint="send" maxlength="160" />
-        <button id="sendBtn" aria-label="Envoyer">→</button>
+        <div id="deck" role="listbox" aria-label="Questions posées à Foukenstein" tabindex="0"></div>
+        <button id="diceBtn" aria-label="Écouter une question au hasard" title="Au hasard">⁂</button>
       </div>
     </div>
     <div id="disclaimer" class="hidden"></div>
-
-    <!-- Pitch édition : couverture "Promptés et Dits" + accroche -->
-    <aside id="editionPitch">
-      <img src="promptes-et-dits.png?v=1" alt="Foukenstein — Promptés et Dits, I (mai-juin 2026)" />
-      <p class="cap">Si une édition des réponses de Foukenstein aux questions posées par les internautes vous intéresse, <a href="mailto:alex@distributedgallery.com?subject=%C3%89dition%20Foukenstein%20%E2%80%94%20Prompt%C3%A9s%20et%20Dits">envoyez nous un mail</a> et on y réfléchira</p>
-    </aside>
 
     <div id="toast"></div>
 
@@ -667,14 +629,11 @@
     const isMobile      = () => window.innerWidth <= 600;
     const statusEl      = document.getElementById("status");
     const responseEl    = document.getElementById("response");
-    const chatInput     = document.getElementById("chatInput");
-    const sendBtn       = document.getElementById("sendBtn");
     const disclaimerEl  = document.getElementById("disclaimer");
     const composerEl    = document.getElementById("composer");
     const queueWarningEl = document.getElementById("queueWarning");
     const actionsTrayEl = document.getElementById("actionsTray");
     const bannerEl      = document.getElementById("shutdownBanner");
-    const pitchEl       = document.getElementById("editionPitch");
 
     const _disclaimers = [
       "Foukenstein n'a pas accès à Internet car il est pauvre…",
@@ -909,95 +868,6 @@
       });
     }
 
-    async function askAndShow(question) {
-      if (isGenerating) return;
-      _lastQuestion = question;
-      _cancelTyping();
-      isGenerating = true;
-      _askController = new AbortController();
-
-      // Hide previous answer + tray while generating
-      responseEl.classList.add("hidden");
-      responseEl.textContent = "";
-      actionsTrayEl.classList.remove("visible");
-
-      chatInput.disabled = true;
-      if (sendBtn) sendBtn.disabled = true;
-      startThinkingAnimation();
-
-      if (isMobile()) chatInput.blur();
-
-      try {
-        const r = await fetch("/api/ask", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question }),
-          signal: _askController.signal,
-        });
-        const j = await r.json();
-        stopThinkingAnimation();
-
-        if (!j.ok) {
-          if (j.error === "rate_limit" && j.retry_after) {
-            if (_rateLimitInterval) clearInterval(_rateLimitInterval);
-            if (_rateLimitHideTimer) clearTimeout(_rateLimitHideTimer);
-            isRateLimited = true;
-            let secs = Math.max(1, Math.ceil(Number(j.retry_after) || 1));
-            const renderRateLimit = () => {
-              statusEl.textContent =
-                `Doucement : même Foukenstein doit reprendre son souffle. Retentez dans ${secs}s.`;
-            };
-            renderRateLimit();
-            statusEl.classList.remove("hidden");
-            _rateLimitInterval = setInterval(() => {
-              secs--;
-              if (secs <= 0) {
-                clearInterval(_rateLimitInterval);
-                _rateLimitInterval = null;
-                statusEl.textContent = "Vous pouvez réessayer.";
-                _rateLimitHideTimer = setTimeout(() => {
-                  isRateLimited = false;
-                  statusEl.classList.add("hidden");
-                  _rateLimitHideTimer = null;
-                }, 1800);
-              } else {
-                renderRateLimit();
-              }
-            }, 1000);
-          } else if (j.error === "busy") {
-            statusEl.textContent = j.message || "Foukenstein est très sollicité. Essayez plus tard.";
-            statusEl.classList.remove("hidden");
-            setTimeout(() => statusEl.classList.add("hidden"), 5500);
-          } else {
-            statusEl.textContent = "Erreur : " + (j.error || "inconnue");
-            statusEl.classList.remove("hidden");
-            setTimeout(() => statusEl.classList.add("hidden"), 4000);
-          }
-          return;
-        }
-
-        const chunks = Array.isArray(j.chunks) ? j.chunks : [];
-        _lastAnswer = chunks.join(" ");
-        chatInput.value = "";
-        statusEl.classList.add("hidden");
-        await typeChunks(chunks);
-        actionsTrayEl.classList.add("visible");
-      } catch (e) {
-        stopThinkingAnimation();
-        if (e.name === "AbortError") return;
-        statusEl.textContent = "Erreur réseau";
-        statusEl.classList.remove("hidden");
-        setTimeout(() => statusEl.classList.add("hidden"), 4000);
-      } finally {
-        stopThinkingAnimation();
-        isGenerating = false;
-        _askController = null;
-        chatInput.disabled = false;
-        if (sendBtn) sendBtn.disabled = false;
-        if (!isMobile()) chatInput.focus();
-      }
-    }
-
     // ── Position les overlays au-dessus du col roulé ─────────────────
     function updateOverlayPos() {
       if (!collarTopWorld) return;
@@ -1010,31 +880,6 @@
         const bh = bannerEl.offsetHeight || 40;
         const bannerTop = Math.max(8, sy - bh - gap - (isMobile() ? 10 : 18));
         bannerEl.style.top = bannerTop + "px";
-      }
-
-      // Vignette édition : sur desktop, calée sous le bord droit du col roulé.
-      // Sur mobile, on laisse le CSS gérer (position déjà correcte).
-      if (pitchEl) {
-        if (!isMobile() && collarRightWorld) {
-          const pr = collarRightWorld.clone().project(camera);
-          const rx = (pr.x * 0.5 + 0.5) * window.innerWidth;
-          const ry = (-pr.y * 0.5 + 0.5) * window.innerHeight;
-          const pw = pitchEl.offsetWidth  || 132;
-          const ph = pitchEl.offsetHeight || 180;
-          // Bord droit de la vignette aligné sous le bord droit du modèle.
-          let left = rx - pw;
-          left = Math.min(Math.max(left, 12), window.innerWidth - pw - 12);
-          // Juste sous le bord bas-droit (+ ~20% plus bas), sans sortir de l'écran.
-          let top = ry + Math.round(window.innerHeight * 0.20);
-          top = Math.min(top, window.innerHeight - ph - 12);
-          pitchEl.style.left   = left + "px";
-          pitchEl.style.top    = top + "px";
-          pitchEl.style.right  = "auto";
-          pitchEl.style.bottom = "auto";
-        } else {
-          // Mobile : réinitialise les styles inline pour rendre la main au CSS.
-          pitchEl.style.left = pitchEl.style.top = pitchEl.style.right = pitchEl.style.bottom = "";
-        }
       }
 
       // Response: ancré par sa base juste au-dessus du col roulé.
@@ -1065,12 +910,17 @@
       }
 
       if (collarMesh?.morphTargetInfluences) {
-        // Idle: micro-respiration lente sur le col
         const t = performance.now() * 0.001;
-        const breath = 0.05 + 0.03 * Math.sin(t * 1.3);
-        // Speaking: pulse + jitter court pour ressembler à une articulation
-        const speak = _speakPulse * (0.55 + 0.35 * Math.sin(t * 22));
-        const amp = Math.min(1.15, breath + speak * 1.8);
+        let amp;
+        if (Audio.isPlaying()) {
+          // Le col est piloté par le volume réel de la voix.
+          _smoothVol += 0.08 * (Math.min(Audio.volume() * 11.75, 1.25) - _smoothVol);
+          amp = _smoothVol;
+        } else {
+          // Au repos : micro-respiration lente.
+          _smoothVol += 0.08 * (0 - _smoothVol);
+          amp = Math.min(1.15, 0.05 + 0.03 * Math.sin(t * 1.3) + _smoothVol);
+        }
         collarMesh.morphTargetInfluences[0] = amp;
         collarMesh.morphTargetInfluences[1] = amp;
         collarMesh.morphTargetInfluences[2] = amp;
@@ -1098,6 +948,182 @@
       "color:#c0392b;font-family:monospace;font-size:12px;font-weight:bold;"
     );
 
+    // ── Moteur audio ──────────────────────────────────────────────────
+    // Décode le mp3 et le joue derrière un AnalyserNode : c'est ce volume
+    // qui anime les morphs du col roulé (cf. animate()).
+    let _smoothVol = 0;
+
+    const Audio = (() => {
+      let ctx = null, analyser = null, src = null, data = null;
+      let playing = false, token = 0;
+
+      function init() {
+        if (ctx) return;
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = ctx.createAnalyser();
+        analyser.fftSize = 1024;
+        analyser.connect(ctx.destination);
+        data = new Uint8Array(analyser.fftSize);
+      }
+
+      // iOS n'autorise l'audio que dans le geste utilisateur.
+      async function unlock() {
+        init();
+        if (ctx.state !== "running") {
+          try {
+            const b = ctx.createBuffer(1, 1, ctx.sampleRate);
+            const s0 = ctx.createBufferSource();
+            s0.buffer = b; s0.connect(ctx.destination); s0.start(0);
+          } catch (e) {}
+          await ctx.resume().catch(() => {});
+        }
+      }
+
+      function stop() {
+        token++;
+        if (src) { try { src.onended = null; src.stop(); } catch (e) {} src = null; }
+        playing = false;
+      }
+
+      async function play(url, onEnd) {
+        stop();
+        const mine = token;
+        await unlock();
+        const r = await fetch(url);
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const ab = await r.arrayBuffer();
+        if (mine !== token) return;
+        const buf = await ctx.decodeAudioData(ab);
+        if (mine !== token) return;
+        src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(analyser);
+        src.onended = () => {
+          if (mine !== token) return;
+          playing = false;
+          if (onEnd) onEnd();
+        };
+        src.start(0);
+        playing = true;
+      }
+
+      function volume() {
+        if (!playing || !analyser) return 0;
+        analyser.getByteTimeDomainData(data);
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) {
+          const v = (data[i] - 128) / 128;
+          sum += v * v;
+        }
+        return Math.sqrt(sum / data.length);
+      }
+
+      return { play, stop, volume, isPlaying: () => playing };
+    })();
+
+    // ── Carrousel de fiches ───────────────────────────────────────────
+    const Deck = (() => {
+      const deckEl = document.getElementById("deck");
+      const diceEl = document.getElementById("diceBtn");
+      let items = [], N = 0, current = null, idle = null;
+
+      const fmt = (s) => {
+        const m = Math.floor(s / 60), r = Math.round(s % 60);
+        return m + "'" + String(r).padStart(2, "0") + "''";
+      };
+
+      function make(it, i) {
+        const b = document.createElement("button");
+        b.className = "card";
+        b.type = "button";
+        b.dataset.i = i;
+        b.setAttribute("role", "option");
+        b.setAttribute("aria-current", "false");
+        b.title = it.q;
+        const l = document.createElement("span"); l.className = "lbl"; l.textContent = it.t;
+        const q = document.createElement("span"); q.className = "txt"; q.textContent = it.q;
+        const d = document.createElement("span"); d.className = "len"; d.textContent = fmt(it.d);
+        b.append(l, q, d);
+        return b;
+      }
+
+      function clear() {
+        deckEl.querySelectorAll('.card[aria-current="true"]')
+              .forEach((c) => c.setAttribute("aria-current", "false"));
+        current = null;
+      }
+
+      async function pick(i, scroll) {
+        if (current === i && Audio.isPlaying()) { Audio.stop(); clear(); return; }
+        clear();
+        current = i;
+        deckEl.querySelectorAll('.card[data-i="' + i + '"]')
+              .forEach((c) => c.setAttribute("aria-current", "true"));
+        if (scroll) {
+          const el = deckEl.querySelector('.card[data-i="' + i + '"]');
+          if (el) el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+        try {
+          await Audio.play("audio/" + items[i].f, clear);
+        } catch (e) {
+          clear();
+          showToast("Cet enregistrement n'a pas pu être chargé.");
+        }
+      }
+
+      // Boucle infinie : trois copies du jeu, recentrage sur celle du milieu.
+      // Uniquement quand le défilement s'est arrêté — sinon iOS coupe
+      // l'inertie et le saut devient visible.
+      function recenter() {
+        const third = deckEl.scrollWidth / 3;
+        if (third < 40) return;
+        const x = deckEl.scrollLeft;
+        if (x < third * 0.5) deckEl.scrollLeft = x + third;
+        else if (x > third * 1.5) deckEl.scrollLeft = x - third;
+      }
+
+      function build(list) {
+        items = list; N = list.length;
+        if (!N) return;
+        const frag = document.createDocumentFragment();
+        for (let copy = 0; copy < 3; copy++) list.forEach((it, i) => frag.appendChild(make(it, i)));
+        deckEl.appendChild(frag);
+        requestAnimationFrame(() => { deckEl.scrollLeft = deckEl.scrollWidth / 3; });
+
+        deckEl.addEventListener("click", (e) => {
+          const c = e.target.closest(".card");
+          if (c) pick(Number(c.dataset.i), false);
+        });
+        deckEl.addEventListener("scroll", () => {
+          clearTimeout(idle);
+          idle = setTimeout(recenter, 150);
+        }, { passive: true });
+        deckEl.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          e.preventDefault();
+          const w = (deckEl.querySelector(".card")?.offsetWidth || 200) + 10;
+          deckEl.scrollBy({ left: e.key === "ArrowRight" ? w : -w, behavior: "smooth" });
+        });
+
+        diceEl.addEventListener("click", () => {
+          diceEl.classList.remove("rolling");
+          void diceEl.offsetWidth;
+          diceEl.classList.add("rolling");
+          setTimeout(() => diceEl.classList.remove("rolling"), 420);
+          let i = Math.floor(Math.random() * N);
+          if (N > 1 && i === current) i = (i + 1 + Math.floor(Math.random() * (N - 1))) % N;
+          pick(i, true);
+        });
+      }
+
+      return { build, clear };
+    })();
+
+    fetch("audio/deck.json")
+      .then((r) => r.json())
+      .then(Deck.build)
+      .catch(() => {});
+
     // ── VisualViewport: keyboard-aware layout (iOS Safari) ─────────────
     if (isMobile() && window.visualViewport) {
       const vv = window.visualViewport;
@@ -1119,30 +1145,15 @@
 
       vv.addEventListener('resize', syncToViewport, { passive: true });
       vv.addEventListener('scroll', syncToViewport, { passive: true });
-
-      chatInput.addEventListener('blur', () => {
-        setTimeout(() => {
-          composerEl.style.transform = '';
-          actionsTrayEl.style.transform = '';
-        }, 80);
-      });
     }
 
     // Prevent scroll/bounce on body (touchmove)
     document.addEventListener('touchmove', (e) => {
-      if (!e.target.closest('input, textarea')) {
+      // #deck reste scrollable horizontalement au doigt.
+      if (!e.target.closest('input, textarea, #deck')) {
         e.preventDefault();
       }
     }, { passive: false });
-
-    // Click anywhere (desktop): focus input
-    document.addEventListener("click", (e) => {
-      if (!isMobile() &&
-          e.target.id !== "sendBtn" &&
-          !e.target.closest("#actionsTray")) {
-        chatInput.focus();
-      }
-    });
 
     // ── Toast ──────────────────────────────────────────────────────────
     function showToast(msg) {
@@ -1264,20 +1275,6 @@
         await navigator.share({ files: [file] });
       } catch (e) {
         if (e.name !== "AbortError") showToast("Partage impossible");
-      }
-    });
-
-    // ── Send (button + Enter key) ──────────────────────────────────────
-    sendBtn?.addEventListener('click', async () => {
-      const q = chatInput.value.trim();
-      if (q) await askAndShow(q);
-    });
-
-    chatInput.addEventListener("keydown", async (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const q = chatInput.value.trim();
-        if (q) await askAndShow(q);
       }
     });
 

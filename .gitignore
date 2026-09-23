@@ -22,3 +22,6 @@ Untitled.ipynb
 
 # Node (not used, but just in case)
 node_modules/
+
+# Corpus de travail (audio + logs) — hors deploiement
+_corpus/

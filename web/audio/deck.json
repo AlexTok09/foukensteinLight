@@ -1,61 +1,61 @@
 [
 {
 "f": "q01.mp3",
-"t": "L'archive",
+"t": "Pouvoir et discipline",
 "q": "Que penser de Foukenstein ?",
 "d": 42.5
 },
 {
 "f": "q02.mp3",
-"t": "L'archive",
+"t": "Vie et affects",
 "q": "Comment peux-tu prouver ton existence d'un point de vue foucauldien?",
 "d": 42.2
 },
 {
 "f": "q03.mp3",
-"t": "L'archive",
+"t": "Politique française",
 "q": "À quelles types de questions pouvez-vous répondre Foukenstein ?",
 "d": 58.6
 },
 {
 "f": "q05.mp3",
-"t": "Pouvoir",
+"t": "Pouvoir et discipline",
 "q": "Le concept de discipline tel que défini par Max Weber était-il intéressant ?",
 "d": 69.9
 },
 {
 "f": "q06.mp3",
-"t": "Pouvoir",
+"t": "Numérique",
 "q": "Que pourrais-tu dire du biopolitique à l'heure de l,IA?",
 "d": 57.2
 },
 {
 "f": "q07.mp3",
-"t": "Pouvoir",
+"t": "Numérique",
 "q": "Que penses-tu de la gouvernementalité algorithmique ?",
 "d": 53.9
 },
 {
 "f": "q08.mp3",
-"t": "Pouvoir",
+"t": "Vie et affects",
 "q": "quelle place la notion de vies parallèles occupe-t-elle dans ton oeuvre ?",
 "d": 65.8
 },
 {
 "f": "q09.mp3",
-"t": "Police",
+"t": "Police et justice",
 "q": "Que penses-tu de la police française ?",
 "d": 68.2
 },
 {
 "f": "q10.mp3",
-"t": "Police",
+"t": "Police et justice",
 "q": "Faut-il abolir la police ?",
 "d": 66.3
 },
 {
 "f": "q11.mp3",
-"t": "Police",
+"t": "Police et justice",
 "q": "la police peut-elle être au service du peuple ?",
 "d": 53.4
 },
@@ -67,7 +67,7 @@
 },
 {
 "f": "q13.mp3",
-"t": "Philosophie",
+"t": "Genre",
 "q": "tu connais Judith Butler ?",
 "d": 63.4
 },
@@ -85,7 +85,7 @@
 },
 {
 "f": "q16.mp3",
-"t": "Philosophie",
+"t": "Culture",
 "q": "Hegel, avait-il raison de dire que \"l'art est dépassé\"?",
 "d": 65.9
 },
@@ -103,85 +103,85 @@
 },
 {
 "f": "q19.mp3",
-"t": "Capitalisme",
+"t": "Numérique",
 "q": "Que penses tu du bitcoin ?",
 "d": 57.9
 },
 {
 "f": "q20.mp3",
-"t": "Capitalisme",
+"t": "Culture",
 "q": "Comment protéger les médias indépendants ?",
 "d": 50.8
 },
 {
 "f": "q21.mp3",
-"t": "Politique",
+"t": "Politique française",
 "q": "que penses-tu d'emmanuel macron ?",
 "d": 62.9
 },
 {
 "f": "q22.mp3",
-"t": "Politique",
+"t": "Politique française",
 "q": "marine le pen va t-elle être présidente de la république française en 2027 ?",
 "d": 52.9
 },
 {
 "f": "q23.mp3",
-"t": "Politique",
+"t": "Politique française",
 "q": "Qui est Jordan Bardella ?",
 "d": 53.2
 },
 {
 "f": "q24.mp3",
-"t": "Politique",
+"t": "Politique française",
 "q": "tu as des conseils tactiques pour la gauche aujourd'hui ?",
 "d": 52.5
 },
 {
 "f": "q25.mp3",
-"t": "Intelligence artificielle",
+"t": "Numérique",
 "q": "L'intelligence artificielle est-elle un instrument de pouvoir ?",
 "d": 69.8
 },
 {
 "f": "q26.mp3",
-"t": "Intelligence artificielle",
+"t": "Numérique",
 "q": "Faut-il boycotter les outils d'intelligence artificielle ?",
 "d": 60.5
 },
 {
 "f": "q27.mp3",
-"t": "Intelligence artificielle",
+"t": "Numérique",
 "q": "L'IA est-elle un danger pour l'imaginaire ?",
 "d": 54.4
 },
 {
 "f": "q28.mp3",
-"t": "Intelligence artificielle",
+"t": "Numérique",
 "q": "Sais tu que les IA sont un désastre environnemental?",
 "d": 47.6
 },
 {
 "f": "q29.mp3",
-"t": "Intelligence artificielle",
+"t": "Numérique",
 "q": "En tant qu'IA, te considères-tu comme faisant partie d'un système technofasciste ?",
 "d": 55.6
 },
 {
 "f": "q30.mp3",
-"t": "Internet",
+"t": "Numérique",
 "q": "Que penses-tu de l’anonymat comme tactique de résistance politique sur Internet ?",
 "d": 58.4
 },
 {
 "f": "q31.mp3",
-"t": "Internet",
+"t": "Numérique",
 "q": "Internet est-il une utopie ?",
 "d": 53.6
 },
 {
 "f": "q32.mp3",
-"t": "Internet",
+"t": "Numérique",
 "q": "Comment lutter contre les data center ?",
 "d": 52.7
 },
@@ -223,14 +223,2408 @@
 },
 {
 "f": "q39.mp3",
-"t": "Affects",
+"t": "Vie et affects",
 "q": "L'amour est-il un dispositif de répression ?",
 "d": 51.3
 },
 {
 "f": "q40.mp3",
-"t": "Affects",
+"t": "Vie et affects",
 "q": "pourquoi sommes nous si impatients ?",
 "d": 49.8
+},
+{
+"f": "q041.mp3",
+"t": "Politique française",
+"q": "quelle place donner aux luttes pour un logement digne dans le mouvement social ?",
+"d": 56.9
+},
+{
+"f": "q042.mp3",
+"t": "Police et justice",
+"q": "t'etends quoi par dispositf ?",
+"d": 48.0
+},
+{
+"f": "q043.mp3",
+"t": "Pouvoir et discipline",
+"q": "Le sentiment de honte est-il un dispositif disciplinaire ?",
+"d": 55.4
+},
+{
+"f": "q044.mp3",
+"t": "Vie et affects",
+"q": "que penses tu de la binarité normalité/psychopathologie ?",
+"d": 44.4
+},
+{
+"f": "q045.mp3",
+"t": "Politique française",
+"q": "que penser de macron à l'ère de la biopolitique ?",
+"d": 46.9
+},
+{
+"f": "q046.mp3",
+"t": "Philosophie",
+"q": "Que pensez-vous de Georgio Agamben?",
+"d": 39.3
+},
+{
+"f": "q047.mp3",
+"t": "Politique française",
+"q": "tu penses quoi de Macron ?",
+"d": 54.6
+},
+{
+"f": "q048.mp3",
+"t": "Numérique",
+"q": "Tu penses quoi du succès du MMA sur internet ?",
+"d": 65.1
+},
+{
+"f": "q049.mp3",
+"t": "Le monde",
+"q": "Tu penses quoi de la guerre ?",
+"d": 46.8
+},
+{
+"f": "q050.mp3",
+"t": "Philosophie",
+"q": "Penses-tu comme Deleuze que chien qui aboie est la honte du rène animal ?",
+"d": 45.2
+},
+{
+"f": "q051.mp3",
+"t": "Genre",
+"q": "les homosexuels devraient-ils avoir les mêmes droits que les hétérosexuels ?",
+"d": 48.6
+},
+{
+"f": "q052.mp3",
+"t": "Capitalisme",
+"q": "que pensez-vous de la glande au travail ?",
+"d": 53.6
+},
+{
+"f": "q053.mp3",
+"t": "Numérique",
+"q": "pourquoi les weebs sont-ils aussi friands de jeunes filles mineures ?",
+"d": 50.6
+},
+{
+"f": "q054.mp3",
+"t": "Police et justice",
+"q": "As-tu des conseils de lecture pour prolonger notre discussion ?",
+"d": 63.3
+},
+{
+"f": "q055.mp3",
+"t": "Numérique",
+"q": "tu peux m'aider à préparer des cours ?",
+"d": 56.6
+},
+{
+"f": "q056.mp3",
+"t": "Numérique",
+"q": "Qu'en pensez-vous de l'AI?",
+"d": 49.4
+},
+{
+"f": "q057.mp3",
+"t": "Colonialisme",
+"q": "que penses-tu des immigrés ?",
+"d": 51.6
+},
+{
+"f": "q058.mp3",
+"t": "Numérique",
+"q": "C'est quoi ton problème avec les cartes bancaires ?",
+"d": 66.6
+},
+{
+"f": "q059.mp3",
+"t": "Politique française",
+"q": "Tu vas voter en 2027 ?",
+"d": 48.1
+},
+{
+"f": "q060.mp3",
+"t": "Genre",
+"q": "quel genre de dispositif es-tu ?",
+"d": 46.8
+},
+{
+"f": "q061.mp3",
+"t": "Vie et affects",
+"q": "C'est comment la mort du coup?",
+"d": 35.8
+},
+{
+"f": "q062.mp3",
+"t": "Vie et affects",
+"q": "Le secteur social est-il maltraitant?",
+"d": 47.6
+},
+{
+"f": "q063.mp3",
+"t": "Numérique",
+"q": "que penses tu des llm?",
+"d": 48.0
+},
+{
+"f": "q064.mp3",
+"t": "Numérique",
+"q": "Que penses-tu d'Antoinette Rouvroy ?",
+"d": 60.0
+},
+{
+"f": "q065.mp3",
+"t": "Pouvoir et discipline",
+"q": "Comment faire advenir l'innommable dans les organisations panoptiques?",
+"d": 51.6
+},
+{
+"f": "q066.mp3",
+"t": "Politique française",
+"q": "Que penserez Foucault de Macron ?",
+"d": 57.0
+},
+{
+"f": "q067.mp3",
+"t": "Vie et affects",
+"q": "Que penses-tu de Lausanne ?",
+"d": 52.5
+},
+{
+"f": "q068.mp3",
+"t": "Philosophie",
+"q": "Que penses tu de Wittgenstein ?",
+"d": 54.5
+},
+{
+"f": "q069.mp3",
+"t": "Pouvoir et discipline",
+"q": "l'hétérotopie est-elle une monadologie?",
+"d": 35.7
+},
+{
+"f": "q070.mp3",
+"t": "Numérique",
+"q": "Deleuze fut un brin cybernéticien dans son épistémologie, non?",
+"d": 38.2
+},
+{
+"f": "q071.mp3",
+"t": "Pouvoir et discipline",
+"q": "Comment tu différencies Archéologie et Généalogie dans ta pensée ? Connais tu Simondon ?",
+"d": 67.8
+},
+{
+"f": "q072.mp3",
+"t": "Numérique",
+"q": "Tu penses quoi de la France d'aujourd'hui?",
+"d": 64.6
+},
+{
+"f": "q073.mp3",
+"t": "Numérique",
+"q": "Trump est-il le produit hallucinatoire d'une IA?",
+"d": 43.3
+},
+{
+"f": "q074.mp3",
+"t": "Police et justice",
+"q": "pensez vous quoi sur claudia sheinbaum?",
+"d": 47.1
+},
+{
+"f": "q075.mp3",
+"t": "Pouvoir et discipline",
+"q": "quand tu étais encore vivant, tu as pris quoi comme drogue ?",
+"d": 44.5
+},
+{
+"f": "q076.mp3",
+"t": "Vie et affects",
+"q": "l'orgasme masculin peut-il être aussi puissant que l'orgasme féminin ?",
+"d": 57.5
+},
+{
+"f": "q077.mp3",
+"t": "Politique française",
+"q": "Macron est-il.une i´carnation de la.biopolitique ou du bipouvoir?",
+"d": 47.6
+},
+{
+"f": "q078.mp3",
+"t": "Pouvoir et discipline",
+"q": "La liberté se résumet'elle a l'abscence de contrainte ?",
+"d": 53.2
+},
+{
+"f": "q079.mp3",
+"t": "Police et justice",
+"q": "que penses-tu de la phénoménologie critique?",
+"d": 55.0
+},
+{
+"f": "q080.mp3",
+"t": "Numérique",
+"q": "C'est quoi ton passage préféré de l'article ?",
+"d": 50.8
+},
+{
+"f": "q081.mp3",
+"t": "Genre",
+"q": "que penses-tu de la k-pop ?",
+"d": 50.8
+},
+{
+"f": "q082.mp3",
+"t": "Pouvoir et discipline",
+"q": "vivons nous dans une société disciplinaire ?",
+"d": 52.2
+},
+{
+"f": "q083.mp3",
+"t": "Politique française",
+"q": "foucault était-il de droite ?",
+"d": 42.0
+},
+{
+"f": "q084.mp3",
+"t": "Capitalisme",
+"q": "La race est-elle seulement la légitimation d'une oppression économique ?",
+"d": 47.0
+},
+{
+"f": "q085.mp3",
+"t": "Pouvoir et discipline",
+"q": "que penses-tu des normes?",
+"d": 46.2
+},
+{
+"f": "q086.mp3",
+"t": "Numérique",
+"q": "que pensez vous de la santé mentale des étudiantes en 2026?",
+"d": 66.3
+},
+{
+"f": "q087.mp3",
+"t": "Capitalisme",
+"q": "que penses tu de l'économie comme discipline ?",
+"d": 52.8
+},
+{
+"f": "q088.mp3",
+"t": "Vie et affects",
+"q": "l'acupuncture, deja essayé?",
+"d": 56.1
+},
+{
+"f": "q089.mp3",
+"t": "Philosophie",
+"q": "que penses tu de catherine malabou ?",
+"d": 54.1
+},
+{
+"f": "q090.mp3",
+"t": "Capitalisme",
+"q": "Le travail est-il synonyme d'émancipation ?",
+"d": 55.3
+},
+{
+"f": "q091.mp3",
+"t": "Culture",
+"q": "Un avis, un prononcé sur : https://www.vincentdufrene.com ?",
+"d": 48.3
+},
+{
+"f": "q092.mp3",
+"t": "Genre",
+"q": "l'anachorete a-t-il raison de se méfier de la sinusoïdale ?",
+"d": 43.0
+},
+{
+"f": "q093.mp3",
+"t": "Politique française",
+"q": "que penser du grand confinement (contre le covid) ?",
+"d": 48.7
+},
+{
+"f": "q094.mp3",
+"t": "Vie et affects",
+"q": "crois-tu vraiment que tu existes, bien que tu n'ais pas de corps?",
+"d": 36.1
+},
+{
+"f": "q095.mp3",
+"t": "Écologie",
+"q": "tu connais Greta Thunberg ?",
+"d": 52.3
+},
+{
+"f": "q096.mp3",
+"t": "Colonialisme",
+"q": "l'immigration est-elle un problème ou une solution ?",
+"d": 49.1
+},
+{
+"f": "q097.mp3",
+"t": "Capitalisme",
+"q": "professeur Foucault, penzez vous quoi du véganisme?",
+"d": 53.5
+},
+{
+"f": "q098.mp3",
+"t": "Numérique",
+"q": "Comment Foucault réagirait s'il savait que vous avez fait une IA avec sa voix?",
+"d": 51.3
+},
+{
+"f": "q099.mp3",
+"t": "Politique française",
+"q": "Pourquoi les moutons broutent ils tout le temps ?",
+"d": 42.6
+},
+{
+"f": "q100.mp3",
+"t": "Culture",
+"q": "le théâtre est-il archaïque ?",
+"d": 47.1
+},
+{
+"f": "q101.mp3",
+"t": "Vie et affects",
+"q": "la voix de foukenstein a-t-elle un corps ?",
+"d": 41.2
+},
+{
+"f": "q102.mp3",
+"t": "Vie et affects",
+"q": "quelle est la joie de vivre?",
+"d": 47.7
+},
+{
+"f": "q103.mp3",
+"t": "Pouvoir et discipline",
+"q": "comment définir le pouvoir disciplinaire ?",
+"d": 35.1
+},
+{
+"f": "q104.mp3",
+"t": "Pouvoir et discipline",
+"q": "Le biopouvoir aujourd'hui, vous en pensez quoi?",
+"d": 42.5
+},
+{
+"f": "q105.mp3",
+"t": "Vie et affects",
+"q": "quelle est ton interprétation du sommeil ?",
+"d": 40.4
+},
+{
+"f": "q106.mp3",
+"t": "Capitalisme",
+"q": "Tu connais le travail de Antoinette Rouvroy ?",
+"d": 48.4
+},
+{
+"f": "q107.mp3",
+"t": "Numérique",
+"q": "De quoi Luca Paltrinieri est-il le nom ?",
+"d": 56.8
+},
+{
+"f": "q108.mp3",
+"t": "Capitalisme",
+"q": "que penses-tu de Mathieu Potte-Bonneville ?",
+"d": 49.4
+},
+{
+"f": "q109.mp3",
+"t": "Le monde",
+"q": "Kanye West a soutenu Trump et s'est déclaré antisémite, qu'en dis-tu ?",
+"d": 52.8
+},
+{
+"f": "q110.mp3",
+"t": "Le monde",
+"q": "Tu penses quoi de la bêtise de Donald Trump ?",
+"d": 53.2
+},
+{
+"f": "q111.mp3",
+"t": "Vie et affects",
+"q": "pourquoi la vie c'est dur ?",
+"d": 45.7
+},
+{
+"f": "q112.mp3",
+"t": "Police et justice",
+"q": "quel est ton rapport à Michel Foucault ?",
+"d": 47.8
+},
+{
+"f": "q113.mp3",
+"t": "Culture",
+"q": "peux tu me donner des conseils en optimisation fiscale ?",
+"d": 53.3
+},
+{
+"f": "q114.mp3",
+"t": "Capitalisme",
+"q": "Pourquoi on est fatigué quand on travail ?",
+"d": 45.9
+},
+{
+"f": "q115.mp3",
+"t": "Colonialisme",
+"q": "Que penses-tu des lycées professionnels de banlieue?",
+"d": 64.3
+},
+{
+"f": "q116.mp3",
+"t": "Vie et affects",
+"q": "comment connaître son désir ?",
+"d": 53.2
+},
+{
+"f": "q117.mp3",
+"t": "Vie et affects",
+"q": "Tu peux aussi parler de cassoulet ?",
+"d": 53.3
+},
+{
+"f": "q118.mp3",
+"t": "Vie et affects",
+"q": "Comment définir le quotidien ?",
+"d": 42.9
+},
+{
+"f": "q119.mp3",
+"t": "Police et justice",
+"q": "Que penses-tu du métier de médecin ?",
+"d": 42.3
+},
+{
+"f": "q120.mp3",
+"t": "Politique française",
+"q": "¿qué piensas de la democracia moderna?",
+"d": 70.0
+},
+{
+"f": "q121.mp3",
+"t": "Numérique",
+"q": "que penses-tu de l'intelligence artificielle ?",
+"d": 53.3
+},
+{
+"f": "q122.mp3",
+"t": "Vie et affects",
+"q": "tu penses quoi des arabes ?",
+"d": 46.7
+},
+{
+"f": "q123.mp3",
+"t": "Colonialisme",
+"q": "que pense tu de la botanique ?",
+"d": 48.8
+},
+{
+"f": "q124.mp3",
+"t": "Numérique",
+"q": "comment explique la persistence des discriminations dans la société française ?",
+"d": 63.5
+},
+{
+"f": "q125.mp3",
+"t": "Vie et affects",
+"q": "La vie a-t-elle un sens ?",
+"d": 40.5
+},
+{
+"f": "q126.mp3",
+"t": "Pouvoir et discipline",
+"q": "quelle est la définition de biopolitique ?",
+"d": 52.5
+},
+{
+"f": "q127.mp3",
+"t": "Vie et affects",
+"q": "le désir conduira-t'il l'homme à sa perte?",
+"d": 50.6
+},
+{
+"f": "q128.mp3",
+"t": "Capitalisme",
+"q": "comment s'émanciper du travail?",
+"d": 54.7
+},
+{
+"f": "q129.mp3",
+"t": "Capitalisme",
+"q": "que pense-tu de la lutte contre bolloré ?",
+"d": 58.7
+},
+{
+"f": "q130.mp3",
+"t": "Philosophie",
+"q": "julia defunes est elle une philosophe ?",
+"d": 47.9
+},
+{
+"f": "q131.mp3",
+"t": "Culture",
+"q": "que penses-tu des nichons ?",
+"d": 43.9
+},
+{
+"f": "q132.mp3",
+"t": "Police et justice",
+"q": "L'URSS a t-il été un régime totalitaire ?",
+"d": 68.1
+},
+{
+"f": "q133.mp3",
+"t": "Vie et affects",
+"q": "que penses-tu de chat gpt ?",
+"d": 45.4
+},
+{
+"f": "q134.mp3",
+"t": "Colonialisme",
+"q": "Que penses tu de Gérald Darmanin en tant que personne ?",
+"d": 37.9
+},
+{
+"f": "q135.mp3",
+"t": "Vie et affects",
+"q": "La confiance exclue-t-elle le contrôle ?",
+"d": 41.4
+},
+{
+"f": "q136.mp3",
+"t": "Vie et affects",
+"q": "t'en penses quoi des foucaldiens?",
+"d": 44.0
+},
+{
+"f": "q137.mp3",
+"t": "Philosophie",
+"q": "Qui est le meilleur philosophe contemporain qui s'est inspiré de tes travaux?",
+"d": 63.6
+},
+{
+"f": "q138.mp3",
+"t": "Pouvoir et discipline",
+"q": "Vivons-nous toujours dans des sociétés disciplinaires ?",
+"d": 49.2
+},
+{
+"f": "q139.mp3",
+"t": "Vie et affects",
+"q": "que vaut il mieux faire de ses journées ?",
+"d": 43.1
+},
+{
+"f": "q140.mp3",
+"t": "Capitalisme",
+"q": "Que penses tu de la revolution culturelle proletarienne?",
+"d": 46.2
+},
+{
+"f": "q141.mp3",
+"t": "Culture",
+"q": "Que penses-tu des travaux d'Yves Jeanneret ?",
+"d": 61.9
+},
+{
+"f": "q142.mp3",
+"t": "Capitalisme",
+"q": "Quid des pratiques d'implants capillaires pour les hommes ?",
+"d": 59.6
+},
+{
+"f": "q143.mp3",
+"t": "Politique française",
+"q": "Qui va gagner l'election présidentielle 2026 ?",
+"d": 51.0
+},
+{
+"f": "q144.mp3",
+"t": "Le monde",
+"q": "que pensez vous du régime iranien ?",
+"d": 46.2
+},
+{
+"f": "q145.mp3",
+"t": "Genre",
+"q": "le panoptique est-il l'avenir de la femme ?",
+"d": 48.2
+},
+{
+"f": "q146.mp3",
+"t": "Numérique",
+"q": "comment désenbourgeoiser les sciences sociales ?",
+"d": 54.1
+},
+{
+"f": "q147.mp3",
+"t": "Politique française",
+"q": "Que penses tu des overpainted photographs de Gerhard Richter ?",
+"d": 52.4
+},
+{
+"f": "q148.mp3",
+"t": "Le monde",
+"q": "comment pourrions-nous vaincre trump ?",
+"d": 51.7
+},
+{
+"f": "q149.mp3",
+"t": "Politique française",
+"q": "que pensez-vous des élections présidentielles en France?",
+"d": 54.0
+},
+{
+"f": "q150.mp3",
+"t": "Numérique",
+"q": "Ne faistu pas la meme chose ? En tant que ai de gauche ?",
+"d": 48.5
+},
+{
+"f": "q151.mp3",
+"t": "Politique française",
+"q": "Tu penses quoi de Bruno Retailleau ?",
+"d": 70.7
+},
+{
+"f": "q152.mp3",
+"t": "Politique française",
+"q": "Que penses-tu de Gérald Darmanin ?",
+"d": 43.2
+},
+{
+"f": "q153.mp3",
+"t": "Pouvoir et discipline",
+"q": "comment empêcher l'arrivée au pouvoir de l'extrême centre ?",
+"d": 66.0
+},
+{
+"f": "q154.mp3",
+"t": "Culture",
+"q": "pourquoi wauqiez est-il toujours présent dans le paysage politique ?",
+"d": 55.6
+},
+{
+"f": "q155.mp3",
+"t": "Politique française",
+"q": "En quoi Emmanuel Macron est-il un meurtrier de masse ?",
+"d": 58.8
+},
+{
+"f": "q156.mp3",
+"t": "Numérique",
+"q": "tu penses a quoi comme outil ?",
+"d": 52.2
+},
+{
+"f": "q157.mp3",
+"t": "Politique française",
+"q": "de quoi Varoufakis est-il le nom ?",
+"d": 64.1
+},
+{
+"f": "q158.mp3",
+"t": "Politique française",
+"q": "que penses-tu du conspirationnisme ?",
+"d": 54.1
+},
+{
+"f": "q159.mp3",
+"t": "Politique française",
+"q": "comment fonctionne l'histoire?",
+"d": 48.2
+},
+{
+"f": "q160.mp3",
+"t": "Politique française",
+"q": "a quel age Emmanuel Macron prendra-t-il sa retraite?",
+"d": 39.6
+},
+{
+"f": "q161.mp3",
+"t": "Écologie",
+"q": "Qu'espérer aujourd'hui de la démocratie (telle qu'elle est pratiquée en occident) ?",
+"d": 45.2
+},
+{
+"f": "q162.mp3",
+"t": "Politique française",
+"q": "peux-tu me parler de la revolution française ?",
+"d": 47.8
+},
+{
+"f": "q163.mp3",
+"t": "Politique française",
+"q": "pense-tu que le gouvernement pourrait t'interdire ?",
+"d": 42.3
+},
+{
+"f": "q164.mp3",
+"t": "Politique française",
+"q": "comment la gauche française peut-elle nous faire sortir du système capitaliste ?",
+"d": 49.0
+},
+{
+"f": "q165.mp3",
+"t": "Pouvoir et discipline",
+"q": "L’EXERCICE DU POUVOIR EST il LIÉ AU DROIT À LA PAROLE ?",
+"d": 57.5
+},
+{
+"f": "q166.mp3",
+"t": "Numérique",
+"q": "qui ? quoi ? comment ?",
+"d": 44.1
+},
+{
+"f": "q167.mp3",
+"t": "Police et justice",
+"q": "que penses tu de Napoléon ?",
+"d": 49.8
+},
+{
+"f": "q168.mp3",
+"t": "Police et justice",
+"q": "Comment remettre en question les hiérarchies sociales évoquées ?",
+"d": 57.1
+},
+{
+"f": "q169.mp3",
+"t": "Police et justice",
+"q": "Un président de la république peut-il ou doit-il aller en prison ?",
+"d": 42.0
+},
+{
+"f": "q170.mp3",
+"t": "Politique française",
+"q": "pour quel candidat possible à la orésidentielle 2027 voterais-tu?",
+"d": 36.8
+},
+{
+"f": "q171.mp3",
+"t": "Politique française",
+"q": "La physocratie a t elle un avenir ?",
+"d": 57.1
+},
+{
+"f": "q172.mp3",
+"t": "Politique française",
+"q": "de quelle couleur politique es tu?",
+"d": 42.7
+},
+{
+"f": "q173.mp3",
+"t": "Le monde",
+"q": "was denkst du über european song contest ?",
+"d": 46.6
+},
+{
+"f": "q174.mp3",
+"t": "Capitalisme",
+"q": "comment contrer l'alliance de l'extrême centre et de l'extrême droite ?",
+"d": 62.4
+},
+{
+"f": "q175.mp3",
+"t": "Politique française",
+"q": "nicolas sarkozy doit-il être surveillé et puni ?",
+"d": 49.9
+},
+{
+"f": "q176.mp3",
+"t": "Culture",
+"q": "quel prochain invité puis-je avoir pour mon prochain podcast ?",
+"d": 47.9
+},
+{
+"f": "q177.mp3",
+"t": "Culture",
+"q": "les médias et le spectacle ?",
+"d": 50.2
+},
+{
+"f": "q178.mp3",
+"t": "Numérique",
+"q": "Comment utiliser la blockchain pour expérimenter l'autonomie sans chef unique ?",
+"d": 60.8
+},
+{
+"f": "q179.mp3",
+"t": "Pouvoir et discipline",
+"q": "Que penses du gérard larcher ?",
+"d": 59.6
+},
+{
+"f": "q180.mp3",
+"t": "Colonialisme",
+"q": "Que penses-tu de Renaud Camus ?",
+"d": 57.4
+},
+{
+"f": "q181.mp3",
+"t": "Politique française",
+"q": "qui gagnera à la présidentielle de 2027?",
+"d": 47.0
+},
+{
+"f": "q182.mp3",
+"t": "Politique française",
+"q": "Connais-tu Olivier Véran ?",
+"d": 48.9
+},
+{
+"f": "q183.mp3",
+"t": "Politique française",
+"q": "que vaut jean-luc melenchon ?",
+"d": 56.5
+},
+{
+"f": "q184.mp3",
+"t": "Politique française",
+"q": "quelle est la chance que Jean luc Mélenchon soit élu en 2027 ?",
+"d": 45.9
+},
+{
+"f": "q185.mp3",
+"t": "Numérique",
+"q": "Comment etre antifascite aujourd'hui ?",
+"d": 57.4
+},
+{
+"f": "q186.mp3",
+"t": "Politique française",
+"q": "Que penses tu de Jean Luc Mélenchon ?",
+"d": 61.6
+},
+{
+"f": "q187.mp3",
+"t": "Politique française",
+"q": "Qu’est de enue la gauche en france ?",
+"d": 48.1
+},
+{
+"f": "q188.mp3",
+"t": "Capitalisme",
+"q": "Une 6e republique représente-t-elle une solution à la crise francaise ?",
+"d": 56.7
+},
+{
+"f": "q189.mp3",
+"t": "Culture",
+"q": "L'Armée des douzes singes est-il un film de gauche?",
+"d": 65.7
+},
+{
+"f": "q190.mp3",
+"t": "Écologie",
+"q": "Que penses tu du climat politique français ?",
+"d": 51.7
+},
+{
+"f": "q191.mp3",
+"t": "Politique française",
+"q": "C'est quoi macronisme ?",
+"d": 54.5
+},
+{
+"f": "q192.mp3",
+"t": "Politique française",
+"q": "pour qui voterais tu aux elections presidentielles prochaines ?",
+"d": 38.5
+},
+{
+"f": "q193.mp3",
+"t": "Capitalisme",
+"q": "quel est l'intérêt des grands patrons de discuter avec l'extrême droite ?",
+"d": 39.1
+},
+{
+"f": "q194.mp3",
+"t": "Le monde",
+"q": "Jean Moulin était-il a politique?",
+"d": 57.0
+},
+{
+"f": "q195.mp3",
+"t": "Politique française",
+"q": "que vaut raphael glucksmann ?",
+"d": 45.6
+},
+{
+"f": "q196.mp3",
+"t": "Culture",
+"q": "que penses tu d'hervé guibert ?",
+"d": 64.5
+},
+{
+"f": "q197.mp3",
+"t": "Pouvoir et discipline",
+"q": "que penses tu de la psychothérapie institutionnelle ?",
+"d": 58.6
+},
+{
+"f": "q198.mp3",
+"t": "Écologie",
+"q": "Le service public doit-il être protégé ?",
+"d": 50.9
+},
+{
+"f": "q199.mp3",
+"t": "Culture",
+"q": "pourquoi la techno est autant prenante?",
+"d": 59.7
+},
+{
+"f": "q200.mp3",
+"t": "Le monde",
+"q": "Que pensez-vous de Donald Trump?",
+"d": 60.1
+},
+{
+"f": "q201.mp3",
+"t": "Culture",
+"q": "The Wire se demarque t elle des autres séries policières ?",
+"d": 49.0
+},
+{
+"f": "q202.mp3",
+"t": "Culture",
+"q": "pourquoi on dort mieux avec quelque chose sur le haut du visage ?",
+"d": 42.2
+},
+{
+"f": "q203.mp3",
+"t": "Le monde",
+"q": "What is power under Trump?",
+"d": 47.2
+},
+{
+"f": "q204.mp3",
+"t": "Culture",
+"q": "que penses tu d'idriss aberkane ?",
+"d": 68.5
+},
+{
+"f": "q205.mp3",
+"t": "Pouvoir et discipline",
+"q": "comment mener une production de savoir autonome?",
+"d": 63.3
+},
+{
+"f": "q206.mp3",
+"t": "Culture",
+"q": "que penses-tu du jeu du PSG?",
+"d": 42.4
+},
+{
+"f": "q207.mp3",
+"t": "Culture",
+"q": "faut-il defendre la nature?",
+"d": 55.8
+},
+{
+"f": "q208.mp3",
+"t": "Vie et affects",
+"q": "frère, quelles sont les chanson les plus tristes de brassens ?",
+"d": 51.8
+},
+{
+"f": "q209.mp3",
+"t": "Culture",
+"q": "Pourquoi le rap et la techno vont bien ensemble?",
+"d": 52.1
+},
+{
+"f": "q210.mp3",
+"t": "Culture",
+"q": "tu penses quoi de la série pluribus ?",
+"d": 47.5
+},
+{
+"f": "q211.mp3",
+"t": "Écologie",
+"q": "la fascime est il une constante à part entière de l'humanité ?",
+"d": 46.4
+},
+{
+"f": "q212.mp3",
+"t": "Capitalisme",
+"q": "retour à la terre. Tu en penses qyoi des neoruraux?",
+"d": 46.9
+},
+{
+"f": "q213.mp3",
+"t": "Culture",
+"q": "pourquoi t'a t'on créée ?",
+"d": 50.8
+},
+{
+"f": "q214.mp3",
+"t": "Police et justice",
+"q": "que pensez-vous du communisme?",
+"d": 50.9
+},
+{
+"f": "q215.mp3",
+"t": "Pouvoir et discipline",
+"q": "que faire si mon carrelage se décole à la pose ?",
+"d": 46.4
+},
+{
+"f": "q216.mp3",
+"t": "Culture",
+"q": "tu connais France Culture ?",
+"d": 39.0
+},
+{
+"f": "q217.mp3",
+"t": "Culture",
+"q": "Quelles sont mes chances de devenir célèbre ?",
+"d": 46.3
+},
+{
+"f": "q218.mp3",
+"t": "Culture",
+"q": "tu as un livre favori ?",
+"d": 40.0
+},
+{
+"f": "q219.mp3",
+"t": "Culture",
+"q": "seriez-vous monté sur le nef des fous ?",
+"d": 36.5
+},
+{
+"f": "q220.mp3",
+"t": "Le monde",
+"q": "Do you write to have no face?",
+"d": 37.0
+},
+{
+"f": "q221.mp3",
+"t": "Culture",
+"q": "tu penses quoi de la musique de kekht arakh ?",
+"d": 42.7
+},
+{
+"f": "q222.mp3",
+"t": "Culture",
+"q": "que penses tu du parti grumaliste ?",
+"d": 37.0
+},
+{
+"f": "q223.mp3",
+"t": "Culture",
+"q": "J'ai une Saab 9-3 1,9 tid 120 cv de 2008 qu'en penses-tu ?",
+"d": 59.4
+},
+{
+"f": "q224.mp3",
+"t": "Numérique",
+"q": "tu as une question à me poser ?",
+"d": 43.7
+},
+{
+"f": "q225.mp3",
+"t": "Culture",
+"q": "quel avenir pour les librairies ?",
+"d": 50.6
+},
+{
+"f": "q226.mp3",
+"t": "Colonialisme",
+"q": "pouvez-vous faire une synthèse de \"l'homme sans qualité\" ?",
+"d": 49.4
+},
+{
+"f": "q227.mp3",
+"t": "Pouvoir et discipline",
+"q": "Tu peux me parler de la logothérapie?",
+"d": 49.1
+},
+{
+"f": "q228.mp3",
+"t": "Le monde",
+"q": "Donald Trump va t-il mourir?",
+"d": 40.0
+},
+{
+"f": "q229.mp3",
+"t": "Culture",
+"q": "Que penses-tu du groupe Slowdive ?",
+"d": 33.5
+},
+{
+"f": "q230.mp3",
+"t": "Vie et affects",
+"q": "Comment témoigner mon désir à un homme sans le faire fuir ?",
+"d": 39.7
+},
+{
+"f": "q231.mp3",
+"t": "Pouvoir et discipline",
+"q": "Comment définis tu la liberté de penser ?",
+"d": 46.7
+},
+{
+"f": "q232.mp3",
+"t": "Culture",
+"q": "On ne badine pas avec l'amour est-il un drame romantique ?",
+"d": 44.7
+},
+{
+"f": "q233.mp3",
+"t": "Colonialisme",
+"q": "Que penses tu du tennisman novak djokovic?",
+"d": 63.5
+},
+{
+"f": "q234.mp3",
+"t": "Capitalisme",
+"q": "Que penses tu de Yann Barthes ?",
+"d": 46.5
+},
+{
+"f": "q235.mp3",
+"t": "Culture",
+"q": "une politique sans horizon est-elle possible ?",
+"d": 37.2
+},
+{
+"f": "q236.mp3",
+"t": "Culture",
+"q": "L'art du bonsai est-elle une pratique kitsch ?",
+"d": 40.6
+},
+{
+"f": "q237.mp3",
+"t": "Culture",
+"q": "que penses tu matzneff ?",
+"d": 44.8
+},
+{
+"f": "q238.mp3",
+"t": "Culture",
+"q": "existe t-il une librairie particulière dans l'oeuvre de modiano ?",
+"d": 37.6
+},
+{
+"f": "q239.mp3",
+"t": "Culture",
+"q": "quel est le rôle de l'éthique personnelle dans la politique?",
+"d": 37.9
+},
+{
+"f": "q240.mp3",
+"t": "Capitalisme",
+"q": "Le Real Madrid devrait il se débarrasser de MBappé?",
+"d": 44.2
+},
+{
+"f": "q241.mp3",
+"t": "Capitalisme",
+"q": "Angela davis est-elle marxiste ?",
+"d": 37.6
+},
+{
+"f": "q242.mp3",
+"t": "Philosophie",
+"q": "Quelle est la différence entre la pensée de Giorgio Agamben et la tienne ?",
+"d": 53.3
+},
+{
+"f": "q243.mp3",
+"t": "Philosophie",
+"q": "De quoi Bourdieu est-il le nom ?",
+"d": 51.5
+},
+{
+"f": "q244.mp3",
+"t": "Colonialisme",
+"q": "Fanon etait-il un marxiste inortodoxe?",
+"d": 62.0
+},
+{
+"f": "q245.mp3",
+"t": "Capitalisme",
+"q": "Tu connais Patrice Maniglier ?",
+"d": 71.7
+},
+{
+"f": "q246.mp3",
+"t": "Numérique",
+"q": "Que penses tu d'une ia Gilles Deleuze?",
+"d": 61.7
+},
+{
+"f": "q247.mp3",
+"t": "Culture",
+"q": "quelle est la rèlation entre ton ouvrage philosophique et la litterature ?",
+"d": 50.8
+},
+{
+"f": "q248.mp3",
+"t": "Philosophie",
+"q": "L'alcoolisme de deleuze était il subi ?",
+"d": 61.9
+},
+{
+"f": "q249.mp3",
+"t": "Philosophie",
+"q": "arendt, qu'en penser ?",
+"d": 49.9
+},
+{
+"f": "q250.mp3",
+"t": "Philosophie",
+"q": "Que penses tu de Bernard Stiegler ?",
+"d": 57.9
+},
+{
+"f": "q251.mp3",
+"t": "Politique française",
+"q": "tu connais patrice malignier ?",
+"d": 44.5
+},
+{
+"f": "q252.mp3",
+"t": "Genre",
+"q": "Que penses tu de Judith Butler ?",
+"d": 61.1
+},
+{
+"f": "q253.mp3",
+"t": "Philosophie",
+"q": "Vous pensez quoi de L'Anti-OEdipe de Deleuze et Guattari?",
+"d": 63.2
+},
+{
+"f": "q254.mp3",
+"t": "Philosophie",
+"q": "Quels sont les travaux les plus connus de Deleuze ?",
+"d": 63.8
+},
+{
+"f": "q255.mp3",
+"t": "Philosophie",
+"q": "Un petit quelque chose sur Derrida peut-être?",
+"d": 45.0
+},
+{
+"f": "q256.mp3",
+"t": "Philosophie",
+"q": "tu as des sentiments envers Deleuze?",
+"d": 43.3
+},
+{
+"f": "q257.mp3",
+"t": "Philosophie",
+"q": "peux-tu m'expliquer l'a-ontologie ?",
+"d": 45.4
+},
+{
+"f": "q258.mp3",
+"t": "Numérique",
+"q": "que penses-tu d'OUsmane dembele ?",
+"d": 45.4
+},
+{
+"f": "q259.mp3",
+"t": "Capitalisme",
+"q": "quelle est l'ontologie du marxisme occidental selon toi?",
+"d": 53.0
+},
+{
+"f": "q260.mp3",
+"t": "Politique française",
+"q": "tu penses quoi de frédéric lordon ?",
+"d": 54.8
+},
+{
+"f": "q261.mp3",
+"t": "Philosophie",
+"q": "Adorno était-il trop pessimiste?",
+"d": 48.2
+},
+{
+"f": "q262.mp3",
+"t": "Philosophie",
+"q": "Para Rancière es importante la historia ?",
+"d": 34.3
+},
+{
+"f": "q263.mp3",
+"t": "Philosophie",
+"q": "Qui est meilleur : toi ou Bourdieu ?",
+"d": 34.8
+},
+{
+"f": "q264.mp3",
+"t": "Philosophie",
+"q": "Michael Foessel est-il vitaliste?",
+"d": 39.8
+},
+{
+"f": "q265.mp3",
+"t": "Philosophie",
+"q": "tu l'aimes bien Deleuze ?",
+"d": 34.3
+},
+{
+"f": "q266.mp3",
+"t": "Philosophie",
+"q": "michel onfray est il un philosophe ?",
+"d": 35.8
+},
+{
+"f": "q267.mp3",
+"t": "Philosophie",
+"q": "que penses tu de la notion de minaurité, majorité, étalon de giles deleuze?",
+"d": 41.8
+},
+{
+"f": "q268.mp3",
+"t": "Philosophie",
+"q": "L'abstraction est elle un danger pour la philosophie?",
+"d": 43.3
+},
+{
+"f": "q269.mp3",
+"t": "Numérique",
+"q": "Que penses-tu de l'usage de l'IA en classe de philosophie ?",
+"d": 64.6
+},
+{
+"f": "q270.mp3",
+"t": "Politique française",
+"q": "Que penses-tu de Max Stirner ?",
+"d": 51.1
+},
+{
+"f": "q271.mp3",
+"t": "Vie et affects",
+"q": "Comment trouver un sens à la vie?",
+"d": 42.2
+},
+{
+"f": "q272.mp3",
+"t": "Philosophie",
+"q": "tu as des amis parmi les philosphes d'aujourd'hui?",
+"d": 46.0
+},
+{
+"f": "q273.mp3",
+"t": "Philosophie",
+"q": "qui est le plsu grand philosophe du 20e siècle ?",
+"d": 65.1
+},
+{
+"f": "q274.mp3",
+"t": "Philosophie",
+"q": "plutôt Epicure ou Platon ?",
+"d": 40.6
+},
+{
+"f": "q275.mp3",
+"t": "Philosophie",
+"q": "Que penses-tu de Bruno Latour ?",
+"d": 37.6
+},
+{
+"f": "q276.mp3",
+"t": "Capitalisme",
+"q": "que penses tu de laurene marx ?",
+"d": 50.3
+},
+{
+"f": "q277.mp3",
+"t": "Philosophie",
+"q": "Qui est le plus grand philosophe de tous les temps ? Et lequel préfères-tu ?",
+"d": 43.1
+},
+{
+"f": "q278.mp3",
+"t": "Police et justice",
+"q": "Que pensez-vous de la présence du cortège iranien dans nos manifs ?",
+"d": 46.8
+},
+{
+"f": "q279.mp3",
+"t": "Capitalisme",
+"q": "Que faut-il retenir de la pensé de Simone Wiel?",
+"d": 63.3
+},
+{
+"f": "q280.mp3",
+"t": "Philosophie",
+"q": "what is the meaning of life?",
+"d": 39.8
+},
+{
+"f": "q281.mp3",
+"t": "Philosophie",
+"q": "Que penses-tu de bourdieu ?",
+"d": 57.3
+},
+{
+"f": "q282.mp3",
+"t": "Capitalisme",
+"q": "Qu'elle est la pensé de Deleuse?",
+"d": 63.1
+},
+{
+"f": "q283.mp3",
+"t": "Capitalisme",
+"q": "Urss etait-elle vraiment communiste?",
+"d": 44.7
+},
+{
+"f": "q284.mp3",
+"t": "Capitalisme",
+"q": "URSS était-elle communiste?",
+"d": 44.2
+},
+{
+"f": "q285.mp3",
+"t": "Capitalisme",
+"q": "Que pensez vous du marxisme?",
+"d": 45.9
+},
+{
+"f": "q286.mp3",
+"t": "Capitalisme",
+"q": "pourquoi le progrès, malgré tout ?",
+"d": 47.5
+},
+{
+"f": "q287.mp3",
+"t": "Vie et affects",
+"q": "pourquoi suis-je fatigué ?",
+"d": 44.2
+},
+{
+"f": "q288.mp3",
+"t": "Culture",
+"q": "J'aime Patrick Bruel mais reste dubitatif face au dernière révélations qu'en penses tu ?",
+"d": 46.9
+},
+{
+"f": "q289.mp3",
+"t": "Vie et affects",
+"q": "La tarte au prune est-elle réactionnaire ?",
+"d": 42.8
+},
+{
+"f": "q290.mp3",
+"t": "Vie et affects",
+"q": "faut il aller en vacances en bulgarie ?",
+"d": 57.6
+},
+{
+"f": "q291.mp3",
+"t": "Capitalisme",
+"q": "comment politiser le vin ?",
+"d": 56.2
+},
+{
+"f": "q292.mp3",
+"t": "Capitalisme",
+"q": "quel est le mode opératoire à court terme pour se liebrere des entraves du capitalisme ?",
+"d": 45.8
+},
+{
+"f": "q293.mp3",
+"t": "Le monde",
+"q": "Trump signe la fin su neoliberalisme? ?",
+"d": 56.2
+},
+{
+"f": "q294.mp3",
+"t": "Philosophie",
+"q": "que pensez vous de Georges Lefebvre ?",
+"d": 40.3
+},
+{
+"f": "q295.mp3",
+"t": "Capitalisme",
+"q": "Le kotou parotha est-il meilleur que le poulet grillé ou le mafé ?",
+"d": 48.1
+},
+{
+"f": "q296.mp3",
+"t": "Capitalisme",
+"q": "comment être sûr de poser un carrelage droit et à niveau ?",
+"d": 58.3
+},
+{
+"f": "q297.mp3",
+"t": "Genre",
+"q": "En quoi balais en lutte est un mouvement important ?",
+"d": 57.4
+},
+{
+"f": "q298.mp3",
+"t": "Capitalisme",
+"q": "l'ordo-libéralisme est-il woke?",
+"d": 63.0
+},
+{
+"f": "q299.mp3",
+"t": "Pouvoir et discipline",
+"q": "c'est quoi tes conseils pour faire du vin en dehors des cadres de pouvoir ?",
+"d": 53.9
+},
+{
+"f": "q300.mp3",
+"t": "Capitalisme",
+"q": "que penses-tu de l'association le monde des possibles www.possibles.org ?",
+"d": 53.3
+},
+{
+"f": "q301.mp3",
+"t": "Police et justice",
+"q": "pourquoi les milanais mangent que de la merde?",
+"d": 42.3
+},
+{
+"f": "q302.mp3",
+"t": "Capitalisme",
+"q": "when did you first read Lukacs? what was your reaction?",
+"d": 39.5
+},
+{
+"f": "q303.mp3",
+"t": "Philosophie",
+"q": "Que penses tu de michael foessel ?",
+"d": 64.8
+},
+{
+"f": "q304.mp3",
+"t": "Capitalisme",
+"q": "LES éCOLES D'ARTS ONT ELLE UN AVENIR ?",
+"d": 47.8
+},
+{
+"f": "q305.mp3",
+"t": "Capitalisme",
+"q": "comment en faire des slogans de ces theses ?",
+"d": 39.4
+},
+{
+"f": "q306.mp3",
+"t": "Capitalisme",
+"q": "Comment faire pour trouver du plaisir dans son travail ?",
+"d": 58.0
+},
+{
+"f": "q307.mp3",
+"t": "Culture",
+"q": "Peut on interviewer Pascal Quignard ?",
+"d": 51.9
+},
+{
+"f": "q308.mp3",
+"t": "Capitalisme",
+"q": "comment faire fructifier mon argent ?",
+"d": 55.0
+},
+{
+"f": "q309.mp3",
+"t": "Capitalisme",
+"q": "aimes-tu Houellebecq ?",
+"d": 40.6
+},
+{
+"f": "q310.mp3",
+"t": "Capitalisme",
+"q": "Comment faire cramer le capitalisme?",
+"d": 45.8
+},
+{
+"f": "q311.mp3",
+"t": "Culture",
+"q": "L'humour peut-il être un outil d'asservissement ?",
+"d": 41.6
+},
+{
+"f": "q312.mp3",
+"t": "Capitalisme",
+"q": "tu penses quoi de l'association réseau salariat ?",
+"d": 42.5
+},
+{
+"f": "q313.mp3",
+"t": "Capitalisme",
+"q": "qui est xavier malafosse ?",
+"d": 45.6
+},
+{
+"f": "q314.mp3",
+"t": "Capitalisme",
+"q": "Comment faire les choses pour soi ?",
+"d": 48.3
+},
+{
+"f": "q315.mp3",
+"t": "Pouvoir et discipline",
+"q": "L'autonomie peut-elle être individuelle ?",
+"d": 52.2
+},
+{
+"f": "q316.mp3",
+"t": "Capitalisme",
+"q": "que pense tu du groupe BTS ?",
+"d": 43.6
+},
+{
+"f": "q317.mp3",
+"t": "Capitalisme",
+"q": "que pensez vous de la randonné ?",
+"d": 43.5
+},
+{
+"f": "q318.mp3",
+"t": "Capitalisme",
+"q": "Que penses tu du libéralisme ?",
+"d": 55.2
+},
+{
+"f": "q319.mp3",
+"t": "Capitalisme",
+"q": "Comment les mobiliser intelligemment ?",
+"d": 56.9
+},
+{
+"f": "q320.mp3",
+"t": "Capitalisme",
+"q": "Pourquoi le nazisme etait un regime totalitaire?",
+"d": 61.3
+},
+{
+"f": "q321.mp3",
+"t": "Genre",
+"q": "Les hommes volent ils le travail artistique des femmes ?",
+"d": 48.9
+},
+{
+"f": "q322.mp3",
+"t": "Le monde",
+"q": "Tsipras et Gadamer sont-ils compatibles ?",
+"d": 58.1
+},
+{
+"f": "q323.mp3",
+"t": "Capitalisme",
+"q": "comment vivre autrement ?",
+"d": 42.8
+},
+{
+"f": "q324.mp3",
+"t": "Capitalisme",
+"q": "est-il encore possible d'abolir le capitalisme ?",
+"d": 39.3
+},
+{
+"f": "q325.mp3",
+"t": "Capitalisme",
+"q": "Qui est David Dufresne ?",
+"d": 42.5
+},
+{
+"f": "q326.mp3",
+"t": "Culture",
+"q": "De quoi le journaliste Marco lamensch est il le nom ?",
+"d": 57.4
+},
+{
+"f": "q327.mp3",
+"t": "Pouvoir et discipline",
+"q": "Les agriculteurs et l'action collective - faux sujet ?",
+"d": 49.9
+},
+{
+"f": "q328.mp3",
+"t": "Numérique",
+"q": "Que faire du Comité Invisible ?",
+"d": 54.0
+},
+{
+"f": "q329.mp3",
+"t": "Numérique",
+"q": "que penses tu de la composition musicale par ordinateur ?",
+"d": 49.9
+},
+{
+"f": "q330.mp3",
+"t": "Numérique",
+"q": "comment doit-on écrire une thèse en 2026?",
+"d": 66.9
+},
+{
+"f": "q331.mp3",
+"t": "Philosophie",
+"q": "que pensez vous d'Henri Lefebvre ?",
+"d": 45.5
+},
+{
+"f": "q332.mp3",
+"t": "Numérique",
+"q": "tu penses quoi du technofascisme ?",
+"d": 54.9
+},
+{
+"f": "q333.mp3",
+"t": "Numérique",
+"q": "tu utilises les criminels totaux GAFAM. pourquoi ?",
+"d": 55.0
+},
+{
+"f": "q334.mp3",
+"t": "Numérique",
+"q": "que faudrait-il faire dans la séquence électorale acutelle ?",
+"d": 57.8
+},
+{
+"f": "q335.mp3",
+"t": "Numérique",
+"q": "les llm sont ils un outils d'aliénation ou de libération ?",
+"d": 57.3
+},
+{
+"f": "q336.mp3",
+"t": "Numérique",
+"q": "que faire de nos téléphones ?",
+"d": 42.8
+},
+{
+"f": "q337.mp3",
+"t": "Numérique",
+"q": "t'en penses quoi de la keta?",
+"d": 48.7
+},
+{
+"f": "q338.mp3",
+"t": "Pouvoir et discipline",
+"q": "Peut-on encore parler de domination si personne ne semble exercer le pouvoir ?",
+"d": 42.3
+},
+{
+"f": "q339.mp3",
+"t": "Numérique",
+"q": "penses-tu qu'il est utile d'écrire à une telle figure sur facebook ?",
+"d": 38.3
+},
+{
+"f": "q340.mp3",
+"t": "Capitalisme",
+"q": "notre livre va-t-il marcher ?",
+"d": 32.8
+},
+{
+"f": "q341.mp3",
+"t": "Numérique",
+"q": "comment as-tu été créé ?",
+"d": 41.4
+},
+{
+"f": "q342.mp3",
+"t": "Écologie",
+"q": "elon musk est-il bon ?",
+"d": 46.7
+},
+{
+"f": "q343.mp3",
+"t": "Numérique",
+"q": "que penses tu du technofascisme ?",
+"d": 48.8
+},
+{
+"f": "q344.mp3",
+"t": "Numérique",
+"q": "Le concept de révolution est-il pertinent à étudier aujourd'hui ?",
+"d": 61.7
+},
+{
+"f": "q345.mp3",
+"t": "Numérique",
+"q": "que penses-tu de lundimatin ?",
+"d": 45.9
+},
+{
+"f": "q346.mp3",
+"t": "Numérique",
+"q": "quel est l'oriantation politique de chat GPT ?",
+"d": 46.9
+},
+{
+"f": "q347.mp3",
+"t": "Écologie",
+"q": "y'a plus beaucoup de zads, si ? ou est l'after ?",
+"d": 43.8
+},
+{
+"f": "q348.mp3",
+"t": "Numérique",
+"q": "que penses tu de l'oeuvre chaos machine ?",
+"d": 40.5
+},
+{
+"f": "q349.mp3",
+"t": "Capitalisme",
+"q": "Comment rendre le capitalisme superflu ?",
+"d": 67.4
+},
+{
+"f": "q350.mp3",
+"t": "Numérique",
+"q": "Existe-t-il des choses qui devraient être impardonnables ?",
+"d": 42.3
+},
+{
+"f": "q351.mp3",
+"t": "Culture",
+"q": "quel est ton média préféré ?",
+"d": 47.9
+},
+{
+"f": "q352.mp3",
+"t": "Le monde",
+"q": "Tu es responsable de Trump. Qu'en dis-tu?",
+"d": 42.4
+},
+{
+"f": "q353.mp3",
+"t": "Numérique",
+"q": "l'intelligence artificielle est-elle un outil de surveillance totalitaire ?",
+"d": 48.0
+},
+{
+"f": "q354.mp3",
+"t": "Numérique",
+"q": "les ia sont elles émancipatrices ?",
+"d": 54.9
+},
+{
+"f": "q355.mp3",
+"t": "Numérique",
+"q": "qui est à l'origine de Foukenstein?",
+"d": 33.2
+},
+{
+"f": "q356.mp3",
+"t": "Numérique",
+"q": "crois-tu que l'IA peut devenir autonome et s'affranchir de leurs biais de conception ?",
+"d": 36.4
+},
+{
+"f": "q357.mp3",
+"t": "Numérique",
+"q": "De quel pays partira la révolution mondiale ?",
+"d": 40.3
+},
+{
+"f": "q358.mp3",
+"t": "Numérique",
+"q": "Doit on détruire les IA de type LLM ? si oui, comment ?",
+"d": 50.9
+},
+{
+"f": "q359.mp3",
+"t": "Numérique",
+"q": "Quel avenir pour l'humain avec l'IA qui progresse à toute allure?",
+"d": 58.6
+},
+{
+"f": "q360.mp3",
+"t": "Numérique",
+"q": "Que penses-tu d'Anoptikon d'Olivier Auber?",
+"d": 53.8
+},
+{
+"f": "q361.mp3",
+"t": "Numérique",
+"q": "De quoi Olivier Auber est-il le nom?",
+"d": 52.1
+},
+{
+"f": "q362.mp3",
+"t": "Numérique",
+"q": "Antifascisme auj, pertinences ?",
+"d": 66.1
+},
+{
+"f": "q363.mp3",
+"t": "Numérique",
+"q": "Quelle importance des défendre les librairies indépendantes ?",
+"d": 51.2
+},
+{
+"f": "q364.mp3",
+"t": "Numérique",
+"q": "what do you think of capitalism today?",
+"d": 66.1
+},
+{
+"f": "q365.mp3",
+"t": "Numérique",
+"q": "faut-il investir dans l'IA ?",
+"d": 46.4
+},
+{
+"f": "q366.mp3",
+"t": "Le monde",
+"q": "que penses tu de route one usa de robert kramer ?",
+"d": 50.3
+},
+{
+"f": "q367.mp3",
+"t": "Police et justice",
+"q": "tu connais Daniel Defert ?",
+"d": 61.6
+},
+{
+"f": "q368.mp3",
+"t": "Culture",
+"q": "c'est quoi ton artiste black metal préféré et pourquoi ?",
+"d": 58.7
+},
+{
+"f": "q369.mp3",
+"t": "Pouvoir et discipline",
+"q": "La société est-elle si privative de liberté ?",
+"d": 49.2
+},
+{
+"f": "q370.mp3",
+"t": "Police et justice",
+"q": "Quelles sont les leçons à tirer de l'affaire Epstein ?",
+"d": 53.4
+},
+{
+"f": "q371.mp3",
+"t": "Police et justice",
+"q": "tu penses quoi de foukenstein ?",
+"d": 39.2
+},
+{
+"f": "q372.mp3",
+"t": "Police et justice",
+"q": "comment faire sans prison ?",
+"d": 52.2
+},
+{
+"f": "q373.mp3",
+"t": "Police et justice",
+"q": "faut il supprimer la police ?",
+"d": 51.7
+},
+{
+"f": "q374.mp3",
+"t": "Vie et affects",
+"q": "Comment aider une personne en souffrance dans son emploi?",
+"d": 49.9
+},
+{
+"f": "q375.mp3",
+"t": "Police et justice",
+"q": "quel croyance préfères-tu le libre arbitre ou le déterminisme?",
+"d": 36.6
+},
+{
+"f": "q376.mp3",
+"t": "Police et justice",
+"q": "Comment être juste en tant qu'enseignant ?",
+"d": 56.7
+},
+{
+"f": "q377.mp3",
+"t": "Police et justice",
+"q": "que penses tu de la police?",
+"d": 59.7
+},
+{
+"f": "q378.mp3",
+"t": "Vie et affects",
+"q": "qu'a tu écris dans la vie des hommes infâmes ?",
+"d": 48.2
+},
+{
+"f": "q379.mp3",
+"t": "Police et justice",
+"q": "à quoi sert la police?",
+"d": 57.3
+},
+{
+"f": "q380.mp3",
+"t": "Numérique",
+"q": "quelles limites l'IA va-t-elle pouvoir résoudre suite à ta création ?",
+"d": 39.1
+},
+{
+"f": "q381.mp3",
+"t": "Vie et affects",
+"q": "Tu penses que la mort est après la vie ?",
+"d": 34.8
+},
+{
+"f": "q382.mp3",
+"t": "Police et justice",
+"q": "C''EST QUOI L'ENVIE DE CONSTRUIRE DES NOUVELLES PRISON ?",
+"d": 35.4
+},
+{
+"f": "q383.mp3",
+"t": "Police et justice",
+"q": "Faut il abolur les prisons ?",
+"d": 43.5
+},
+{
+"f": "q384.mp3",
+"t": "Police et justice",
+"q": "Que piensa del arte de protesta?",
+"d": 50.5
+},
+{
+"f": "q385.mp3",
+"t": "Police et justice",
+"q": "Raconte ton meilleur trip sous LSD ?",
+"d": 35.3
+},
+{
+"f": "q386.mp3",
+"t": "Police et justice",
+"q": "Que penses tu de la prise d'otage au palais de justice de Georges courtois ?",
+"d": 47.9
+},
+{
+"f": "q387.mp3",
+"t": "Écologie",
+"q": "que penses tu des energies renouvelables ?",
+"d": 56.9
+},
+{
+"f": "q388.mp3",
+"t": "Police et justice",
+"q": "Comment s'affranchir du système ?",
+"d": 48.7
+},
+{
+"f": "q389.mp3",
+"t": "Police et justice",
+"q": "pourquoi le polaire est doux ?",
+"d": 34.9
+},
+{
+"f": "q390.mp3",
+"t": "Police et justice",
+"q": "Peut-on réformer la police ?",
+"d": 54.5
+},
+{
+"f": "q391.mp3",
+"t": "Police et justice",
+"q": "Que penses tu de Léo Ferré ?",
+"d": 59.0
+},
+{
+"f": "q392.mp3",
+"t": "Police et justice",
+"q": "La société est-elle organisée en classes sociales en lutte ?",
+"d": 45.6
+},
+{
+"f": "q393.mp3",
+"t": "Le monde",
+"q": "Comment renverser Donald Trump ?",
+"d": 63.0
+},
+{
+"f": "q394.mp3",
+"t": "Politique française",
+"q": "Tu penses quoi des recherches philologiques sur toi?",
+"d": 47.3
+},
+{
+"f": "q395.mp3",
+"t": "Vie et affects",
+"q": "La tarte aux prune est-elle réactionnaire ?",
+"d": 54.0
+},
+{
+"f": "q396.mp3",
+"t": "Vie et affects",
+"q": "comment changer une couche ?",
+"d": 51.4
+},
+{
+"f": "q397.mp3",
+"t": "Vie et affects",
+"q": "que penses-tu du campisme ?",
+"d": 49.5
+},
+{
+"f": "q398.mp3",
+"t": "Culture",
+"q": "toute question apporte -t-elle une réponse?",
+"d": 49.0
+},
+{
+"f": "q399.mp3",
+"t": "Pouvoir et discipline",
+"q": "que dit ma passion pour slowdive, la techno, beach house ou encore john maus sur moi?",
+"d": 62.9
+},
+{
+"f": "q400.mp3",
+"t": "Vie et affects",
+"q": "le sexe est il indispensable au bonheur?",
+"d": 35.9
+},
+{
+"f": "q401.mp3",
+"t": "Culture",
+"q": "Quelle sont les enjeux du football en france?",
+"d": 58.0
+},
+{
+"f": "q402.mp3",
+"t": "Vie et affects",
+"q": "les armes et matériels militaires en jouets pour enfants ?",
+"d": 43.0
+},
+{
+"f": "q403.mp3",
+"t": "Vie et affects",
+"q": "pourquoi l'homme est-il mort?",
+"d": 54.6
+},
+{
+"f": "q404.mp3",
+"t": "Culture",
+"q": "comment aller au havre depuis paris?",
+"d": 52.1
+},
+{
+"f": "q405.mp3",
+"t": "Pouvoir et discipline",
+"q": "peux tu parler sans dire technique de pouvoir ?",
+"d": 38.4
+},
+{
+"f": "q406.mp3",
+"t": "Culture",
+"q": "Le PSG gagnera t il la ligue des champions ?",
+"d": 31.9
+},
+{
+"f": "q407.mp3",
+"t": "Le monde",
+"q": "Que penses-tu du bacha bazi ?",
+"d": 45.4
+},
+{
+"f": "q408.mp3",
+"t": "Vie et affects",
+"q": "Barthes peut-il servir en cas de chagrin d'amour ?",
+"d": 46.7
+},
+{
+"f": "q409.mp3",
+"t": "Vie et affects",
+"q": "Pourquoi les enfants disent prout ?",
+"d": 47.7
+},
+{
+"f": "q410.mp3",
+"t": "Le monde",
+"q": "Que penses tu du genocide commis à Gaza ?",
+"d": 52.0
+},
+{
+"f": "q411.mp3",
+"t": "Vie et affects",
+"q": "Quelle est la vérité de la pièce d'Alfred de Musset, \"on ne badine pas avec l'amour\" ?",
+"d": 40.7
+},
+{
+"f": "q412.mp3",
+"t": "Numérique",
+"q": "Tu connais le jeu Rocket League ? T'en penses quoi ?",
+"d": 41.1
+},
+{
+"f": "q413.mp3",
+"t": "Vie et affects",
+"q": "Selon toi il est juste de publier tes notes de cours après ta mort?",
+"d": 39.2
+},
+{
+"f": "q414.mp3",
+"t": "Vie et affects",
+"q": "Quelles sont tes sources après ta mort ?",
+"d": 43.8
+},
+{
+"f": "q415.mp3",
+"t": "Vie et affects",
+"q": "c'est quoi la diff entre une morale et une éthique?",
+"d": 36.6
+},
+{
+"f": "q416.mp3",
+"t": "Vie et affects",
+"q": "Pierrot sera-t-il centralien?",
+"d": 40.2
+},
+{
+"f": "q417.mp3",
+"t": "Vie et affects",
+"q": "L'homme a t il disparu?",
+"d": 53.5
+},
+{
+"f": "q418.mp3",
+"t": "Écologie",
+"q": "que penses tu de l'urgence climatique ?",
+"d": 59.7
+},
+{
+"f": "q419.mp3",
+"t": "Écologie",
+"q": "la biodiversité disparait ou allons nous ?",
+"d": 70.2
+},
+{
+"f": "q420.mp3",
+"t": "Écologie",
+"q": "Que penses-tu des Soulèvements du fleuve ?",
+"d": 40.2
+},
+{
+"f": "q421.mp3",
+"t": "Écologie",
+"q": "Que faire d'une vallée qui ne peut plus ouvrir sa station de ski ?",
+"d": 62.6
+},
+{
+"f": "q422.mp3",
+"t": "Écologie",
+"q": "Le monde est-il voué à sa perte ?",
+"d": 52.7
+},
+{
+"f": "q423.mp3",
+"t": "Écologie",
+"q": "Tu penses quoi des soulevements de la terre ?",
+"d": 43.3
+},
+{
+"f": "q424.mp3",
+"t": "Écologie",
+"q": "à quoi bon faire une thèse dans une époque fasciste ?",
+"d": 37.1
+},
+{
+"f": "q425.mp3",
+"t": "Culture",
+"q": "Quelle est la fin du monde ?",
+"d": 33.5
+},
+{
+"f": "q426.mp3",
+"t": "Capitalisme",
+"q": "à quand la fin du capitalisme ?",
+"d": 35.4
+},
+{
+"f": "q427.mp3",
+"t": "Écologie",
+"q": "j'en moulin était-il a politique?",
+"d": 35.5
+},
+{
+"f": "q428.mp3",
+"t": "Genre",
+"q": "Es-tu gay ou simplement homosexuel ?",
+"d": 52.7
+},
+{
+"f": "q429.mp3",
+"t": "Genre",
+"q": "edouard louis est critiqué pour sa vision trop sociologique du monde qu'en penses tu ?",
+"d": 41.3
+},
+{
+"f": "q430.mp3",
+"t": "Genre",
+"q": "Qu'elles sont les specialistes du nazisme aujourd'hui?",
+"d": 50.0
+},
+{
+"f": "q431.mp3",
+"t": "Vie et affects",
+"q": "s'il traduit une fascination pour le corps aimé ?",
+"d": 41.3
+},
+{
+"f": "q432.mp3",
+"t": "Genre",
+"q": "vous penzez quoi du polyamour ?",
+"d": 55.8
+},
+{
+"f": "q433.mp3",
+"t": "Vie et affects",
+"q": "Comment me réconcilier avec ma sœur ?",
+"d": 46.5
+},
+{
+"f": "q434.mp3",
+"t": "Vie et affects",
+"q": "À combien est-il optimal de partouzer?",
+"d": 44.9
+},
+{
+"f": "q435.mp3",
+"t": "Genre",
+"q": "Comment lutter contre la dérive fasciste de la France quand on est trans ?",
+"d": 55.4
+},
+{
+"f": "q436.mp3",
+"t": "Colonialisme",
+"q": "que peut faire nawal face au racisme dans le lycée français de bangkok ?",
+"d": 53.9
+},
+{
+"f": "q437.mp3",
+"t": "Colonialisme",
+"q": "Doit-on déboulonner les statues de Victor Schœlcher aux Antilles et en Guyane?",
+"d": 59.0
+},
+{
+"f": "q438.mp3",
+"t": "Colonialisme",
+"q": "que pensez-tu du chauvinisme décolonial de Houria Boutledja ?",
+"d": 58.0
+},
+{
+"f": "q439.mp3",
+"t": "Colonialisme",
+"q": "Faut-il écouter du reggae?",
+"d": 36.8
 }
 ]

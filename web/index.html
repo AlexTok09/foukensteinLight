@@ -310,6 +310,30 @@
     /* ── Carrousel de fiches (à la place de la barre de saisie) ─────── */
     #chat { display: flex; align-items: center; width: 100%; gap: 10px; }
 
+    /* Filtre de thèmes : un select natif, habillé en micro-libellé. */
+    #themeWrap { position: relative; flex-shrink: 0; display: flex; align-items: center; }
+    #themeSel {
+      -webkit-appearance: none; appearance: none;
+      background: none; border: none; outline: none;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(100, 95, 88, 0.55);
+      padding: 6px 14px 6px 0;
+      max-width: 116px;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+    #themeSel:hover, #themeSel:focus-visible { color: rgba(40, 36, 32, 0.9); }
+    #themeWrap::after {
+      content: ""; position: absolute; right: 2px; top: 50%;
+      width: 5px; height: 5px; margin-top: -4px;
+      border-right: 1px solid rgba(100, 95, 88, 0.45);
+      border-bottom: 1px solid rgba(100, 95, 88, 0.45);
+      transform: rotate(45deg); pointer-events: none;
+    }
+    #themeSel option { font-size: 13px; letter-spacing: 0; text-transform: none; }
+
     #deck {
       flex: 1; min-width: 0;
       display: flex; gap: 10px;
@@ -601,6 +625,9 @@
     <!-- Composer: always visible at bottom -->
     <div id="composer">
       <div id="chat">
+        <span id="themeWrap">
+          <select id="themeSel" aria-label="Filtrer par thème"></select>
+        </span>
         <div id="deck" role="listbox" aria-label="Questions posées à Foukenstein" tabindex="0"></div>
         <button id="diceBtn" aria-label="Écouter une question au hasard" title="Au hasard">⁂</button>
       </div>
@@ -1023,9 +1050,10 @@
 
     // ── Carrousel de fiches ───────────────────────────────────────────
     const Deck = (() => {
-      const deckEl = document.getElementById("deck");
-      const diceEl = document.getElementById("diceBtn");
-      let items = [], N = 0, current = null, idle = null;
+      const deckEl  = document.getElementById("deck");
+      const diceEl  = document.getElementById("diceBtn");
+      const themeEl = document.getElementById("themeSel");
+      let all = [], items = [], N = 0, current = null, idle = null;
 
       const fmt = (s) => {
         const m = Math.floor(s / 60), r = Math.round(s % 60);
@@ -1037,6 +1065,7 @@
         b.className = "card";
         b.type = "button";
         b.dataset.i = i;
+        b.dataset.f = it.f;
         b.setAttribute("role", "option");
         b.setAttribute("aria-current", "false");
         b.title = it.q;
@@ -1054,17 +1083,19 @@
       }
 
       async function pick(i, scroll) {
-        if (current === i && Audio.isPlaying()) { Audio.stop(); clear(); return; }
+        const it = items[i];
+        if (!it) return;
+        if (current === it.f && Audio.isPlaying()) { Audio.stop(); clear(); return; }
         clear();
-        current = i;
-        deckEl.querySelectorAll('.card[data-i="' + i + '"]')
+        current = it.f;
+        deckEl.querySelectorAll('.card[data-f="' + it.f + '"]')
               .forEach((c) => c.setAttribute("aria-current", "true"));
         if (scroll) {
-          const el = deckEl.querySelector('.card[data-i="' + i + '"]');
+          const el = deckEl.querySelector('.card[data-f="' + it.f + '"]');
           if (el) el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
         }
         try {
-          await Audio.play("audio/" + items[i].f, clear);
+          await Audio.play("audio/" + it.f, clear);
         } catch (e) {
           clear();
           showToast("Cet enregistrement n'a pas pu être chargé.");
@@ -1075,20 +1106,49 @@
       // Uniquement quand le défilement s'est arrêté — sinon iOS coupe
       // l'inertie et le saut devient visible.
       function recenter() {
-        const third = deckEl.scrollWidth / 3;
-        if (third < 40) return;
+        const copies = deckEl._copies || 3;
+        const unit = deckEl.scrollWidth / copies;
+        if (unit < 40 || deckEl.scrollWidth <= deckEl.clientWidth + 8) return;
+        const mid = Math.floor(copies / 2);
         const x = deckEl.scrollLeft;
-        if (x < third * 0.5) deckEl.scrollLeft = x + third;
-        else if (x > third * 1.5) deckEl.scrollLeft = x - third;
+        if (x < unit * (mid - 0.5)) deckEl.scrollLeft = x + unit;
+        else if (x > unit * (mid + 0.5)) deckEl.scrollLeft = x - unit;
+      }
+
+      // Rendu de la vue : le jeu est copié trois fois pour la boucle infinie.
+      function render(theme) {
+        items = theme ? all.filter((x) => x.t === theme) : all;
+        N = items.length;
+        Audio.stop();
+        current = null;
+        deckEl.textContent = "";
+        if (!N) return;
+        const copies = N < 6 ? 5 : 3;          // peu de fiches → plus de copies
+        const frag = document.createDocumentFragment();
+        for (let c = 0; c < copies; c++) items.forEach((it, i) => frag.appendChild(make(it, i)));
+        deckEl.appendChild(frag);
+        deckEl._copies = copies;
+        requestAnimationFrame(() => {
+          deckEl.scrollLeft = deckEl.scrollWidth / copies * Math.floor(copies / 2);
+        });
       }
 
       function build(list) {
-        items = list; N = list.length;
-        if (!N) return;
-        const frag = document.createDocumentFragment();
-        for (let copy = 0; copy < 3; copy++) list.forEach((it, i) => frag.appendChild(make(it, i)));
-        deckEl.appendChild(frag);
-        requestAnimationFrame(() => { deckEl.scrollLeft = deckEl.scrollWidth / 3; });
+        all = list;
+        if (!all.length) return;
+
+        // Menu des thèmes, par effectif décroissant.
+        const counts = {};
+        all.forEach((x) => { counts[x.t] = (counts[x.t] || 0) + 1; });
+        const opts = ['<option value="">Tous les thèmes — ' + all.length + "</option>"];
+        Object.keys(counts).sort((a, b) => counts[b] - counts[a]).forEach((t) => {
+          opts.push('<option value="' + t.replace(/"/g, "&quot;") + '">' +
+                    t + " — " + counts[t] + "</option>");
+        });
+        themeEl.innerHTML = opts.join("");
+        themeEl.addEventListener("change", () => render(themeEl.value));
+
+        render("");
 
         deckEl.addEventListener("click", (e) => {
           const c = e.target.closest(".card");
@@ -1110,8 +1170,9 @@
           void diceEl.offsetWidth;
           diceEl.classList.add("rolling");
           setTimeout(() => diceEl.classList.remove("rolling"), 420);
+          if (!N) return;
           let i = Math.floor(Math.random() * N);
-          if (N > 1 && i === current) i = (i + 1 + Math.floor(Math.random() * (N - 1))) % N;
+          if (N > 1 && items[i].f === current) i = (i + 1) % N;
           pick(i, true);
         });
       }

@@ -384,6 +384,46 @@
     }
     .card[aria-current="true"] .len { color: rgba(70, 65, 58, 0.58); }
 
+    /* Flèches : seulement là où il y a une souris — un doigt fait défiler. */
+    .navArrow { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      #chat { position: relative; }
+      .navArrow {
+        position: absolute; top: 50%; z-index: 3;
+        display: flex; align-items: center; justify-content: center;
+        width: 20px; height: 34px; margin-top: -19px;
+        -webkit-appearance: none; appearance: none;
+        background: none; border: none; padding: 0; cursor: pointer;
+        color: rgba(100, 95, 88, 0.3);
+        transition: color 0.2s;
+      }
+      .navArrow:hover, .navArrow:focus-visible { color: rgba(40, 36, 32, 0.85); outline: none; }
+      #prevBtn { left: -22px; }
+      #nextBtn { right: 30px; }
+      .navArrow svg { width: 9px; height: 15px; display: block; }
+    }
+
+    /* Pause : sous le carrousel, visible seulement pendant la lecture. */
+    #pauseBtn {
+      position: absolute;
+      bottom: calc(14vh - 26px);
+      left: 50%; transform: translateX(-50%);
+      -webkit-appearance: none; appearance: none;
+      background: none; border: none; padding: 6px 10px; cursor: pointer;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(100, 95, 88, 0.5);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 96;
+    }
+    #pauseBtn.on { opacity: 1; pointer-events: auto; }
+    #pauseBtn:hover, #pauseBtn:focus-visible { color: rgba(40, 36, 32, 0.9); outline: none; }
+    @media (max-width: 600px) {
+      #pauseBtn { position: fixed; bottom: calc(env(safe-area-inset-bottom, 0px) + 62px); }
+    }
+
     #diceBtn {
       display: flex;
       -webkit-appearance: none; appearance: none;
@@ -629,10 +669,13 @@
           <select id="themeSel" aria-label="Filtrer par thème"></select>
         </span>
         <div id="deck" role="listbox" aria-label="Questions posées à Foukenstein" tabindex="0"></div>
+        <button class="navArrow" id="prevBtn" type="button" aria-label="Fiche précédente"><svg viewBox="0 0 9 15" aria-hidden="true"><path d="M7.5 1 1.5 7.5 7.5 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button id="diceBtn" aria-label="Écouter une question au hasard" title="Au hasard">⁂</button>
+        <button class="navArrow" id="nextBtn" type="button" aria-label="Fiche suivante"><svg viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1 7.5 7.5 1.5 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
     <div id="disclaimer" class="hidden"></div>
+    <button id="pauseBtn" type="button" aria-label="Arrêter la lecture">pause</button>
 
     <div id="toast"></div>
 
@@ -1053,6 +1096,9 @@
       const deckEl  = document.getElementById("deck");
       const diceEl  = document.getElementById("diceBtn");
       const themeEl = document.getElementById("themeSel");
+      const pauseEl = document.getElementById("pauseBtn");
+      const prevEl  = document.getElementById("prevBtn");
+      const nextEl  = document.getElementById("nextBtn");
       let all = [], items = [], N = 0, current = null, idle = null;
 
       const fmt = (s) => {
@@ -1080,6 +1126,7 @@
         deckEl.querySelectorAll('.card[aria-current="true"]')
               .forEach((c) => c.setAttribute("aria-current", "false"));
         current = null;
+        pauseEl.classList.remove("on");
       }
 
       async function pick(i, scroll) {
@@ -1096,6 +1143,7 @@
         }
         try {
           await Audio.play("audio/" + it.f, clear);
+          pauseEl.classList.add("on");
         } catch (e) {
           clear();
           showToast("Cet enregistrement n'a pas pu être chargé.");
@@ -1121,6 +1169,7 @@
         N = items.length;
         Audio.stop();
         current = null;
+        pauseEl.classList.remove("on");
         deckEl.textContent = "";
         if (!N) return;
         const copies = N < 6 ? 5 : 3;          // peu de fiches → plus de copies
@@ -1154,6 +1203,14 @@
           const c = e.target.closest(".card");
           if (c) pick(Number(c.dataset.i), false);
         });
+        const stepBy = (dir) => {
+          const w = (deckEl.querySelector(".card")?.offsetWidth || 200) + 10;
+          deckEl.scrollBy({ left: dir * w, behavior: "smooth" });
+        };
+        prevEl.addEventListener("click", () => stepBy(-1));
+        nextEl.addEventListener("click", () => stepBy(1));
+        pauseEl.addEventListener("click", () => { Audio.stop(); clear(); });
+
         deckEl.addEventListener("scroll", () => {
           clearTimeout(idle);
           idle = setTimeout(recenter, 150);
@@ -1161,8 +1218,7 @@
         deckEl.addEventListener("keydown", (e) => {
           if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
           e.preventDefault();
-          const w = (deckEl.querySelector(".card")?.offsetWidth || 200) + 10;
-          deckEl.scrollBy({ left: e.key === "ArrowRight" ? w : -w, behavior: "smooth" });
+          stepBy(e.key === "ArrowRight" ? 1 : -1);
         });
 
         diceEl.addEventListener("click", () => {
